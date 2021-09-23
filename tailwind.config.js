@@ -1,0 +1,20 @@
+module.exports = {
+    mode: 'jit',
+    purge: [
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.jsx',
+    ],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+        extend: {},
+    },
+    variants: {
+        extend: {},
+    },
+    plugins: [
+        // require('@tailwindcss/aspect-ratio'),
+        // require('@tailwindcss/forms'),
+        // require('@tailwindcss/typography'),
+    ],
+};

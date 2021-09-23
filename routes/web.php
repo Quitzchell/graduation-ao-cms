@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Any route below this one won't reached because of the catch all statement.
+Route::any('{all}', 'ContentController@getIndex')->where('all', '.*');
