@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "git@git.allesonline.nl:allesonline/package-cms.git",
-                "reference": "e1c3a98575fe565288c91bd34e1701d9d709b4c5"
+                "reference": "5a8b62f25f07db4c6565f285429a1fdd99bdf5d4"
             },
             "require": {
                 "doctrine/dbal": "*",
@@ -27,9 +27,6 @@
                 "sentry/sentry-laravel": "2.8.*",
                 "tijsverkoyen/css-to-inline-styles": "2.2.*"
             },
-            "require-dev": {
-                "barryvdh/laravel-ide-helper": "2.8.*"
-            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -40,7 +37,7 @@
                 ]
             },
             "description": "AllesOnline CMS package",
-            "time": "2021-09-23T17:30:58+00:00"
+            "time": "2021-09-23T18:46:07+00:00"
         },
         {
             "name": "asm89/stack-cors",
