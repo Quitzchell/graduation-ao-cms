@@ -41,6 +41,7 @@ if (!function_exists('contentManagerRoutes')) {
             Route::get("/copy", [$controller, 'getCopy']);
             Route::get("/edit-child/{id}/{child}", [$controller, 'getEditChild']);
             Route::post("/edit-child/{id}/{child}", [$controller, 'postEditChild']);
+            Route::post("/edit-child/{id}/{child}/exit", [$controller, 'postEditChild']);
         });
         /* ContentManager routes */
     }
