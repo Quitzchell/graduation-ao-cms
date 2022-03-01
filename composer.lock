@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3062dd44a2e13a4afbac57e80c5ce532",
+    "content-hash": "aa433a4e8763059cd9e3a2e297280237",
     "packages": [
         {
             "name": "ao/cms",
@@ -38,27 +38,6 @@
             },
             "description": "AllesOnline CMS package",
             "time": "2022-03-01T15:19:13+00:00"
-        },
-        {
-            "name": "ao/updater",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@git.allesonline.nl:allesonline/package-updater.git",
-                "reference": "66834a8bec6975d9a0e70ee95fcc419688a57042"
-            },
-            "require": {
-                "php": "8.*"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "AO\\Updater\\": "src/"
-                }
-            },
-            "description": "AllesOnline CMS Updater",
-            "time": "2022-03-01T15:20:05+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -10957,8 +10936,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ao/cms": 20,
-        "ao/updater": 20
+        "ao/cms": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

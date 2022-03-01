@@ -10,7 +10,6 @@
         "php": "^8.0.2",
         "ext-json": "*",
         "ao/cms": "2.15.x-dev",
-        "ao/updater": "dev-master",
         "barryvdh/laravel-ide-helper": "^2.10",
         "fruitcake/laravel-cors": "^2.0",
         "laravel/sanctum": "^2.11",
@@ -27,10 +26,6 @@
         {
             "type": "git",
             "url": "git@git.allesonline.nl:allesonline/package-cms.git"
-        },
-        {
-            "type": "git",
-            "url": "git@git.allesonline.nl:allesonline/package-updater.git"
         }
     ],
     "autoload": {
