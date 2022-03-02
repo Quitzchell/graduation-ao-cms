@@ -22,8 +22,8 @@ if (!function_exists('createRoutesForMenuItem')) {
             if ($menuItem['href'] === 'content') {
                 contentManagerRoutes($menuItem);
             } elseif ($menuItem['href'] === 'settings') {
-                $controller = $menuItem['controller'] ?? studly_case($menuItem['href']) . 'Controller';
-                $controller = 'App\\Http\\Controllers\\' . $controller;
+                $controller = $menuItem['controller'] ?? studly_case($menuItem['href']).'Controller';
+                $controller = 'App\\Http\\Controllers\\'.$controller;
                 Route::post("/{$menuItem['href']}", [$controller, 'postIndex']);
             }
         }
@@ -33,9 +33,10 @@ if (!function_exists('createRoutesForMenuItem')) {
 if (!function_exists('contentManagerRoutes')) {
     function contentManagerRoutes(array $menuItem)
     {
+        /* ContentManager routes */
         Route::group(['prefix' => $menuItem['href']], function () use ($menuItem) {
-            $controller = $menuItem['controller'] ?? studly_case($menuItem['href']) . 'Controller';
-            $controller = 'App\\Http\\Controllers\\' . $controller;
+            $controller = $menuItem['controller'] ?? studly_case($menuItem['href']).'Controller';
+            $controller = 'App\\Http\\Controllers\\'.$controller;
             Route::post("/update", [$controller, 'postUpdate']);
             Route::get("/lock", [$controller, 'getLock']);
             Route::get("/copy", [$controller, 'getCopy']);
@@ -43,7 +44,6 @@ if (!function_exists('contentManagerRoutes')) {
             Route::post("/edit-child/{id}/{child}", [$controller, 'postEditChild']);
             Route::post("/edit-child/{id}/{child}/exit", [$controller, 'postEditChild']);
         });
-        /* ContentManager routes */
     }
 }
 
@@ -51,8 +51,8 @@ if (!function_exists('ObjectManagerRoutes')) {
     function ObjectManagerRoutes(array $menuItem)
     {
         Route::group(['prefix' => $menuItem['href']], function () use ($menuItem) {
-            $controller = $menuItem['controller'] ?? studly_case($menuItem['href']) . 'Controller';
-            $controller = 'App\\Http\\Controllers\\' . $controller;
+            $controller = $menuItem['controller'] ?? studly_case($menuItem['href']).'Controller';
+            $controller = 'App\\Http\\Controllers\\'.$controller;
             /* ObjectManager routes */
             Route::get("", [$controller, 'getIndex']);
             Route::get("/overview", [$controller, 'getOverview']);
