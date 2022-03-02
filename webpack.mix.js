@@ -19,8 +19,7 @@ mix
         require("tailwindcss"),
     ])
     .browserSync({
-        host: '192.168.10.10', // Important: Use Vagrant Box Private IP, See Vagrantfile
-        proxy: 'eleanor-website.local.alles.hosting',
+        proxy: 'localhost:8000', // TODO update to work with local docker setup
         files: ['./resources/**/*.{js,jsx,css,blade.php}'],
         reloadDelay: 250,
         port: 8080,
