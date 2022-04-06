@@ -5,21 +5,23 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0.2",
         "ext-json": "*",
-        "ao/cms": "2.14.x-dev",
-        "barryvdh/laravel-ide-helper": "^2.10",
+        "ao/cms": "2.15.x-dev",
         "fruitcake/laravel-cors": "^2.0",
-        "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/sanctum": "^2.14.1",
+        "laravel/tinker": "^2.7",
+        "symfony/http-client": "^6.0",
+        "symfony/mailgun-mailer": "^6.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
-        "facade/ignition": "^2.5",
+        "barryvdh/laravel-ide-helper": "^2.10",
         "fakerphp/faker": "^1.9.1",
         "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0"
     },
     "repositories": [
         {
@@ -47,17 +49,12 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
-        "post-install-cmd": [
-            "@php artisan module:ide",
-            "@php artisan vendor:publish --tag=admin --force",
-            "@php artisan vendor:publish --tag=laravel-assets --ansi"
-        ],
         "post-update-cmd": [
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan module:ide",
             "@php artisan vendor:publish --tag=admin --force",
-            "@php artisan vendor:publish --tag=laravel-assets --ansi"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
