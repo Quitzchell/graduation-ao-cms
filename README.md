@@ -37,3 +37,5 @@ In combination with React, we use:
 
 - See https://inertiajs.com/server-side-setup
 - See https://inertiajs.com/client-side-setup
+
+When adding new npm packages to the project, consider adding them as vendor extraction in ``webpack.mix.js``, check out why: https://laravel-mix.com/docs/4.0/extract

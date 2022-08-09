@@ -12,8 +12,17 @@ const mix = require('laravel-mix');
  */
 
 mix
-    .setResourceRoot('../') // Fix UAT-environment path resolve issue
+    .setResourceRoot(process.env.MIX_RESOURCE_ROOT ?? '/') // Fix UAT-environment path resolve issue
     .js('resources/js/app.js', 'public/js')
+    .extract([
+        "@tailwindcss/aspect-ratio",
+        "@tailwindcss/forms",
+        "@tailwindcss/typography",
+        "autoprefixer",
+        "axios",
+        "lodash",
+        "tailwindcss",
+    ])
     .sourceMaps()
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
