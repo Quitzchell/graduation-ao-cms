@@ -16,16 +16,24 @@ By default, we do not include any additional libraries for frontend development
 
 ### React
 
-TODO
+1. See https://www.npmjs.com/package/react-dom
+2. Add ``.react()`` to the mix variable in the webpack.mix.js
+
+In combination with React, we use:
+
+#### Ziggy
+
+- See https://github.com/tighten/ziggy#react
+
+#### ClassNames
+
+- See https://www.npmjs.com/package/classnames
+
+#### Prop Types
+
+- See https://www.npmjs.com/package/prop-types
 
 ### Inertia
 
-TODO
-
-### Storybook
-
-TODO
-
-### SCSS support
-
-TODO
+- See https://inertiajs.com/server-side-setup
+- See https://inertiajs.com/client-side-setup
