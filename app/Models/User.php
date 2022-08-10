@@ -64,11 +64,11 @@ class User extends \Eloquent implements
     {
         $html = view('emails.password', ['token' => $token])->render();
 
-        \Mail::send([], [], function (\Illuminate\Mail\Message $message) use($html) {
+        \Mail::send([], [], function (\Illuminate\Mail\Message $message) use ($html) {
             $message
                 ->to($this->email)
                 ->subject('Password reset')
-                ->setBody($html, 'text/html');
+                ->html($html);
         });
     }
 
@@ -94,14 +94,14 @@ class User extends \Eloquent implements
     public static function validatorMessages()
     {
         return array(
-            'username.required'    => 'U dient een gebruikersnaam in te voeren.',
-            'username.unique'    => 'Deze gebruikersnaam is al in gebruik.',
-            'password.required'    => 'U dient een wachtwoord in te voeren.',
-            'password.min'    => 'Uw wachtwoord moet minstens :min characters lang te zijn.',
+            'username.required' => 'U dient een gebruikersnaam in te voeren.',
+            'username.unique' => 'Deze gebruikersnaam is al in gebruik.',
+            'password.required' => 'U dient een wachtwoord in te voeren.',
+            'password.min' => 'Uw wachtwoord moet minstens :min characters lang te zijn.',
             'fullname.required' => 'U dient uw volledige naam in te voeren.',
-            'email.required'      => 'U dient uw e-mail adres in te voeren.',
-            'email.email'      => 'U dient een e-mail adres in te voeren.',
-            'email.unique'      => 'Dit e-mail adres is al in gebruik op een account.',
+            'email.required' => 'U dient uw e-mail adres in te voeren.',
+            'email.email' => 'U dient een e-mail adres in te voeren.',
+            'email.unique' => 'Dit e-mail adres is al in gebruik op een account.',
         );
     }
 
