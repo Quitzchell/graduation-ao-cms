@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,9 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix
-    .setResourceRoot(process.env.MIX_RESOURCE_ROOT ?? '/') // Fix UAT-environment path resolve issue
-    .js('resources/js/app.js', 'public/js')
+mix.setResourceRoot(process.env.MIX_RESOURCE_ROOT ?? "/") // Fix UAT-environment path resolve issue
+    .js("resources/js/app.js", "public/js")
     .extract([
         "@tailwindcss/aspect-ratio",
         "@tailwindcss/forms",
@@ -22,14 +21,13 @@ mix
         "axios",
         "lodash",
         "tailwindcss",
+        "swiper",
     ])
     .sourceMaps()
-    .postCss('resources/css/app.css', 'public/css', [
-        require("tailwindcss"),
-    ])
+    .postCss("resources/css/app.css", "public/css", [require("tailwindcss")])
     .browserSync({
-        proxy: 'localhost:8000', // TODO update to work with local docker setup
-        files: ['./resources/**/*.{js,jsx,css,blade.php}'],
+        proxy: "http://127.0.0.1:8000", // TODO update to work with local docker setup
+        files: ["./resources/**/*.{js,jsx,css,blade.php}"],
         reloadDelay: 250,
         port: 8080,
         injectChanges: true,
@@ -40,7 +38,7 @@ mix
         watchOptions: {
             usePolling: true,
             interval: 250,
-        }
+        },
     });
 
 if (mix.inProduction()) {

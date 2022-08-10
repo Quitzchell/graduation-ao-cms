@@ -1,0 +1,3 @@
+<template name="Slide - Afbeelding">
+    <field type="file" name="image" title="Afbeelding" accept="image/png,image/jpeg"/>
+</template>
