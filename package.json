@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "watch": "mix watch -- --watch-options-poll=1000",
+        "start": "mix watch -- --watch-options-poll=1000",
         "build": "mix --production"
     },
     "devDependencies": {

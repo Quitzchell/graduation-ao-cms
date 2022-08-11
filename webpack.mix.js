@@ -11,7 +11,7 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.setResourceRoot(process.env.MIX_RESOURCE_ROOT ?? "/") // Fix UAT-environment path resolve issue
+mix.setResourceRoot(process.env.MIX_RESOURCE_ROOT ?? "/")
     .js("resources/js/app.js", "public/js")
     .extract([
         "@tailwindcss/aspect-ratio",
@@ -26,10 +26,10 @@ mix.setResourceRoot(process.env.MIX_RESOURCE_ROOT ?? "/") // Fix UAT-environment
     .sourceMaps()
     .postCss("resources/css/app.css", "public/css", [require("tailwindcss")])
     .browserSync({
-        proxy: "http://127.0.0.1:8000", // TODO update to work with local docker setup
+        proxy: "localhost:8080",
         files: ["./resources/**/*.{js,jsx,css,blade.php}"],
         reloadDelay: 250,
-        port: 8080,
+        port: 8081,
         injectChanges: true,
         watch: true,
         reload: true,
@@ -38,6 +38,9 @@ mix.setResourceRoot(process.env.MIX_RESOURCE_ROOT ?? "/") // Fix UAT-environment
         watchOptions: {
             usePolling: true,
             interval: 250,
+        },
+        socket: {
+            domain: process.env.MIX_URL ?? "localhost:8081", // Should be the exposed port by docker to reach the webpack dev server (check the .env.example)
         },
     });
 

@@ -1,0 +1,23 @@
+# Add files you don't want to copy to your docker image
+.idea
+.DS_Store
+bootstrap/cache/*.php
+.env.example
+.editorconfig
+.styleci.yml
+.phpunit.result.cache
+
+# Newer projects will use src/laravel
+src/laravel/bootstrap/cache/*.php
+src/laravel/.env.example
+src/laravel/.editorconfig
+src/laravel/.styleci.yml
+src/laravel/.phpunit.result.cache
+
+# We don't want to copy these folders, because they can be very large and will be mounted later on
+public/uploads
+public/thumbs
+
+# Newer projects will use src/laravel
+src/laravel/public/uploads
+src/laravel/public/thumbs
