@@ -7,10 +7,10 @@
     </configuration>
 
     <fields timestamps="true" softdeletes="true">
-        <field name="username" title="Gebruikersnaam" type="text" maxlen="255" />
-        <field name="password" title="Wachtwoord" type="password" maxlen="120" />
-        <field name="fullname" default="true" title="Volledige naam" type="text" maxlen="255" />
-        <field name="email" title="E-mailadres" type="text" maxlen="255" />
+        <field name="username" title="Gebruikersnaam" type="text" maxlength="255" />
+        <field name="password" title="Wachtwoord" type="password" maxlength="120" />
+        <field name="fullname" default="true" title="Volledige naam" type="text" maxlength="255" />
+        <field name="email" title="E-mailadres" type="text" maxlength="255" />
         <field name="submit" title="Inloggen" value="Inloggen" type="submit" class="btn btn-lg btn-login btn-block" />
     </fields>
 
