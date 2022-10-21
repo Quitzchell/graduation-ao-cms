@@ -11,8 +11,8 @@ services:
         # Choose your Docker base image based on your PHP version
         #IMAGE: allesonline/laravel:php5.6-alpine3.8 # CMS version <= 2.4
         #IMAGE: allesonline/laravel:php7.4-node14-alpine3.14-dev # CMS version 2.11 - 2.14
-        IMAGE: allesonline/laravel:php8.0-node16-alpine3.15-dev # CMS version 2.14 - 2.15
-        #IMAGE: allesonline/laravel:php8.1-node16-alpine3.16-dev # CMS version 2.14 - 2.15
+#        IMAGE: allesonline/laravel:php8.0-node16-alpine3.15-dev # CMS version 2.14 - 2.15
+        IMAGE: allesonline/laravel:php8.1-node16-alpine3.16-dev # CMS version 2.14 - 2.15
 
         # The containers have Composer 2 installed by default, if you need to downgrade to Composer 1, set DOWNGRADE_COMPOSER to 1
         # If you are not sure which version to use, you can check your composer.lock file for plugin-api-version, which will
@@ -39,10 +39,10 @@ services:
       - NPM_RUN_BUILD=0
 
       # Run `composer install` on startup
-      - COMPOSER_INSTALL=0
+      - COMPOSER_INSTALL=1
 
       # Run `php artisan migrate --force` on startup
-      - ARTISAN_MIGRATE=1
+      - ARTISAN_MIGRATE=0
 
       # Run `php artisan config:cache` on startup, you will probably not use this in local development
       - ARTISAN_CONFIG_CACHE=0
