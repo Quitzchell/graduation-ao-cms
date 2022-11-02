@@ -44,6 +44,9 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        // Admin middleware group is applied to all admin routes, do not remove this group!
+        'admin' => [],
     ];
 
     /**
