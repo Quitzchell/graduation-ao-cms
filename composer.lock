@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "git@git.allesonline.nl:allesonline/package-cms.git",
-                "reference": "a8df56af45a96bf7ea7cf143a411be42528fa011"
+                "reference": "b7f2820427b33a9703922ef8df3e45c50ba13e4c"
             },
             "require": {
                 "doctrine/dbal": "*",
@@ -37,7 +37,7 @@
                 ]
             },
             "description": "AllesOnline CMS package",
-            "time": "2022-10-28T10:59:51+00:00"
+            "time": "2022-11-02T08:58:54+00:00"
         },
         {
             "name": "asm89/stack-cors",
