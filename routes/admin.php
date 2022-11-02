@@ -68,7 +68,7 @@ if (!function_exists('ObjectManagerRoutes')) {
             Route::get("/new-relation/{id}/{call}", [$controller, 'getNewRelation']);
             Route::post("/new-relation/{id}/{call}", [$controller, 'postNewRelation']);
             Route::get("/toggle-relation/{id}/{call}", [$controller, 'getToggleRelation']);
-            Route::get("/edit-relations/{id}/{call}", [$controller, '@etEditRelations']);
+            Route::get("/edit-relations/{id}/{call}", [$controller, 'getEditRelations']);
             Route::get("/edit-relations-items/{modelId}/{call}", [$controller, 'getEditRelationsItems']);
             Route::post("/order", [$controller, 'postOrder']);
             Route::post("/toggle-property/{id}/{property}", [$controller, 'postToggleProperty']);
