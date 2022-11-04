@@ -25,6 +25,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->updatePHPIniFromConfig();
+
         Schema::defaultStringLength(191);
+    }
+
+    /**
+     * Sets specific PHP ini parameters based on ENV values
+     *
+     * @return void
+     */
+    private function updatePHPIniFromConfig(): void
+    {
+        foreach (config('phpini', []) as $param => $value) {
+            ini_set($param, $value);
+        }
     }
 }
