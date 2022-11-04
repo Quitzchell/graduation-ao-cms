@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use Illuminate\View\Factory as ViewFactory;
-use ManagedContent;
 
 class ContentController extends \ContentController
 {
     public function getIndex(ViewFactory $viewFactory, $uri = null)
     {
-        if ($uri == '/') {
+        if ($uri === '/') {
             $uri = 'home';
         }
 
