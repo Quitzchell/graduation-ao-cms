@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 if (!function_exists('createRoutesForMenuItem')) {
     function createRoutesForMenuItem(array $menuItem)
     {
+        if (isset($menuItem['skip_route_generation']) && $menuItem['skip_route_generation']) {
+            return;
+        }
+
         if (array_key_exists('href', $menuItem)) {
             ObjectManagerRoutes($menuItem);
 
