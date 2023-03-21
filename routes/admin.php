@@ -118,7 +118,7 @@ Route::group(['prefix' => 'login'], function () {
 Route::group(['prefix' => 'password'], function () {
     $controller = \App\Http\Controllers\RemindersController::class;
     Route::post('/remind', [$controller, 'postRemind']);
-    Route::post('/reset', [$controller, 'postReset']);
+    Route::post('/reset', [$controller, 'postReset'])->name('password.reset.post');
 });
 
 Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'getIndex']);
