@@ -1,68 +1,87 @@
 version: "3.9"
 services:
 
-  laravel:
+    laravel:
 
-    build:
-      context: .
-      dockerfile: dev.dockerfile
-      args:
+        build:
+            context: .
+            dockerfile: dev.dockerfile
+            args:
+                # Choose your Docker base image based on your PHP version
+                IMAGE: allesonline/laravel:php8.1-node16-alpine3.16-dev # CMS version 2.14 - 2.15
 
-        # Choose your Docker base image based on your PHP version
-        #IMAGE: allesonline/laravel:php5.6-alpine3.8 # CMS version <= 2.4
-        #IMAGE: allesonline/laravel:php7.4-node14-alpine3.14-dev # CMS version 2.11 - 2.14
-#        IMAGE: allesonline/laravel:php8.0-node16-alpine3.15-dev # CMS version 2.14 - 2.15
-        IMAGE: allesonline/laravel:php8.1-node16-alpine3.16-dev # CMS version 2.14 - 2.15
+        user:
+            docker:docker
 
-        # The containers have Composer 2 installed by default, if you need to downgrade to Composer 1, set DOWNGRADE_COMPOSER to 1
-        # If you are not sure which version to use, you can check your composer.lock file for plugin-api-version, which will
-        # show which Composer version is used, if plugin-api-version is missing, you can assume you will need Composer 1
-        DOWNGRADE_COMPOSER: 0
+        labels:
+            # These labels are used by Traefik 2 for routing traffic to the container
+            # These labels make create 2 endpoint based on the PROJECT_NAME env variable injected by the Makefile:
+            # - {project_name}.local.alles.onl
+            # - {project_name}.local.alles.onl:8081
+            # Both endpoints have SSL termination through Traefik, so you need to make sure that the application code enforces HTTPS routes
+            - "traefik.enable=true"
+            - "traefik.docker.network=traefik_network"
+            - 'traefik.http.routers.${PROJECT_NAME}-web.rule=Host(`${PROJECT_NAME}.local.alles.onl`)'
+            - "traefik.http.routers.${PROJECT_NAME}-web.entrypoints=web,websecure"
+            - "traefik.http.routers.${PROJECT_NAME}-web.service=${PROJECT_NAME}-web"
+            - "traefik.http.services.${PROJECT_NAME}-web.loadbalancer.server.port=8080"
+            - 'traefik.http.routers.${PROJECT_NAME}-npm.rule=Host(`${PROJECT_NAME}.local.alles.onl`)'
+            - "traefik.http.routers.${PROJECT_NAME}-npm.entrypoints=npm"
+            - "traefik.http.routers.${PROJECT_NAME}-npm.service=${PROJECT_NAME}-npm"
+            - "traefik.http.services.${PROJECT_NAME}-npm.loadbalancer.server.port=8081"
 
-    user:
-      docker:docker
+        environment:
 
-    ports:
+            # Run `npm install` on startup
+            - NPM_INSTALL=0
 
-      # Always generate a (unique) custom port number (https://www.random.org/integers/?num=1&min=5001&max=49151&col=5&base=10&format=html&rnd=new)
-      - 41544:8080
+            # Run `npm run build` on startup
+            - NPM_RUN_BUILD=0
 
-      # Increase your generated port number with +1, this will be used for `npm run start`
-      - 41545:8081
+            # Run `composer install` on startup
+            - COMPOSER_INSTALL=0
 
-    environment:
+            # Run `php artisan migrate --force` on startup
+            - ARTISAN_MIGRATE=0
 
-      # Run `npm install` on startup
-      - NPM_INSTALL=0
+            # Run `php artisan config:cache` on startup, you will probably not use this in local development
+            - ARTISAN_CONFIG_CACHE=0
 
-      # Run `npm run build` on startup
-      - NPM_RUN_BUILD=0
+            # Run `php artisan view:cache` on startup, you will probably not use this in local development
+            - ARTISAN_VIEW_CACHE=0
 
-      # Run `composer install` on startup
-      - COMPOSER_INSTALL=1
+            # Run `php artisan route:cache` on startup, you will probably not use this in local development
+            - ARTISAN_ROUTE_CACHE=0
 
-      # Run `php artisan migrate --force` on startup
-      - ARTISAN_MIGRATE=0
+            # Run `php artisan schedule-monitor:sync` for syncing with OhDear, you will probably not use this in local development
+            - ARTISAN_SCHEDULE_MONITOR_SYNC=0
 
-      # Run `php artisan config:cache` on startup, you will probably not use this in local development
-      - ARTISAN_CONFIG_CACHE=0
+            # Run the NGINX process on startup, this should only be disabled when running php command directly in a container
+            - ENABLE_NGINX=1
 
-      # Run `php artisan view:cache` on startup, you will probably not use this in local development
-      - ARTISAN_VIEW_CACHE=0
+            # Run the PHP-FPM process on startup, this should only be disabled when running php command directly in a container
+            - ENABLE_PHP_FPM=1
 
-      # Run `php artisan schedule-monitor:sync` for syncing with OhDear, you will probably not use this in local development
-      - ARTISAN_SCHEDULE_MONITOR_SYNC=0
+            # Run `npm run start` on startup, please note this will take up some extra resources
+            - ENABLE_NPM_RUN_START=0
 
-      # Run `npm run start` on startup, please note this will take up some extra resources
-      - ENABLE_NPM_RUN_START=0
+            # If you have installed laravel/horizon in your project, this will automatically run it as a background process
+            - ENABLE_HORIZON=0
 
-      # If you have installed laravel/horizon in your project, this will automatically run it as a background process
-      - ENABLE_HORIZON=0
+            # This will run `php artisan schedule:run` every minute
+            - ENABLE_SCHEDULER=0
 
-      # This will run `php artisan schedule:run` every minute
-      - ENABLE_SCHEDULER=0
+        volumes:
 
-    volumes:
+            # Adjust this to the root directory of the project, never change /var/www/html
+            - .:/var/www/html
 
-      # Adjust this to the root directory of the project, never change /var/www/html
-      - .:/var/www/html
+        networks:
+            - default
+            - traefik_network # Used by Traefik 2for auto-discovery and routing
+
+networks:
+    default:
+    traefik_network: # Created by Traefik 2
+        external: true
+

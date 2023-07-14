@@ -1,8 +1,17 @@
 ssh_private_key=`cat ~/.ssh/id_rsa`
+project_name=$(notdir $(shell pwd))
 
+.PHONY: all
 all:build up
 
+.PHONY: build
 build:
-	docker-compose build --build-arg SSH_PRIVATE_KEY="${ssh_private_key}"
+	PROJECT_NAME="$(project_name)" docker compose build --build-arg SSH_PRIVATE_KEY="${ssh_private_key}"
+
+.PHONY: up
 up:
-	docker-compose up --no-build
+	PROJECT_NAME="$(project_name)" docker compose up --no-build
+
+.PHONY: login
+login:
+	docker exec -it "$(project_name)-laravel-1" /bin/sh
