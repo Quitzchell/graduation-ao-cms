@@ -19,9 +19,9 @@ return [
 //        'ucwords_name' => true
 //    ],
 //
-//    'filesystem' => [
-//        'cache' => false
-//    ]
+    'filesystem' => [
+        'cache' => env('FILESYSTEM_CACHE', false)
+    ],
 //
 //    'meta' => [
 //        'title'         => 'Title',
