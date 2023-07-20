@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use AO\Auth\TwoFactorAuthentication\Http\Middleware\CheckTwoFactorAuthenticationEnabled;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -46,7 +47,9 @@ class Kernel extends HttpKernel
         ],
 
         // Admin middleware group is applied to all admin routes, do not remove this group!
-        'admin' => [],
+        'admin' => [
+            CheckTwoFactorAuthenticationEnabled::class,
+        ],
     ];
 
     /**

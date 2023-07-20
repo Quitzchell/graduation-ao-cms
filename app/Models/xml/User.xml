@@ -12,6 +12,8 @@
         <field name="fullname" default="true" title="Volledige naam" type="text" maxlength="255" />
         <field name="email" title="E-mailadres" type="text" maxlength="255" />
         <field name="submit" title="Inloggen" value="Inloggen" type="submit" class="btn btn-lg btn-login btn-block" />
+        <field name="two_factor_authentication_enabled" title="2FA geactiveerd" type="text" />
+        <field name="two_factor_authentication_token" title="2FA code" type="text" maxlength="6"/>
     </fields>
 
     <lists>
@@ -45,6 +47,12 @@
         <list name="login">
             <field name="username" />
             <field name="password" />
+            <field name="submit" />
+        </list>
+        <list name="login-2fa">
+            <field name="username" />
+            <field name="password" />
+            <field name="two_factor_authentication_token"/>
             <field name="submit" />
         </list>
         <list name="quickview">
