@@ -30,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::prefix(config('component-skins.prefix'))
-                ->middleware('web')
+                ->middleware(['web', 'admin'])
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
 

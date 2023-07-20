@@ -7,23 +7,23 @@
     "require": {
         "php": "^8.0.2",
         "ext-json": "*",
-        "ao/cms": "2.15.x-dev",
+        "ao/cms": "2.16.x-dev",
         "fruitcake/laravel-cors": "^2.0",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "league/flysystem-aws-s3-v3": "^3.10",
+        "league/flysystem-aws-s3-v3": "^3.15.0",
         "symfony/http-client": "^6.0",
         "symfony/mailgun-mailer": "^6.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.6",
-        "barryvdh/laravel-ide-helper": "^2.10",
+        "barryvdh/laravel-debugbar": "^3.8",
+        "barryvdh/laravel-ide-helper": "^2.12",
         "beyondcode/helo-laravel": "^1.4",
-        "fakerphp/faker": "^1.9.1",
-        "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "fakerphp/faker": "^1.20.0",
+        "mockery/mockery": "^1.5.1",
+        "nunomaduro/collision": "^6.3.1",
+        "phpunit/phpunit": "^9.6.10",
+        "spatie/laravel-ignition": "^1.6.4"
     },
     "repositories": [
         {
@@ -73,7 +73,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

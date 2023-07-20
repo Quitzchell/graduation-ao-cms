@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use AO\Auth\TwoFactorAuthentication\Interfaces\TwoFactorAuthenticatable as TwoFactorAuthenticatableContract;
+use AO\Auth\TwoFactorAuthentication\Models\Traits\TwoFactorAuthenticatable;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -16,7 +18,8 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends \Eloquent implements
     AuthenticatableContract,
     AuthorizableContract,
-    CanResetPasswordContract
+    CanResetPasswordContract,
+    TwoFactorAuthenticatableContract
 {
     use Authenticatable;
     use Authorizable;
@@ -24,6 +27,7 @@ class User extends \Eloquent implements
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
