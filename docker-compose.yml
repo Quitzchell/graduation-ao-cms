@@ -8,7 +8,8 @@ services:
             dockerfile: dev.dockerfile
             args:
                 # Choose your Docker base image based on your PHP version
-                IMAGE: allesonline/laravel:php8.1-node16-alpine3.16-dev # CMS version 2.14 - 2.15
+                #IMAGE: allesonline/laravel:php8.1-node16-alpine3.16-dev # CMS version 2.14 - 2.15
+                IMAGE: allesonline/laravel:php8.2-node18-alpine3.18-dev # CMS version 2.14 - 2.15
 
         user:
             docker:docker
