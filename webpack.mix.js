@@ -11,7 +11,7 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.setResourceRoot(process.env.MIX_RESOURCE_ROOT ?? "/")
+mix
     .js("resources/js/app.js", "public/js")
     .extract([
         "@tailwindcss/aspect-ratio",
@@ -26,10 +26,17 @@ mix.setResourceRoot(process.env.MIX_RESOURCE_ROOT ?? "/")
     .sourceMaps()
     .postCss("resources/css/app.css", "public/css", [require("tailwindcss")])
     .browserSync({
-        proxy: "localhost:8080",
+        host: 'laravel-cms-v3.local.alles.onl',
+        proxy: {
+            target: 'http://localhost:8080',
+            middleware: function (req, res, next) {
+                res.setHeader('Access-Control-Allow-Origin', '*');
+                next();
+            }
+        },
         files: ["./resources/**/*.{js,jsx,css,blade.php}"],
         reloadDelay: 250,
-        port: 8081,
+        port: 8080,
         injectChanges: true,
         watch: true,
         reload: true,
@@ -38,10 +45,7 @@ mix.setResourceRoot(process.env.MIX_RESOURCE_ROOT ?? "/")
         watchOptions: {
             usePolling: true,
             interval: 250,
-        },
-        socket: {
-            domain: process.env.MIX_URL ?? "localhost:8081", // Should be the exposed port by docker to reach the webpack dev server (check the .env.example)
-        },
+        }
     });
 
 if (mix.inProduction()) {
