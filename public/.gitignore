@@ -1,2 +1,4 @@
-/dist/*.map
+/css
+/js
 /dist-admin
+mix-manifest.json
