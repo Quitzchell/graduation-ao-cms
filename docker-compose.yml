@@ -45,15 +45,6 @@ services:
             # Run `php artisan migrate --force` on startup
             - ARTISAN_MIGRATE=0
 
-            # Run `php artisan config:cache` on startup, you will probably not use this in local development
-            - ARTISAN_CONFIG_CACHE=0
-
-            # Run `php artisan view:cache` on startup, you will probably not use this in local development
-            - ARTISAN_VIEW_CACHE=0
-
-            # Run `php artisan route:cache` on startup, you will probably not use this in local development
-            - ARTISAN_ROUTE_CACHE=0
-
             # Run `php artisan schedule-monitor:sync` for syncing with OhDear, you will probably not use this in local development
             - ARTISAN_SCHEDULE_MONITOR_SYNC=0
 
