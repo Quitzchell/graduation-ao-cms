@@ -8,7 +8,6 @@
         "php": "^8.0.2",
         "ext-json": "*",
         "ao/cms": "2.16.x-dev",
-        "fruitcake/laravel-cors": "^2.0",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.15.0",
@@ -20,6 +19,7 @@
         "barryvdh/laravel-ide-helper": "^2.12",
         "beyondcode/helo-laravel": "^1.4",
         "fakerphp/faker": "^1.20.0",
+        "laravel/pint": "^1.0",
         "mockery/mockery": "^1.5.1",
         "nunomaduro/collision": "^6.3.1",
         "phpunit/phpunit": "^9.6.10",
@@ -75,7 +75,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "php-http/discovery": false
+            "php-http/discovery": false,
+            "pestphp/pest-plugin": true
         }
     },
     "minimum-stability": "dev",
