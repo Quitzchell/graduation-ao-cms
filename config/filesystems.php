@@ -60,6 +60,7 @@ return [
 
         'spaces' => [
             'driver' => 's3',
+            'cache' => true,
             'key' => env('CLOUD_STORAGE_KEY'),
             'secret' => env('CLOUD_STORAGE_SECRET'),
             'endpoint' => env('CLOUD_STORAGE_ENDPOINT'),
