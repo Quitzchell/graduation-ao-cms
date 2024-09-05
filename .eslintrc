@@ -1,0 +1,29 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "plugins": ["react", "react-hooks", "jsx-a11y"],
+    "rules": {
+        "react/button-has-type": "error",
+        "react/prop-types": "error",
+        "react/require-default-props": "warn",
+        "react/display-name": "warn",
+        "react/no-danger-with-children": "error",
+        "react/function-component-definition": "error"
+    }
+}
