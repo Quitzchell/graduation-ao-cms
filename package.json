@@ -1,8 +1,10 @@
 {
     "private": true,
     "scripts": {
-        "start": "mix watch",
-        "build": "mix --production"
+        "start": "vite",
+        "build": "vite build && vite build --ssr",
+        "build:admin": "mix --mix-config=./webpack.mix.admin.js --production",
+        "cms": "npm install ./vendor/ao/cms/resources/modules/cms"
     },
     "devDependencies": {
         "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -19,7 +21,9 @@
         "tailwindcss": "^3.3.5"
     },
     "dependencies": {
+        "@inertiajs/react": "^1.2.0",
         "axios": "^1.6.0",
-        "swiper": "^11.0.3"
+        "swiper": "^11.0.3",
+        "vite": "^5.4.3"
     }
 }

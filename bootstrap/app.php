@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Middleware\HandleInertiaRequests;
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -40,6 +40,12 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
+
+$app->withMiddleware(function (Middleware $middleware) {
+    $middleware->web(append: [
+        HandleInertiaRequests::class,
+    ]);
+});
 
 /*
 |--------------------------------------------------------------------------
