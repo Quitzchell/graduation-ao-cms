@@ -22,7 +22,7 @@ export default defineConfig(({ command, mode }) => {
             },
             host: true,
             https: false,
-            port: 8081,
+            port: 3000,
             strictPort: true
         }
     }
