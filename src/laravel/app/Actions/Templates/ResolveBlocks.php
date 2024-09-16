@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Actions;
+namespace App\Actions\Templates;
 
 use AO\Component\Models\Interfaces\ProvidesContent;
 use App\Blocks\DTO\BlockData;

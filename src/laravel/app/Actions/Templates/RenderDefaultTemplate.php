@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Actions;
+namespace App\Actions\Templates;
 
 final class RenderDefaultTemplate extends TemplateRenderer
 {

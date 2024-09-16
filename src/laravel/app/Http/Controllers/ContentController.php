@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Actions\RenderDefaultTemplate;
+use App\Actions\Templates\RenderDefaultTemplate;
 use Illuminate\View\Factory as ViewFactory;
 
 class ContentController extends \ContentController
