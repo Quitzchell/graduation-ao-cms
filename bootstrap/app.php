@@ -41,12 +41,6 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
-$app->withMiddleware(function (Middleware $middleware) {
-    $middleware->web(append: [
-        HandleInertiaRequests::class,
-    ]);
-});
-
 /*
 |--------------------------------------------------------------------------
 | Return The Application
