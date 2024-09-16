@@ -1,8 +1,9 @@
 {
-    "name": "laravel/laravel",
+    "name": "allesonline/ingrado-website",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Ingrado Website",
     "keywords": [
+        "ingrado",
         "framework",
         "laravel"
     ],
@@ -13,18 +14,15 @@
         "ext-simplexml": "*",
         "ao/cms": "2.17.x-dev",
         "guzzlehttp/guzzle": "^7.2",
-        "inertiajs/inertia-laravel": "^v1.3.0",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.15.0",
         "symfony/http-client": "^7.0",
-        "symfony/mailgun-mailer": "^7.0",
-        "tightenco/ziggy": "^1.8"
+        "symfony/mailgun-mailer": "^7.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
         "barryvdh/laravel-ide-helper": "^2.13",
-        "beyondcode/helo-laravel": "^1.4",
         "fakerphp/faker": "^1.20.0",
         "mockery/mockery": "^1.5.1",
         "nunomaduro/collision": "^7.0",

@@ -1,0 +1,3 @@
+<template name="text">
+    <field type="text" name="text" title="Tekst"/>
+</template>

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Actions\Templates;
 
+use Illuminate\Http\JsonResponse;
+
 final class RenderDefaultTemplate extends TemplateRenderer
 {
     public function __construct(private readonly ResolveBlocks $resolver)
@@ -11,11 +13,11 @@ final class RenderDefaultTemplate extends TemplateRenderer
         //
     }
 
-    public function execute(\Page $page): \Inertia\Response
+    public function execute(\Page $page): JsonResponse
     {
-        return $this->render('Default', [
-            'title' => static fn () => $page->name,
-            'blocks' => fn () => $this->resolver->execute($page, 'blocks'),
+        return $this->render([
+            'title' => $page->name,
+            'blocks' => $this->resolver->execute($page, 'blocks'),
         ]);
     }
 }

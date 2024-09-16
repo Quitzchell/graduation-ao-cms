@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Actions\Templates\RenderDefaultTemplate;
+use Illuminate\Http\JsonResponse;
 use Illuminate\View\Factory as ViewFactory;
 
 class ContentController extends \ContentController
@@ -18,7 +19,7 @@ class ContentController extends \ContentController
         return parent::getIndex($viewFactory, $uri);
     }
 
-    public function templateDefault(\Page $page, RenderDefaultTemplate $renderer): \Inertia\Response
+    public function templateDefault(\Page $page, RenderDefaultTemplate $renderer): JsonResponse
     {
         return $renderer->execute($page);
     }

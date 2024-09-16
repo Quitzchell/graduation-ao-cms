@@ -1,6 +1,6 @@
 services:
 
-    laravel:
+    backend:
 
         build:
             context: .
@@ -16,26 +16,15 @@ services:
             # These labels are used by Traefik 2 for routing traffic to the container
             # These labels make create 2 endpoint based on the PROJECT_NAME env variable injected by the Makefile:
             # - {project_name}.local.alles.onl
-            # - {project_name}.local.alles.onl:8081
             # Both endpoints have SSL termination through Traefik, so you need to make sure that the application code enforces HTTPS routes
             - "traefik.enable=true"
             - "traefik.docker.network=traefik_network"
-            - 'traefik.http.routers.${PROJECT_NAME}-web.rule=Host(`${PROJECT_NAME}.local.alles.onl`)'
+            - 'traefik.http.routers.${PROJECT_NAME}-web.rule=Host(`${PROJECT_NAME}-admin.local.alles.onl`)'
             - "traefik.http.routers.${PROJECT_NAME}-web.entrypoints=web,websecure"
             - "traefik.http.routers.${PROJECT_NAME}-web.service=${PROJECT_NAME}-web"
             - "traefik.http.services.${PROJECT_NAME}-web.loadbalancer.server.port=8080"
-            - 'traefik.http.routers.${PROJECT_NAME}-npm.rule=Host(`${PROJECT_NAME}.local.alles.onl`)'
-            - "traefik.http.routers.${PROJECT_NAME}-npm.entrypoints=npm"
-            - "traefik.http.routers.${PROJECT_NAME}-npm.service=${PROJECT_NAME}-npm"
-            - "traefik.http.services.${PROJECT_NAME}-npm.loadbalancer.server.port=8081"
 
         environment:
-
-            # Run `npm install` on startup
-            - NPM_INSTALL=0
-
-            # Run `npm run build` on startup
-            - NPM_RUN_BUILD=0
 
             # Run `composer install` on startup
             - COMPOSER_INSTALL=0
@@ -52,22 +41,42 @@ services:
             # Run the PHP-FPM process on startup, this should only be disabled when running php command directly in a container
             - ENABLE_PHP_FPM=1
 
-            # Run `npm run start` on startup, please note this will take up some extra resources
-            - ENABLE_NPM_RUN_START=0
-
             # If you have installed laravel/horizon in your project, this will automatically run it as a background process
             - ENABLE_HORIZON=0
 
             # This will run `php artisan schedule:run` every minute
             - ENABLE_SCHEDULER=0
 
-            # This will run 'php artisan inertia:start-ssr'
-            - ENABLE_INERTIA_SSR=0
-
         volumes:
 
             # Adjust this to the root directory of the project, never change /var/www/html
             - ./src/laravel:/var/www/html
+
+        networks:
+            - default
+            - traefik_network # Used by Traefik 2for auto-discovery and routing
+
+    frontend:
+
+        build:
+            context: .
+            dockerfile: dev.frontend.dockerfile
+
+        ports:
+            - "3000:3000"
+
+        labels:
+            - "traefik.enable=true"
+            - "traefik.docker.network=traefik_network"
+            - 'traefik.http.routers.${PROJECT_NAME}-npm.rule=Host(`${PROJECT_NAME}.local.alles.onl`)'
+            - "traefik.http.routers.${PROJECT_NAME}-npm.entrypoints=npm,websecure"
+            - "traefik.http.routers.${PROJECT_NAME}-npm.service=${PROJECT_NAME}-npm"
+            - "traefik.http.services.${PROJECT_NAME}-npm.loadbalancer.server.port=3000"
+
+        volumes:
+
+            # Adjust this to the root directory of the project, never change /var/www/html
+            - ./src/frontend:/var/www/html
 
         networks:
             - default

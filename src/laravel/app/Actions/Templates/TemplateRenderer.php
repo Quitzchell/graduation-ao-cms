@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\Actions\Templates;
 
-use Inertia\Inertia;
+use Illuminate\Http\JsonResponse;
 
 abstract class TemplateRenderer
 {
-    protected function render(string $view, array $data = []): \Inertia\Response
+    // TODO refactor to using a JsonResource
+    protected function render(array $data = []): JsonResponse
     {
-        return Inertia::render($view, array_merge($data, [
-            'meta' => static fn () => [
+        return response()->json(array_merge($data, [
+            'meta' => [
                 'title' => \Meta::get('title'),
                 'description' => \Meta::get('description'),
-            ]
+            ],
         ]));
     }
 }
