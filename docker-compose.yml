@@ -63,6 +63,9 @@ services:
             # This will run `php artisan schedule:run` every minute
             - ENABLE_SCHEDULER=0
 
+            # This will run 'php artisan inertia:start-ssr'
+            - ENABLE_INERTIA_SSR=0
+
         volumes:
 
             # Adjust this to the root directory of the project, never change /var/www/html

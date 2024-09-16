@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Middleware\HandleInertiaRequests;
 /*
 |--------------------------------------------------------------------------
 | Create The Application
