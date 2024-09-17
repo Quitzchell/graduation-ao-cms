@@ -16,5 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::any('{all}', [\App\Http\Controllers\ContentController::class, 'getIndex'])
     ->where('all', '.*')
-    ->middleware('auth:sanctum')
     ->name('content');

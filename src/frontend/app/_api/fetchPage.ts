@@ -1,6 +1,6 @@
 export const fetchPage = async (slug: string) => {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${slug}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${slug}`, {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
