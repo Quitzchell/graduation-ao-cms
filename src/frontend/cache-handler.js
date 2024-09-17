@@ -1,8 +1,7 @@
 // require("./envConfig.ts");
 
 const { CacheHandler } = require("@neshca/cache-handler");
-const createRedisHandler =
-    require("@neshca/cache-handler/redis-strings").default;
+const createRedisHandler = require("@neshca/cache-handler/redis-strings").default;
 const createLruHandler = require("@neshca/cache-handler/local-lru").default;
 const { PHASE_PRODUCTION_BUILD } = require("next/constants");
 const { createClient } = require("redis");
@@ -32,9 +31,7 @@ CacheHandler.onCreation(async () => {
             // NB do not throw exceptions in the redis error listener,
             // because it will prevent reconnection after a socket exception.
             client.on("error", (e) => {
-                if (
-                    typeof process.env.NEXT_PRIVATE_DEBUG_CACHE !== "undefined"
-                ) {
+                if (typeof process.env.NEXT_PRIVATE_DEBUG_CACHE !== "undefined") {
                     console.warn("Redis error", e);
                 }
             });
@@ -65,9 +62,7 @@ CacheHandler.onCreation(async () => {
                     console.info("Redis client disconnected.");
                 })
                 .catch(() => {
-                    console.warn(
-                        "Failed to quit the Redis client after failing to connect.",
-                    );
+                    console.warn("Failed to quit the Redis client after failing to connect.");
                 });
         }
     }
@@ -88,9 +83,7 @@ CacheHandler.onCreation(async () => {
         maxItemsNumber: 10000,
         maxItemSizeBytes: 1024 * 1024 * 250, // Limit to 250 MB
     });
-    console.warn(
-        "Falling back to LRU handler because Redis client is not available.",
-    );
+    console.warn("Falling back to LRU handler because Redis client is not available.");
 
     return {
         handlers: [redisHandler, LRUHandler],
