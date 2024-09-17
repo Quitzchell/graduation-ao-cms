@@ -15,7 +15,7 @@ final class RenderDefaultTemplate extends TemplateRenderer
 
     public function execute(\Page $page): JsonResponse
     {
-        return $this->render([
+        return $this->render($page, [
             'title' => $page->name,
             'blocks' => $this->resolver->execute($page, 'blocks'),
         ]);

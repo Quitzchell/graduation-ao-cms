@@ -9,9 +9,10 @@ use Illuminate\Http\JsonResponse;
 abstract class TemplateRenderer
 {
     // TODO refactor to using a JsonResource
-    protected function render(array $data = []): JsonResponse
+    protected function render(\Page $page, array $data = []): JsonResponse
     {
         return response()->json(array_merge($data, [
+            '_template' => $page->template_name,
             'meta' => [
                 'title' => \Meta::get('title'),
                 'description' => \Meta::get('description'),
