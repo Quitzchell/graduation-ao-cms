@@ -13,7 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Any route below this one won't reached because of the catch all statement.
-Route::any('{all}', [\App\Http\Controllers\ContentController::class, 'getIndex'])
-    ->where('all', '.*')
-    ->name('content');
+

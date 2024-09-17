@@ -6,15 +6,15 @@ bootstrap/cache/*.php
 .styleci.yml
 .phpunit.result.cache
 
-# Newer projects will use src/laravel
-src/laravel/bootstrap/cache/*.php
-src/laravel/.env.example
-src/laravel/.editorconfig
-src/laravel/.styleci.yml
-src/laravel/.phpunit.result.cache
+# Newer projects will use src/backend
+src/backend/bootstrap/cache/*.php
+src/backend/.env.example
+src/backend/.editorconfig
+src/backend/.styleci.yml
+src/backend/.phpunit.result.cache
 
 # We don't want to copy these folders, because they can be very large and will be mounted later on
-src/laravel/public/uploads
-src/laravel/public/thumbs
+src/backend/public/uploads
+src/backend/public/thumbs
 
 src/frontend/node_modules

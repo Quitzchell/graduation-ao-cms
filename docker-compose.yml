@@ -50,7 +50,7 @@ services:
         volumes:
 
             # Adjust this to the root directory of the project, never change /var/www/html
-            - ./src/laravel:/var/www/html
+            - ./src/backend:/var/www/html
 
         networks:
             - default

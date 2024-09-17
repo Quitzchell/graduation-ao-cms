@@ -6,7 +6,7 @@ RUN echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa &&\
     chmod 600 ~/.ssh/id_rsa
 
 # Add application
-COPY --chown=docker:docker ./src/laravel/ /var/www/html/
+COPY --chown=docker:docker src/backend/ /var/www/html/
 
 # Composer
 RUN composer install --no-cache --no-dev --optimize-autoloader

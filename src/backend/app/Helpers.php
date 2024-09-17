@@ -28,3 +28,10 @@ if (!function_exists('manifest')) {
         return $path . '/' . $manifest[$filename];
     }
 }
+
+if (!function_exists('nullIfEmpty')) {
+    function nullIfEmpty(mixed $val, mixed $ret = null): mixed
+    {
+        return !empty($val) ? ($ret ?? $val) : null;
+    }
+}
