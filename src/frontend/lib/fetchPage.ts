@@ -11,6 +11,7 @@ export const fetchPage = async (slug: string) => {
         });
         return res.json();
     } catch (error) {
+        // TODO error handling
         console.log(error);
     }
 
