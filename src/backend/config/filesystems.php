@@ -49,6 +49,7 @@ return [
             'driver' => 'local',
             'cache' => false,
             'root' => public_path(),
+            'url' => env('APP_URL'),
         ],
 
         'public' => [

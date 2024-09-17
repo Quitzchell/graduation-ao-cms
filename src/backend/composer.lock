@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "git@git.allesonline.nl:allesonline/package-cms.git",
-                "reference": "40b3acc5bdc79d10d5249c45a16baece6f3e5759"
+                "reference": "4afba7424f18f9641facf7a4db911843a27ff8f5"
             },
             "require": {
                 "bacon/bacon-qr-code": "^2.0",
@@ -42,7 +42,7 @@
                 ]
             },
             "description": "AllesOnline CMS package",
-            "time": "2024-08-27T07:23:52+00:00"
+            "time": "2024-09-17T16:10:27+00:00"
         },
         {
             "name": "aws/aws-crt-php",
