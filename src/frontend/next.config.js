@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    cacheHandler: require.resolve("./cache-handler.js"),
+    env: {
+        NEXT_PUBLIC_REDIS_INSIGHT_URL:
+            process.env.REDIS_INSIGHT_URL ?? "http://localhost:8001",
+    },
     webpack: (config) => {
         config.watchOptions = {
             poll: 1000,
@@ -11,4 +16,4 @@ const nextConfig = {
     output: "standalone",
 };
 
-export default nextConfig;
+module.exports = nextConfig;
