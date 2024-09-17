@@ -1,9 +1,11 @@
 import React from "react";
 
+import Image from "@/components/Image";
 import Text from "@/components/Text";
 
 const components = {
     "Content\\Text": Text,
+    "Content\\Image": Image,
 };
 
 function renderBlockComponent(block, props = {}) {
