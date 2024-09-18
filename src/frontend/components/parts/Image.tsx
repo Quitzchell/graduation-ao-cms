@@ -15,7 +15,7 @@ function Image({ image, width, height, alt }) {
 Image.propTypes = {
     image: PropTypes.string.isRequired,
     width: PropTypes.number.isRequired,
-    height: PropTypes.number,
+    height: PropTypes.number.isRequired,
     alt: PropTypes.string.isRequired,
 };
 
