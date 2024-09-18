@@ -35,7 +35,7 @@ function EmployeeCard({ image, name, jobTitle, description, email }: Employee) {
             <div className="w-full md:w-1/2 lg:w-full">
                 <Image
                     image={image}
-                    alt={"Man"}
+                    alt={name}
                     height={100}
                 />
             </div>
