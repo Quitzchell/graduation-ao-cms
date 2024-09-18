@@ -2,13 +2,13 @@ import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
 
-export enum CardSubtitleColors {
+export enum ItemSubtitleColors {
     DARK = "dark",
     NEUTRAL = "neutral",
     TEAL = "teal",
 }
 
-export enum CardSubtitleSizes {
+export enum ItemSubtitleSizes {
     SM = "sm",
 }
 
@@ -21,22 +21,22 @@ const sizeMap = {
     sm: "text-sm",
 };
 
-function CardSubtitle({ title, color, size }) {
+function ItemSubtitle({ title, color, size }) {
     const titleClass = cn("font-mazzard font-bold", colorMap[color], sizeMap[size]);
 
     return <div className={titleClass}>{title}</div>;
 }
 
-CardSubtitle.propTypes = {
+ItemSubtitle.propTypes = {
     title: PropTypes.string.isRequired,
-    color: PropTypes.oneOf(Object.values(CardSubtitleColors)).isRequired,
-    size: PropTypes.oneOf(Object.values(CardSubtitleSizes)).isRequired,
+    color: PropTypes.oneOf(Object.values(ItemSubtitleColors)).isRequired,
+    size: PropTypes.oneOf(Object.values(ItemSubtitleSizes)).isRequired,
 };
 
-CardSubtitle.defaultProps = {
+ItemSubtitle.defaultProps = {
     title: "List Item Title",
-    color: CardSubtitleColors,
-    size: CardSubtitleSizes,
+    color: ItemSubtitleColors,
+    size: ItemSubtitleSizes,
 };
 
-export default CardSubtitle;
+export default ItemSubtitle;

@@ -21,22 +21,22 @@ const sizeMap = {
     [ListItemTitleSize.XL]: "text-xl",
 };
 
-function ListItemTitle({ title, color, size }) {
+function ItemTitle({ title, color, size }) {
     const titleClass = cn("font-mazzard font-bold", colorMap[color], sizeMap[size]);
 
     return <div className={titleClass}>{title}</div>;
 }
 
-ListItemTitle.propTypes = {
+ItemTitle.propTypes = {
     title: PropTypes.string.isRequired,
     color: PropTypes.oneOf(Object.values(ListItemTitleColor)).isRequired,
     size: PropTypes.oneOf(Object.values(ListItemTitleSize)).isRequired,
 };
 
-ListItemTitle.defaultProps = {
+ItemTitle.defaultProps = {
     title: "List Item Title",
     color: ListItemTitleColor.NEUTRAL,
     size: ListItemTitleSize.XL,
 };
 
-export default ListItemTitle;
+export default ItemTitle;

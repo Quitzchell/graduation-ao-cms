@@ -12,25 +12,25 @@ const colorMap = {
     [TextAreaColors.DARK]: "text-neutral-900",
 };
 
-function TextArea({ text, color }) {
-    const textAreaClass = cn("font-mazzard text-base", colorMap[color]);
+function RichText({ html, color }) {
+    const richTextClass = cn("font-mazzard text-base", colorMap[color]);
 
     return (
         <div
-            dangerouslySetInnerHTML={{ __html: text }}
-            className={textAreaClass}
+            dangerouslySetInnerHTML={{ __html: html }}
+            className={richTextClass}
         />
     );
 }
 
-TextArea.propTypes = {
-    text: PropTypes.string.isRequired,
+RichText.propTypes = {
+    html: PropTypes.string.isRequired,
     color: PropTypes.oneOf(Object.values(TextAreaColors)),
 };
 
-TextArea.defaultProps = {
-    text: "text",
+RichText.defaultProps = {
+    html: "richText",
     color: TextAreaColors.NEUTRAL,
 };
 
-export default TextArea;
+export default RichText;
