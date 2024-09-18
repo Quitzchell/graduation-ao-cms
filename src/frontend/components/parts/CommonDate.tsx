@@ -37,4 +37,9 @@ CommonDate.propTypes = {
     color: PropTypes.oneOf(Object.values(CommonDateColors)),
 };
 
+CommonDate.defaultProps = {
+    date: new Date(),
+    color: CommonDateColors.BLUE,
+};
+
 export default CommonDate;
