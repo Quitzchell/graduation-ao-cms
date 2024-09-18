@@ -1,5 +1,9 @@
 import type { Config } from "tailwindcss";
 
+const extendedSizes = {
+    "29": "7.5rem",
+};
+
 const config: Config = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -137,6 +141,11 @@ const config: Config = {
             fontWeight: {
                 bold: "700",
             },
+            width: extendedSizes,
+            height: extendedSizes,
+            spacing: extendedSizes,
+            margin: extendedSizes,
+            padding: extendedSizes,
         },
     },
     plugins: [],
