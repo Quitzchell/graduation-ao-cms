@@ -10,7 +10,7 @@ export enum CommonDateColors {
 const colorMap = {
     [CommonDateColors.BLUE]: { text: "text-blue-75", icon: IconColors.BLUE },
 };
-function CommonDate({ date, color }) {
+function DateLabel({ date, color }) {
     const { text, iconColor } = colorMap[color] || {};
     const dateClass = cn(text);
     const dateFormatted = date.toLocaleString("nl-NL", {
@@ -32,14 +32,14 @@ function CommonDate({ date, color }) {
     );
 }
 
-CommonDate.propTypes = {
+DateLabel.propTypes = {
     date: PropTypes.instanceOf(Date).isRequired,
     color: PropTypes.oneOf(Object.values(CommonDateColors)),
 };
 
-CommonDate.defaultProps = {
+DateLabel.defaultProps = {
     date: new Date(),
     color: CommonDateColors.BLUE,
 };
 
-export default CommonDate;
+export default DateLabel;
