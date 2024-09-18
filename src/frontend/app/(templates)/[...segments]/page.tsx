@@ -1,3 +1,4 @@
+import TextArea, { TextAreaColors } from "@/components/atoms/TextArea";
 import Title, { TitleColors, TitleSizes } from "@/components/atoms/Title";
 import Blocks from "@/components/Blocks";
 import { fetchPage } from "@/lib/fetchPage";
@@ -10,11 +11,14 @@ export default async function Page({ params }: { params: { segments: string[] } 
             <h1>Page</h1>
             <div>{JSON.stringify(page)}</div>
             {page?.blocks !== null && <Blocks blocks={page.blocks} />}]
-
             <Title
                 title={"Dit is een titel"}
                 color={TitleColors.DARKGREEN}
                 size={TitleSizes.FIVE_XL}
+            />
+            <TextArea
+                color={TextAreaColors.DARK}
+                text={"Dit is een textArea"}
             />
         </div>
     );
