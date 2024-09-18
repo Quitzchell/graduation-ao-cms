@@ -49,8 +49,8 @@ const Button = ({ label, color, variant }) => {
 
 Button.propTypes = {
     label: PropTypes.string.isRequired,
-    color: PropTypes.oneOf(Object.values(Colors)),
-    variant: PropTypes.oneOf(Object.values(Variants)),
+    color: PropTypes.oneOf(Object.values(Colors)).isRequired,
+    variant: PropTypes.oneOf(Object.values(Variants)).isRequired,
 };
 
 Button.defaultProps = {
