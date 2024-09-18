@@ -2,6 +2,10 @@ import NextImage from "next/image";
 import PropTypes from "prop-types";
 
 function Image({ image, width, height, alt }) {
+    if (!image || image === "#") {
+        console.warn("Invalid image source:", image);
+        return null;
+    }
     return (
         <NextImage
             className="h-full w-full object-cover"
