@@ -49,13 +49,12 @@ const Button = ({ label, color, variant }) => {
 
 Button.propTypes = {
     label: PropTypes.string.isRequired,
-    // Use the PropTypes to match Enums
     color: PropTypes.oneOf(Object.values(Colors)),
     variant: PropTypes.oneOf(Object.values(Variants)),
 };
 
 Button.defaultProps = {
-    color: Colors.RED, // Default to the Enums
+    color: Colors.RED,
     variant: Variants.SOLID,
 };
 
