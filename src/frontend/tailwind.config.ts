@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 
 const extendedSizes = {
     "29": "7.5rem",
+    "61": "15.25rem",
 };
 
 const config: Config = {
