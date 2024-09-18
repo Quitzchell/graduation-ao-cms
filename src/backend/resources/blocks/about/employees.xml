@@ -1,0 +1,3 @@
+<template name="Werknemerlijst">
+    <field type="blocks" name="employees" title="Werknemers" blocks="items/employee"/>
+</template>

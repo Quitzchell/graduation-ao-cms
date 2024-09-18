@@ -1,3 +1,3 @@
 <template name="Standaard pagina">
-    <field type="blocks" name="blocks" title="Content blokken"  blocks="content/*"/>
+    <field type="blocks" name="blocks" title="Content blokken"  blocks="content/*,about/*"/>
 </template>
