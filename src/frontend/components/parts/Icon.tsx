@@ -1,3 +1,4 @@
+import NextImage from "next/image";
 import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
@@ -14,19 +15,19 @@ const colorMap = {
     [IconColors.TEAL]: "stroke-teal-200",
 };
 
-const basePath = "./Path/To/Icons/";
+const basePath = "/Icons/";
 
 function Icon({ color, width, height, name }) {
     const iconClass = cn(colorMap[color]);
     const path = `${basePath}${name}.svg`;
 
     return (
-        <img
+        <NextImage
+            src={path}
+            alt={name + "-icon"}
             width={width}
             height={height}
-            src={path}
             className={iconClass}
-            alt=""
         />
     );
 }
