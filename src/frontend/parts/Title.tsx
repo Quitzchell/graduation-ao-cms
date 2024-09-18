@@ -2,16 +2,17 @@ import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
 
-export enum Colors {
+export enum TitleColors {
     DARKGREEN = "darkgreen",
     GREEN = "green",
     NEUTRAL = "neutral",
     TEAL = "teal",
 }
 
-export const sizes = {
-    "4XL": "4xl",
-};
+export enum sizes {
+    "4XL" = "4xl",
+    "5XL" = "5xl",
+}
 
 const colorMap = {
     darkgreen: "text-darkgreen-200",
@@ -33,7 +34,7 @@ function Title({ title, color, size }) {
 
 Title.propTypes = {
     title: PropTypes.string.isRequired,
-    color: PropTypes.oneOf(Object.values(Colors)).isRequired,
+    color: PropTypes.oneOf(Object.values(TitleColors)).isRequired,
     size: PropTypes.string.isRequired,
 };
 
