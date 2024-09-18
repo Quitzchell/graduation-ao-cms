@@ -1,0 +1,28 @@
+import NextImage from "next/image";
+import PropTypes from "prop-types";
+
+function Image({ image, width, height, alt }) {
+    return (
+        <NextImage
+            src={image}
+            alt={alt}
+            width={width}
+            height={height}
+        />
+    );
+}
+
+Image.propTypes = {
+    image: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number,
+    alt: PropTypes.string.isRequired,
+};
+
+Image.defaultProps = {
+    image: "#",
+    width: 250,
+    alt: "image",
+};
+
+export default Image;
