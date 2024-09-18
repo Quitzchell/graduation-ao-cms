@@ -11,8 +11,8 @@ const nextConfig = {
             {
                 protocol: "https",
                 hostname: process.env.ASSETS_URL,
-                port: '',
-                pathname: '/**',
+                port: "",
+                pathname: "/**",
             },
         ],
     },
