@@ -11,12 +11,12 @@ abstract class TemplateRenderer
     // TODO refactor to using a JsonResource
     protected function render(\Page $page, array $data = []): JsonResponse
     {
-        return response()->json(array_merge($data, [
+        return response()->json(array_merge([
             '_template' => $page->template_name,
             'meta' => [
                 'title' => \Meta::get('title'),
                 'description' => \Meta::get('description'),
             ],
-        ]));
+        ], $data));
     }
 }

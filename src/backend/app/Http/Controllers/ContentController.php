@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Actions\Templates\RenderDefaultTemplate;
+use App\Actions\Templates\RenderHomeTemplate;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\Factory as ViewFactory;
 
@@ -17,6 +18,11 @@ class ContentController extends \ContentController
         }
 
         return parent::getIndex($viewFactory, $uri);
+    }
+
+    public function templateHome(\Page $page, RenderHomeTemplate $renderer): JsonResponse
+    {
+        return $renderer->execute($page);
     }
 
     public function templateDefault(\Page $page, RenderDefaultTemplate $renderer): JsonResponse
