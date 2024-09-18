@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+
 import "./globals.css";
+import {Card} from "@/components/elements/Card";
+import {CardList} from "@/components/elements/lists/CardList";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -27,6 +30,14 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                 {children}
+
+            <div className="py-20 px-10">
+                <CardList >
+                    <Card />
+                    <Card />
+                    <Card />
+                </CardList>
+            </div>
             </body>
         </html>
     );
