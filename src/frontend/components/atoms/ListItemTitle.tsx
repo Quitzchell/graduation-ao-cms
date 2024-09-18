@@ -29,8 +29,8 @@ function ListItemTitle({ title, color, size }) {
 
 ListItemTitle.propTypes = {
     title: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    size: PropTypes.string.isRequired,
+    color: PropTypes.oneOf(Object.values(ListItemTitleColor)).isRequired,
+    size: PropTypes.oneOf(Object.values(ListItemTitleSize)).isRequired,
 };
 
 ListItemTitle.defaultProps = {
