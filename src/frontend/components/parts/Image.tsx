@@ -21,7 +21,7 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
-    image: "#",
+    image: "",
     width: 250,
     alt: "image",
 };
