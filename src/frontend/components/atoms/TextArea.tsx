@@ -30,7 +30,7 @@ TextArea.propTypes = {
 
 TextArea.defaultProps = {
     text: "text",
-    color: TextAreaColors.DARK,
+    color: TextAreaColors.NEUTRAL,
 };
 
 export default TextArea;

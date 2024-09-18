@@ -40,7 +40,7 @@ Title.propTypes = {
 
 Title.defaultProps = {
     title: "Title",
-    color: TitleColors.DARKGREEN,
+    color: TitleColors.NEUTRAL,
     size: TitleSizes.FIVE_XL,
 };
 

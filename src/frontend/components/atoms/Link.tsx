@@ -46,7 +46,7 @@ Link.propTypes = {
 };
 
 Link.defaultProps = {
-    color: "darkgreen",
+    color: LinkColors.NEUTRAL,
     text: "link",
     url: "#",
 };

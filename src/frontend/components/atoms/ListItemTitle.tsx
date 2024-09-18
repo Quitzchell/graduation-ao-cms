@@ -35,8 +35,8 @@ ListItemTitle.propTypes = {
 
 ListItemTitle.defaultProps = {
     title: "List Item Title",
-    color: [ListItemTitleColor.DARK],
-    size: [ListItemTitleSize.XL],
+    color: ListItemTitleColor.NEUTRAL,
+    size: ListItemTitleSize.XL,
 };
 
 export default ListItemTitle;

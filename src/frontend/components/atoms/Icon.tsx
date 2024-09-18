@@ -2,16 +2,16 @@ import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
 
-export enum Colors {
+export enum IconColors {
     NEUTRAL = "neutral",
     BLUE = "blue",
     TEAL = "teal",
 }
 
 const colorMap = {
-    [Colors.NEUTRAL]: "stroke-neutral-0",
-    [Colors.BLUE]: "stroke-blue-75",
-    [Colors.TEAL]: "stroke-teal-200",
+    [IconColors.NEUTRAL]: "stroke-neutral-0",
+    [IconColors.BLUE]: "stroke-blue-75",
+    [IconColors.TEAL]: "stroke-teal-200",
 };
 
 const basePath = "./Path/To/Icons/";
@@ -32,14 +32,14 @@ function Icon({ color, width, height, name }) {
 }
 
 Icon.propTypes = {
-    color: PropTypes.string,
+    color: PropTypes.oneOf(Object.values(IconColors)).isRequired,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
 };
 
 Icon.defaultProps = {
-    color: "neutral",
+    color: IconColors.NEUTRAL,
     width: 12,
     height: 12,
     name: "phone",
