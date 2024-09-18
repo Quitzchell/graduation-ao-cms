@@ -16,7 +16,7 @@ final class Employee extends BaseBlock
 
     public function __construct(\CmsContent $block)
     {
-        $this->image = $block->img('image');
+        $this->image = !empty($block->img('image')) ? $block->img('image') : '/image.employee-default.png';
         $this->name = $block->content('name');
         $this->jobTitle = $block->content('job_title');
         $this->description = $block->content('description');
