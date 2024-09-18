@@ -1,7 +1,23 @@
-import NextImage from "next/image";
-import PropTypes from "prop-types";
+import React from "react"
 
-function Image({ image, width, height, alt }) {
+import NextImage, {ImageProps as NextImageProps} from "next/image";
+
+type ImageProps = Omit<NextImageProps, 'src'> & {
+    image?: string;
+    width?: number;
+    height: number;
+    alt?: string;
+};
+
+function Image(
+    {
+        image = "",
+        width = 250,
+        height,
+        alt = "image",
+        ...props
+    }: ImageProps
+) {
     if (!image || image === "#") {
         console.warn("Invalid image source:", image);
         return null;
@@ -13,21 +29,9 @@ function Image({ image, width, height, alt }) {
             alt={alt}
             width={width}
             height={height}
+            {...props}
         />
     );
 }
-
-Image.propTypes = {
-    image: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    alt: PropTypes.string.isRequired,
-};
-
-Image.defaultProps = {
-    image: "",
-    width: 250,
-    alt: "image",
-};
 
 export default Image;

@@ -1,3 +1,9 @@
+import PageContainer from "@/components/PageContainer";
+
 export default function Home() {
-    return <div>Home</div>;
+    return (
+        <PageContainer>
+            Home
+        </PageContainer>
+    );
 }
