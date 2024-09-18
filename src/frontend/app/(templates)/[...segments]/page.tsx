@@ -1,6 +1,6 @@
+import Title, { TitleColors, TitleSizes } from "@/components/atoms/Title";
 import Blocks from "@/components/Blocks";
 import { fetchPage } from "@/lib/fetchPage";
-import Title, {TitleColors} from "@/parts/Title";
 
 export default async function Page({ params }: { params: { segments: string[] } }) {
     const page = await fetchPage(params.segments.join("/"));
@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { segments: string[] } 
             <Title
                 title={"Dit is een titel"}
                 color={TitleColors.DARKGREEN}
-                size={"5xl"}
+                size={TitleSizes.FIVE_XL}
             />
         </div>
     );

@@ -9,21 +9,21 @@ export enum TitleColors {
     TEAL = "teal",
 }
 
-export enum sizes {
-    "4XL" = "4xl",
-    "5XL" = "5xl",
+export enum TitleSizes {
+    FOUR_XL = "4xl",
+    FIVE_XL = "5xl",
 }
 
 const colorMap = {
-    darkgreen: "text-darkgreen-200",
-    green: "text-green-300",
-    neutral: "text-neutral-0",
-    teal: "text-teal-300",
+    [TitleColors.DARKGREEN]: "text-darkgreen-200",
+    [TitleColors.GREEN]: "text-green-300",
+    [TitleColors.NEUTRAL]: "text-neutral-0",
+    [TitleColors.TEAL]: "text-teal-300",
 };
 
 const sizeMap = {
-    "4xl": "text-4xl",
-    "5xl": "text-5xl",
+    [TitleSizes.FOUR_XL]: "text-4xl",
+    [TitleSizes.FIVE_XL]: "text-5xl",
 };
 
 function Title({ title, color, size }) {
@@ -35,13 +35,13 @@ function Title({ title, color, size }) {
 Title.propTypes = {
     title: PropTypes.string.isRequired,
     color: PropTypes.oneOf(Object.values(TitleColors)).isRequired,
-    size: PropTypes.string.isRequired,
+    size: PropTypes.oneOf(Object.values(TitleSizes)).isRequired,
 };
 
 Title.defaultProps = {
     title: "Title",
-    color: "darkgreen",
-    size: "5xl",
+    color: TitleColors.DARKGREEN,
+    size: TitleSizes.FIVE_XL,
 };
 
 export default Title;
