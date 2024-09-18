@@ -19,10 +19,6 @@ return [
 //        'ucwords_name' => true
 //    ],
 //
-    'filesystem' => [
-        'cache' => env('FILESYSTEM_CACHE', false)
-    ],
-//
 //    'meta' => [
 //        'title'         => 'Title',
 //        'description'   => 'Description',
