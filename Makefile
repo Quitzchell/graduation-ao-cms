@@ -12,6 +12,10 @@ build:
 up:
 	PROJECT_NAME="$(project_name)" docker compose up --no-build
 
-.PHONY: login
-login:
-	docker exec -it "$(project_name)-laravel-1" /bin/sh
+.PHONY: login-front
+login-front:
+	docker exec -it "$(project_name)-frontend-1" /bin/sh
+
+.PHONY: login-back
+login-back:
+	docker exec -it "$(project_name)-backend-1" /bin/sh

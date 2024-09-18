@@ -1,3 +1,4 @@
+import {EmployeeBlocks, EmployeeData} from "@/components/blocks/Employees";
 import Image from "@/components/parts/Image";
 import ItemSubtitle, {
     ItemSubtitleColors,
@@ -6,30 +7,23 @@ import ItemSubtitle, {
 import ItemTitle, { ListItemTitleColor, ListItemTitleSize } from "@/components/parts/ItemTitle";
 import Link, { LinkColors } from "@/components/parts/Link";
 import Text, { TextColors } from "@/components/parts/Text";
+import {generateHash} from "@/lib/helpers/generator.helper";
 
-type Employee = {
-    id: number;
-    image: string;
-    name: string;
-    jobTitle: string;
-    description: string;
-    email: string;
-};
 
-export function EmployeeList({ items }: { items: Array<Employee> }) {
+export function EmployeeList({ items }: { items: EmployeeBlocks }) {
     return (
         <div className="flex flex-col gap-5 lg:flex-row">
             {items.map((item) => (
                 <EmployeeCard
-                    key={item.id}
-                    {...item}
+                    key={generateHash(item._identifier)}
+                    {...item.data}
                 />
             ))}
         </div>
     );
 }
 
-function EmployeeCard({ image, name, jobTitle, description, email }: Employee) {
+function EmployeeCard({ image, name, jobTitle, description, email }: EmployeeData) {
     return (
         <div className="rounded-1 flex flex-col md:flex-row lg:flex-col">
             <div className="w-full md:w-1/2 lg:w-full">

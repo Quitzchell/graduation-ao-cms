@@ -5,10 +5,14 @@ const nextConfig = {
         NEXT_PUBLIC_REDIS_INSIGHT_URL: process.env.REDIS_INSIGHT_URL ?? "http://localhost:8001",
     },
     images: {
+        unoptimized: true,
+        domains: [process.env.NEXT_PUBLIC_BACKEND_URL],
         remotePatterns: [
             {
                 protocol: "https",
                 hostname: process.env.ASSETS_URL,
+                port: '',
+                pathname: '/**',
             },
         ],
     },
