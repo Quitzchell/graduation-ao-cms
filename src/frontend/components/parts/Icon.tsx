@@ -14,7 +14,7 @@ const colorMap = {
     [IconColors.TEAL]: "stroke-teal-200",
 };
 
-const basePath = "./Path/To/Icons/";
+const basePath = "/icons/";
 
 function Icon({ color, width, height, name }) {
     const iconClass = cn(colorMap[color]);

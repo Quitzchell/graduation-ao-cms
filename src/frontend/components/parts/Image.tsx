@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 function Image({ image, width, height, alt }) {
     return (
         <NextImage
+            className="h-full w-full object-cover"
             src={image}
             alt={alt}
             width={width}
