@@ -13,10 +13,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
+
+        $seeders = [
             ManagedContentSeeder::class,
             SettingsSeeder::class,
             UsersSeeder::class,
-        ]);
+        ];
+
+        if (app()->environment() === 'local') {
+            $seeders = array_merge($seeders, [
+                PeopleSeeder::class,
+            ]);
+        }
+
+        $this->call($seeders);
     }
 }
