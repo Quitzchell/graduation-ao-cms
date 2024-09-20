@@ -1,8 +1,8 @@
 <model>
 
     <configuration>
-        <title>Gebruikers</title>
-        <titleOne>Gebruiker</titleOne>
+        <title>Users</title>
+        <titleOne>User</titleOne>
         <icon>fa fa-user</icon>
     </configuration>
 
