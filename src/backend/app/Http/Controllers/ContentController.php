@@ -20,11 +20,6 @@ class ContentController extends \ContentController
         return parent::getIndex($viewFactory, $uri);
     }
 
-    public function templateHome(\Page $page, RenderHomeTemplate $renderer): JsonResponse
-    {
-        return $renderer->execute($page);
-    }
-
     public function templateDefault(\Page $page, RenderDefaultTemplate $renderer): JsonResponse
     {
         return $renderer->execute($page);
