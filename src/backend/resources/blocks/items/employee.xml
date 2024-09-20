@@ -1,7 +1,0 @@
-<template name="Werknemer">
-    <field type="text" name="name" title="Naam" maxlength="100"/>
-    <field type="text" name="job_title" title="Function" maxlength="100"/>
-    <field type="text" name="description" title="Omschrijving" maxlength="160"/>
-    <field type="text" name="email" title="Email" maxlength="100"/>
-    <field type="file" name="image" title="Profiel afbeelding"/>
-</template>
