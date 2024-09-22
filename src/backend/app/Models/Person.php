@@ -4,8 +4,9 @@ namespace App\Models;
 
 use AO\Laravel\Eloquent;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Person extends Eloquent
 {
@@ -15,46 +16,44 @@ class Person extends Eloquent
         "name",
         "surname",
         "gender",
-        "partner_id",
+        "date_of_birth",
+        "date_of_death",
     ];
 
     /* Relations */
-    public function partner(): BelongsTo
+    public function relationships(): BelongsToMany
     {
-        return $this->belongsTo(self::class, 'partner_id');
+        return $this->belongsToMany(Person::class, 'person_relationships', 'person_id', 'partner_id')
+            ->withPivot('relationship_type');
     }
 
-    public function parents(): BelongsToMany
+    public function reverseRelationships(): BelongsToMany
     {
-        return $this->belongsToMany(self::class, 'person_parent', 'person_id', 'parent_id');
+        return $this->belongsToMany(Person::class, 'person_relationships', 'partner_id', 'person_id')
+            ->withPivot('relationship_type');
     }
 
-    public function pets(): BelongsToMany
+    public function father(): HasOne
     {
-        return $this->belongsToMany(Pet::class);
+        return $this->hasOne(self::class, 'father_id');
+    }
+
+    public function mother(): HasOne
+    {
+        return $this->hasOne(self::class, 'mother_id');
+    }
+
+    public function children(): HasMany
+    {
+        return $this->hasMany(self::class, 'parent_id');
     }
 
     /* Attributes */
 
-    public function partnerName(): Attribute
+    public function relationshipNames(): Attribute
     {
         return Attribute::make(
-            get: fn () => implode(' ', [$this->partner->name, $this->partner->surname])
-        );
-    }
-
-    public function parentNames(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => $this->parents->map(fn($parent) => implode(' ', [$parent->name, $parent->surname]))
-                ->implode(', '),
-        );
-    }
-
-    public function petNames(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => $this->pets()->pluck('name')->implode(', ')
+            get: fn() => $this->getFormattedRelationshipNames()
         );
     }
 
@@ -63,5 +62,18 @@ class Person extends Eloquent
         return Attribute::make(
             get: fn() => implode(' ', [$this->name, $this->surname])
         );
+    }
+
+    /* Helpers */
+    public function allRelationships()
+    {
+        return $this->relationships->merge($this->reverseRelationships);
+    }
+
+    private function getFormattedRelationshipNames(): string
+    {
+        $relationships = $this->relationships->merge($this->reverseRelationships);
+        $names = $relationships->map(fn($relationship) => "{$relationship->name} {$relationship->surname}");
+        return $names->implode(', ');
     }
 }

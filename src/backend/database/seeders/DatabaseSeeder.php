@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Country;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,8 @@ class DatabaseSeeder extends Seeder
 
         if (app()->environment() === 'local') {
             $seeders = array_merge($seeders, [
+                CountrySeeder::class,
+                CitySeeder::class,
                 PeopleSeeder::class,
             ]);
         }
