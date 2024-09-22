@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use AO\Module\Routers\ModuleRouter;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->register('AO\Module\ModuleServiceProvider');
         $this->app->register('AO\Component\ComponentServiceProvider');
+        ModuleRouter::getInstance()->prependProvider(new AppModuleProvider());
     }
 
     /**
