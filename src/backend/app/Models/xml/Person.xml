@@ -15,9 +15,12 @@
                options="config:options.gender"/>
 
         <!-- Relations -->
-        <field type="reverse_tags" name="relationships" title="Relationships"
+        <field type="custom_tags" name="relationships" title="Relationships"
                reverse_relation="reverseRelationships" relation_on="App\Models\Person"
-               relation_name="full_name" order_by="name"/>
+               exclude_self="true" relation_name="full_name" order_by="name"/>
+        <field type="custom_tags" name="parents" title="Parents"
+               relation_on="App\Models\Person" exclude_self="true"
+               relation_name="full_name" order_by="name" max="2"/>
 
         <!-- General -->
         <field type="select" name="active" title="Active"
@@ -51,6 +54,7 @@
             <field name="date_of_birth"/>
             <field name="gender"/>
             <field name="relationships"/>
+            <field name="parents"/>
 
             <field name="active"/>
         </list>
@@ -61,6 +65,7 @@
             <field name="date_of_birth"/>
             <field name="gender"/>
             <field name="relationships"/>
+            <field name="parents"/>
 
             <field name="active"/>
         </list>

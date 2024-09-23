@@ -54,6 +54,13 @@ class Person extends Eloquent
         );
     }
 
+    public function parentNames(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => implode(', ', $this->parents->map(fn($parent) => $parent->full_name)->toArray())
+        );
+    }
+
     /* Helpers */
     public function allRelationships()
     {
