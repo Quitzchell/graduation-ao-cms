@@ -69,8 +69,8 @@ class PeopleSeeder extends Seeder
 
         $firstGen = $this->createPeople($firstGeneration);
         $this->setRelationships([
-            [$firstGen['Francis Stephen'], $firstGen['Maria Theresa'], 'married'],
-            [$firstGen['Charles Sebastian'], $firstGen['Maria Amalia'], 'married']
+            [$firstGen['Francis Stephen'], $firstGen['Maria Theresa']],
+            [$firstGen['Charles Sebastian'], $firstGen['Maria Amalia']]
         ]);
 
         $secondGeneration = [
@@ -81,8 +81,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Florence'),
                 'date_of_birth' => Carbon::parseFromLocale('5-05-1747', $locale),
                 'date_of_death' => Carbon::parseFromLocale('1-03-1792', $locale),
-                'father_id' => $firstGen['Francis Stephen']->getKey(),
-                'mother_id' => $firstGen['Maria Theresa']->getKey(),
                 'profile_img_path' => 'images/peter-leopold.jpg',
                 'gender' => 'M',
             ],
@@ -93,8 +91,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parseFromLocale('24-11-1745', $locale),
                 'date_of_death' => Carbon::parseFromLocale('15-05-1792', $locale),
-                'father_id' => $firstGen['Charles Sebastian']->getKey(),
-                'mother_id' => $firstGen['Maria Amalia']->getKey(),
                 'profile_img_path' => 'images/marie-louise.jpg',
                 'gender' => 'F',
             ],
@@ -106,8 +102,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Napels'),
                 'date_of_birth' => Carbon::parseFromLocale('12-01-1751', $locale),
                 'date_of_death' => Carbon::parseFromLocale('4-01-1825', $locale),
-                'father_id' => $firstGen['Charles Sebastian']->getKey(),
-                'mother_id' => $firstGen['Maria Amalia']->getKey(),
                 'profile_img_path' => 'images/ferdinand-benedictus.jpg',
                 'gender' => 'M',
             ],
@@ -118,8 +112,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parseFromLocale('13-08-1752', $locale),
                 'date_of_death' => Carbon::parseFromLocale('8-09-1814', $locale),
-                'father_id' => $firstGen['Francis Stephen']->getKey(),
-                'mother_id' => $firstGen['Maria Theresa']->getKey(),
                 'profile_img_path' => 'images/maria-carolina.jpg',
                 'gender' => 'F',
             ],
@@ -137,8 +129,18 @@ class PeopleSeeder extends Seeder
 
         $secondGen = $this->createPeople($secondGeneration);
         $this->setRelationships([
-            [$secondGen['Peter Leopold'], $secondGen['Marie Louise'], 'married'],
-            [$secondGen['Ferdinand Benedictus'], $secondGen['Maria Carolina'], 'married']
+            [$secondGen['Peter Leopold'], $secondGen['Marie Louise']],
+            [$secondGen['Ferdinand Benedictus'], $secondGen['Maria Carolina']]
+        ]);
+        $this->setParents([
+            [$secondGen['Peter Leopold'], $firstGen['Francis Stephen']],
+            [$secondGen['Peter Leopold'], $firstGen['Maria Theresa']],
+            [$secondGen['Marie Louise'], $firstGen['Charles Sebastian']],
+            [$secondGen['Marie Louise'], $firstGen['Maria Amalia']],
+            [$secondGen['Ferdinand Benedictus'], $firstGen['Charles Sebastian']],
+            [$secondGen['Ferdinand Benedictus'], $firstGen['Maria Amalia']],
+            [$secondGen['Maria Carolina'], $firstGen['Francis Stephen']],
+            [$secondGen['Maria Carolina'], $firstGen['Maria Theresa']],
         ]);
 
         $thirdGeneration = [
@@ -149,7 +151,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Montpellier'),
                 'date_of_birth' => Carbon::parseFromLocale('27-03-1746', $locale),
                 'date_of_death' => Carbon::parseFromLocale('24-02-1785', $locale),
-                'father_id' => $secondGen['Giuseppe Buonaparte']->getKey(),
                 'profile_img_path' => 'images/carlo-buonaparte.jpg',
                 'gender' => 'M',
             ],
@@ -171,8 +172,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parseFromLocale('12-02-1768', $locale),
                 'date_of_death' => Carbon::parseFromLocale('02-03-1835', $locale),
-                'father_id' => $secondGen['Peter Leopold']->getKey(),
-                'mother_id' => $secondGen['Marie Louise']->getKey(),
                 'profile_img_path' => 'images/frans-karl.jpg',
                 'gender' => 'M',
             ],
@@ -183,8 +182,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parseFromLocale('06-06-1772', $locale),
                 'date_of_death' => Carbon::parseFromLocale('13-04-1807', $locale),
-                'father_id' => $secondGen['Ferdinand Benedictus']->getKey(),
-                'mother_id' => $secondGen['Maria Carolina']->getKey(),
                 'profile_img_path' => 'images/maria-theresa-2.jpg',
                 'gender' => 'F',
             ],
@@ -192,8 +189,15 @@ class PeopleSeeder extends Seeder
 
         $thirdGen = $this->createPeople($thirdGeneration);
         $this->setRelationships([
-            [$thirdGen['Carlo Buonaparte'], $thirdGen['Letizia Ramolino'], 'married'],
-            [$thirdGen['Frans Karl'], $thirdGen['Maria Theresa'], 'married']
+            [$thirdGen['Carlo Buonaparte'], $thirdGen['Letizia Ramolino']],
+            [$thirdGen['Frans Karl'], $thirdGen['Maria Theresa']]
+        ]);
+        $this->setParents([
+            [$thirdGen['Carlo Buonaparte'], $secondGen['Giuseppe Buonaparte']],
+            [$thirdGen['Frans Karl'], $secondGen['Peter Leopold']],
+            [$thirdGen['Frans Karl'], $secondGen['Marie Louise']],
+            [$thirdGen['Maria Theresa'], $secondGen['Ferdinand Benedictus']],
+            [$thirdGen['Maria Theresa'], $secondGen['Maria Carolina']],
         ]);
 
         $fourthGeneration = [
@@ -204,8 +208,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Saint Helena'),
                 'date_of_birth' => Carbon::parseFromLocale('15-08-1769', $locale),
                 'date_of_death' => Carbon::parseFromLocale('05-05-1821', $locale),
-                'father_id' => $thirdGen['Carlo Buonaparte']->getKey(),
-                'mother_id' => $thirdGen['Letizia Ramolino']->getKey(),
                 'profile_img_path' => 'images/napoleon-bonaparte.jpg',
                 'gender' => 'M',
             ],
@@ -216,8 +218,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Livorno'),
                 'date_of_birth' => Carbon::parseFromLocale('15-08-1778', $locale),
                 'date_of_death' => Carbon::parseFromLocale('05-05-1846', $locale),
-                'father_id' => $thirdGen['Carlo Buonaparte']->getKey(),
-                'mother_id' => $thirdGen['Letizia Ramolino']->getKey(),
                 'profile_img_path' => 'images/lodewijk-bonaparte.jpg',
                 'gender' => 'M',
             ],
@@ -251,8 +251,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Parma'),
                 'date_of_birth' => Carbon::parseFromLocale('12-12-1791', $locale),
                 'date_of_death' => Carbon::parseFromLocale('17-12-1847', $locale),
-                'father_id' => $thirdGen['Frans Karl']->getKey(),
-                'mother_id' => $thirdGen['Maria Theresa']->getKey(),
                 'profile_img_path' => 'images/marie-lucia.jpg',
                 'gender' => 'F',
             ]
@@ -260,9 +258,17 @@ class PeopleSeeder extends Seeder
 
         $fourthGen = $this->createPeople($fourthGeneration);
         $this->setRelationships([
-            [$fourthGen['Napoleon Bonaparte'], $fourthGen['Joséphine Beauharnais'], 'divorced'],
-            [$fourthGen['Napoleon Bonaparte'], $fourthGen['Marie Lucia'], 'divorced'],
-            [$fourthGen['Alexandre Beauharnais'], $fourthGen['Joséphine Beauharnais'], 'widowed'],
+            [$fourthGen['Napoleon Bonaparte'], $fourthGen['Joséphine Beauharnais']],
+            [$fourthGen['Napoleon Bonaparte'], $fourthGen['Marie Lucia']],
+            [$fourthGen['Alexandre Beauharnais'], $fourthGen['Joséphine Beauharnais']],
+        ]);
+        $this->setParents([
+            [$fourthGen['Napoleon Bonaparte'], $thirdGen['Carlo Buonaparte']],
+            [$fourthGen['Napoleon Bonaparte'], $thirdGen['Letizia Ramolino']],
+            [$fourthGen['Lodewijk Bonaparte'], $thirdGen['Carlo Buonaparte']],
+            [$fourthGen['Lodewijk Bonaparte'], $thirdGen['Letizia Ramolino']],
+            [$fourthGen['Marie Lucia'], $thirdGen['Frans Karl']],
+            [$fourthGen['Marie Lucia'], $thirdGen['Maria Theresa']],
         ]);
 
         $fifthGeneration = [
@@ -274,8 +280,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Munich'),
                 'date_of_birth' => Carbon::parseFromLocale('03-09-1781', $locale),
                 'date_of_death' => Carbon::parseFromLocale('21-02-1824', $locale),
-                'father_id' => $fourthGen['Alexandre Beauharnais']->getKey(),
-                'mother_id' => $fourthGen['Joséphine Beauharnais']->getKey(),
                 'profile_img_path' => 'images/eguene-beauharnais.jpg',
                 'gender' => 'M',
             ],
@@ -287,8 +291,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Arenenberg'),
                 'date_of_birth' => Carbon::parse('10-04-1783'),
                 'date_of_death' => Carbon::parse('05-10-1837'),
-                'father_id' => $fourthGen['Alexandre Beauharnais']->getKey(),
-                'mother_id' => $fourthGen['Joséphine Beauharnais']->getKey(),
                 'profile_img_path' => 'images/hortense-beauharnais.jpg',
                 'gender' => 'F',
             ],
@@ -299,8 +301,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parse('20-03-1811'),
                 'date_of_death' => Carbon::parse('22-07-1832'),
-                'father_id' => $fourthGen['Napoleon Bonaparte']->getKey(),
-                'mother_id' => $fourthGen['Marie Lucia']->getKey(),
                 'profile_img_path' => 'images/francois-bonaparte.jpg',
                 'gender' => 'M',
             ],
@@ -308,8 +308,16 @@ class PeopleSeeder extends Seeder
 
         $fifthGen = $this->createPeople($fifthGeneration);
         $this->setRelationships([
-            [$fifthGen['Hortense Beauharnais'], $fourthGen['Lodewijk Bonaparte'], 'divorced'],
+            [$fifthGen['Hortense Beauharnais'], $fourthGen['Lodewijk Bonaparte']],
+        ]);
 
+        $this->setParents([
+            [$fifthGen['Eugène Beauharnais'], $fourthGen['Alexandre Beauharnais']],
+            [$fifthGen['Eugène Beauharnais'], $fourthGen['Joséphine Beauharnais']],
+            [$fifthGen['Hortense Beauharnais'], $fourthGen['Alexandre Beauharnais']],
+            [$fifthGen['Hortense Beauharnais'], $fourthGen['Joséphine Beauharnais']],
+            [$fifthGen['Francois Bonaparte'], $fourthGen['Napoleon Bonaparte']],
+            [$fifthGen['Francois Bonaparte'], $fourthGen['Marie Lucia']],
         ]);
 
         $sixthGeneration = [
@@ -320,14 +328,16 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('London'),
                 'date_of_birth' => Carbon::parseFromLocale('20-03-1808', $locale),
                 'date_of_death' => Carbon::parseFromLocale('09-01-1873', $locale),
-                'father_id' => $fourthGen['Lodewijk Bonaparte']->getKey(),
-                'mother_id' => $fifthGen['Hortense Beauharnais']->getKey(),
                 'profile_img_path' => 'images/karel-bonaparte.jpg',
                 'gender' => 'M',
             ]
         ];
 
-        $this->createPeople($sixthGeneration);
+        $sixthGen = $this->createPeople($sixthGeneration);
+        $this->setParents([
+            [$sixthGen['Karel Bonaparte'], $fourthGen['Lodewijk Bonaparte']],
+            [$sixthGen['Karel Bonaparte'], $fifthGen['Hortense Beauharnais']],
+        ]);
     }
 
     private function createPeople(array $peopleData): array
@@ -343,8 +353,15 @@ class PeopleSeeder extends Seeder
 
     private function setRelationships(array $relationships): void
     {
-        foreach ($relationships as [$person1, $person2, $type]) {
-            $person1->relationships()->attach($person2, ['relationship_type' => $type]);
+        foreach ($relationships as [$person1, $person2]) {
+            $person1->relationships()->attach($person2);
+        }
+    }
+
+    private function setParents(array $relationship): void
+    {
+        foreach ($relationship as [$child, $parent]) {
+            $child->parents()->attach($parent);
         }
     }
 }

@@ -33,19 +33,9 @@ class Person extends Eloquent
             ->withPivot('relationship_type');
     }
 
-    public function father(): HasOne
+    public function parents(): BelongsToMany
     {
-        return $this->hasOne(self::class, 'father_id');
-    }
-
-    public function mother(): HasOne
-    {
-        return $this->hasOne(self::class, 'mother_id');
-    }
-
-    public function children(): HasMany
-    {
-        return $this->hasMany(self::class, 'parent_id');
+        return $this->belongsToMany(Person::class, 'person_parents', 'person_id', 'parent_id');
     }
 
     /* Attributes */
