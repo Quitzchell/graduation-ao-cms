@@ -2,7 +2,7 @@
     <configuration>
         <title>People</title>
         <titleOne>Person</titleOne>
-        <icon>fa fa-user</icon>
+        <icon>fa fa-users</icon>
     </configuration>
 
     <fields>
@@ -18,7 +18,6 @@
         <field type="reverse_tags" name="relationships" title="Relationships"
                reverse_relation="reverseRelationships" relation_on="App\Models\Person"
                relation_name="full_name" order_by="name"/>
-
 
         <!-- General -->
         <field type="select" name="active" title="Active"
