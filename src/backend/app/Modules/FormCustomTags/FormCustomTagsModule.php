@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\FormReverseTags;
+namespace App\Modules\FormCustomTags;
 
 use AO\Component\Models\Groupable;
 use AO\Module\BaseModule;
@@ -8,7 +8,7 @@ use AO\Module\Interfaces\RelatedToModel;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
-class FormReverseTagsModule extends BaseModule implements RelatedToModel
+class FormCustomTagsModule extends BaseModule implements RelatedToModel
 {
     protected function parsePivotData()
     {
@@ -66,11 +66,13 @@ class FormReverseTagsModule extends BaseModule implements RelatedToModel
                 };
 
                 // If the value of the field is a collection, map it to the correct format
+                // so MagicSuggest knows how to handle it
                 if ($this->value instanceof Collection) {
                     $this->value = $this->value->map($mapper);
                 }
 
                 $relation_on = $this->relation_on;
+                $relation_on = $relation_on::query();
 
                 // Handle reversed relations
                 if ($this->reverse_relation) {
@@ -82,7 +84,6 @@ class FormReverseTagsModule extends BaseModule implements RelatedToModel
                     }
                 }
 
-                // Handle show_first logic
                 if ($this->show_first) {
                     $showFirst = [];
                     $this->show_first = explode(',', str_replace(['[', ']'], '', $this->show_first));
@@ -95,9 +96,11 @@ class FormReverseTagsModule extends BaseModule implements RelatedToModel
                     $this->show_first = collect($showFirst)->map($mapper)->toArray();
                 }
 
-                // Apply filtering based on $this->where
+                if ($this->exclude_self) {
+                    $relation_on->where($relation_on->getModel()->getKeyName(), '!=', $this->model->getKey());
+                }
+
                 if ($this->where) {
-                    $relation_on = $relation_on::query();
                     $where_values = explode(',', $this->where);
 
                     foreach ($where_values as $where_value) {
@@ -110,11 +113,9 @@ class FormReverseTagsModule extends BaseModule implements RelatedToModel
                     }
                 }
 
-                // Fetch and combine tags based on ordering and other criteria
                 return $this->combineAndReturnTags($relation_on, $mapper);
             }
         }
-
         return null;
     }
 
@@ -132,9 +133,9 @@ class FormReverseTagsModule extends BaseModule implements RelatedToModel
         $tags = [];
 
         if ($this->order_by) {
-            $tags = $relation_on::orderBy($this->order_by)->get()->map($mapper)->toArray();
+            $tags = $relation_on->orderBy($this->order_by)->get()->map($mapper)->toArray();
         } else {
-            $tags = $relation_on::get()->map($mapper)->toArray();
+            $tags = $relation_on->get()->map($mapper)->toArray();
         }
 
         // Combine show_first with tags, ensuring uniqueness
@@ -144,7 +145,6 @@ class FormReverseTagsModule extends BaseModule implements RelatedToModel
 
         return $tags;
     }
-
 
     public function get($model = null)
     {
@@ -201,6 +201,10 @@ class FormReverseTagsModule extends BaseModule implements RelatedToModel
             $this->implode = false;
         }
 
+        if (!$this->exclude_self) {
+            $this->exclude_self = false;
+        }
+
         $this->free_entries = $this->free_entries ? true : ($this->config('free_entries') ? true : false);
 
         $groupable = $this->resolveGroupable();
@@ -209,17 +213,6 @@ class FormReverseTagsModule extends BaseModule implements RelatedToModel
 
         if (!$this->tags) {
             $this->tags = $this->loadTagsFromSource();
-        }
-
-        // Used in some of Module A/Degenaar/Museumnacht? Probably can be removed
-        if (!$this->tags && $this->config_tags && config($this->config_tags, false)) {
-            $this->keyed_tags = array_map('utf8_decode', config($this->config_tags, false));
-
-            $this->tags = collect($this->keyed_tags)->map(function ($v, $k) {
-                return ['id' => $k, 'name' => $v];
-            })->values()->all();
-
-            $valueField = 'name';
         }
 
         if (is_string($this->tags)) {
