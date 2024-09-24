@@ -409,7 +409,7 @@ class PeopleSeeder extends Seeder
                     'error' => $e->getMessage(),
                 ]);
 
-                throw new \Exception("An error occurred while setting the profile picture. Please try again later.");
+                throw new \Exception("An error occurred while setting the profile picture.");
             }
         }
     }
