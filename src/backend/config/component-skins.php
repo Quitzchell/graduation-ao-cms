@@ -1,6 +1,7 @@
 <?php
 
 $menu = (new \AO\Component\Helpers\MenuConfigBuilder())->build([
+    'mediamanager',
     'separator',
     app_path('Models/xml/Person.xml'),
     'separator',
