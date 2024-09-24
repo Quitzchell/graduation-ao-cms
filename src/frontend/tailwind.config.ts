@@ -1,9 +1,13 @@
 import type { Config } from "tailwindcss";
 
-const extendedSizes = {
-    "29": "7.5rem",
-    "61": "15.25rem",
+const extendedSizes = {};
+const generateSizeValue = (size: number) => {
+    return `${size / 4}rem`;
 };
+
+for (let i = 1; i <= 300; i++) {
+    extendedSizes[i] = generateSizeValue(i);
+}
 
 const config: Config = {
     content: [
@@ -12,6 +16,16 @@ const config: Config = {
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
+        container: {
+            center: true,
+            padding: {
+                DEFAULT: "1rem",
+                sm: "1rem",
+                md: "1.5rem",
+                lg: "6.75rem",
+                xl: "8rem",
+            },
+        },
         colors: {
             transparent: "transparent",
             current: "currentColor",
