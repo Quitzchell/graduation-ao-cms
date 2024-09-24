@@ -1,13 +1,6 @@
 import React from "react";
 
-import Employees from "@/components/blocks/Employees";
-import Image from "@/components/Image";
-import Text from "@/components/Text";
-
 const components = {
-    "Content\\Text": Text,
-    "Content\\Image": Image,
-    "About\\Employees": Employees,
 };
 
 function renderBlockComponent(block, props = {}) {

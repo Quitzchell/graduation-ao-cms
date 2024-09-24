@@ -17,6 +17,7 @@ final class RenderDefaultTemplate extends TemplateRenderer
     {
         return $this->render($page, [
             'title' => $page->name,
+            'header_image' => $page->mediaItemUrl('header_image', 1280, 600),
             'blocks' => $this->resolver->execute($page, 'blocks'),
         ]);
     }
