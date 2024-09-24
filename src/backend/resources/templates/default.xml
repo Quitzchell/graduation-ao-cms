@@ -1,3 +1,4 @@
 <template name="Default page">
+    <field type="media-item" name="header_image" title="Header Image"/>
 <!--    <field type="blocks" name="blocks" title="Content blokken"  blocks=""/>-->
 </template>

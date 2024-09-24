@@ -1,15 +1,41 @@
-import Blocks from "@/components/Blocks";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
 import { fetchPage } from "@/lib/fetchPage";
-import PageContainer from "@/components/PageContainer";
 
-export default async function Page({ params }: { params: { segments: string[] } }) {
-    const page = await fetchPage(params.segments.join("/"));
+import Default from "@/app/(templates)/default";
 
-    return (
-        <PageContainer>
-            <h1>Page</h1>
-            <div>{JSON.stringify(page)}</div>
-            {page?.blocks !== null && <Blocks blocks={page.blocks} />}
-        </PageContainer>
-    );
+const templates = {
+    default: Default,
+};
+
+type PageProps = {
+    params: { segments: string[] };
+    searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default async function Page({ params }: PageProps) {
+    const segments = params.segments || ["home"];
+    const page = await fetchPage(segments.join("/"));
+
+    if (templates[page?._template] !== undefined) {
+        const Template = templates[page._template];
+        return <Template {...page} />;
+    }
+
+    return notFound();
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const segments = params.segments || ["home"];
+    const page = await fetchPage(segments.join("/"));
+
+    if (!page?.meta) {
+        return {};
+    }
+
+    return {
+        title: page.meta.title,
+        description: page.meta.description,
+    };
 }
