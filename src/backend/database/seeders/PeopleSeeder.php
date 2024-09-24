@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\Person;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PeopleSeeder extends Seeder
 {
@@ -14,6 +15,13 @@ class PeopleSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('media_manager_containers')->insert([
+            'parent_id' => 1,
+            'name' => 'Bonaparte',
+            'slug' => 'bonaparte',
+            'path' => 'bonaparte'
+        ]);
+
         $locale = 'NL-nl';
 
         $cities = City::whereIn('name', [
@@ -32,7 +40,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Innsbruck'),
                 'date_of_birth' => Carbon::parseFromLocale('08-12-1708', $locale),
                 'date_of_death' => Carbon::parseFromLocale('18-8-1765', $locale),
-                'profile_img_path' => 'images/francis-stephen.jpg',
                 'gender' => 'M',
             ],
             [
@@ -42,7 +49,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parseFromLocale('08-12-1708', $locale),
                 'date_of_death' => Carbon::parseFromLocale('18-8-1765', $locale),
-                'profile_img_path' => 'images/maria-theresa-1.jpg',
                 'gender' => 'F',
             ],
             [
@@ -52,7 +58,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Madrid'),
                 'date_of_birth' => Carbon::parseFromLocale('10-1-1716', $locale),
                 'date_of_death' => Carbon::parseFromLocale('14-12-1788', $locale),
-                'profile_img_path' => 'images/charles-sebastian.jpg',
                 'gender' => 'M',
             ],
             [
@@ -62,7 +67,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Madrid'),
                 'date_of_birth' => Carbon::parseFromLocale('24-11-1724', $locale),
                 'date_of_death' => Carbon::parseFromLocale('27-09-1760', $locale),
-                'profile_img_path' => 'images/maria-amalia.jpg',
                 'gender' => 'F',
             ],
         ];
@@ -71,6 +75,12 @@ class PeopleSeeder extends Seeder
         $this->setRelationships([
             [$firstGen['Francis Stephen'], $firstGen['Maria Theresa']],
             [$firstGen['Charles Sebastian'], $firstGen['Maria Amalia']]
+        ]);
+        $this->setProfilePicture([
+            [$firstGen['Francis Stephen'], 'francis-stephen.jpg', ['x' => 48, 'y' => 35]],
+            [$firstGen['Maria Theresa'], 'maria-theresa-1.jpg', ['x' => 47, 'y' => 32]],
+            [$firstGen['Charles Sebastian'], 'charles-sebastian.jpg', ['x' => 50, 'y' => 32]],
+            [$firstGen['Maria Amalia'], 'maria-amalia.png', ['x' => 47, 'y' => 29]],
         ]);
 
         $secondGeneration = [
@@ -81,7 +91,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Florence'),
                 'date_of_birth' => Carbon::parseFromLocale('5-05-1747', $locale),
                 'date_of_death' => Carbon::parseFromLocale('1-03-1792', $locale),
-                'profile_img_path' => 'images/peter-leopold.jpg',
                 'gender' => 'M',
             ],
             [
@@ -91,7 +100,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parseFromLocale('24-11-1745', $locale),
                 'date_of_death' => Carbon::parseFromLocale('15-05-1792', $locale),
-                'profile_img_path' => 'images/marie-louise.jpg',
                 'gender' => 'F',
             ],
 
@@ -102,7 +110,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Napels'),
                 'date_of_birth' => Carbon::parseFromLocale('12-01-1751', $locale),
                 'date_of_death' => Carbon::parseFromLocale('4-01-1825', $locale),
-                'profile_img_path' => 'images/ferdinand-benedictus.jpg',
                 'gender' => 'M',
             ],
             [
@@ -112,7 +119,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parseFromLocale('13-08-1752', $locale),
                 'date_of_death' => Carbon::parseFromLocale('8-09-1814', $locale),
-                'profile_img_path' => 'images/maria-carolina.jpg',
                 'gender' => 'F',
             ],
 
@@ -142,6 +148,12 @@ class PeopleSeeder extends Seeder
             [$secondGen['Maria Carolina'], $firstGen['Francis Stephen']],
             [$secondGen['Maria Carolina'], $firstGen['Maria Theresa']],
         ]);
+        $this->setProfilePicture([
+            [$secondGen['Peter Leopold'], 'peter-leopold.jpg', ['x' => 54, 'y' => 25]],
+            [$secondGen['Marie Louise'], 'maria-louise.jpg', ['x' => 49, 'y' => 27]],
+            [$secondGen['Ferdinand Benedictus'], 'ferdinand-benedictus.jpg', ['x' => 44, 'y' => 30]],
+            [$secondGen['Maria Carolina'], 'maria-carolina.jpg', ['x' => 53, 'y' => 30]],
+        ]);
 
         $thirdGeneration = [
             [
@@ -151,7 +163,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Montpellier'),
                 'date_of_birth' => Carbon::parseFromLocale('27-03-1746', $locale),
                 'date_of_death' => Carbon::parseFromLocale('24-02-1785', $locale),
-                'profile_img_path' => 'images/carlo-buonaparte.jpg',
                 'gender' => 'M',
             ],
             [
@@ -161,7 +172,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Rome'),
                 'date_of_birth' => Carbon::parseFromLocale('24-08-1750', $locale),
                 'date_of_death' => Carbon::parseFromLocale('02-02-1836', $locale),
-                'profile_img_path' => 'images/letizia-ramolino.jpg',
                 'gender' => 'F',
             ],
 
@@ -172,7 +182,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parseFromLocale('12-02-1768', $locale),
                 'date_of_death' => Carbon::parseFromLocale('02-03-1835', $locale),
-                'profile_img_path' => 'images/frans-karl.jpg',
                 'gender' => 'M',
             ],
             [
@@ -182,7 +191,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parseFromLocale('06-06-1772', $locale),
                 'date_of_death' => Carbon::parseFromLocale('13-04-1807', $locale),
-                'profile_img_path' => 'images/maria-theresa-2.jpg',
                 'gender' => 'F',
             ],
         ];
@@ -199,6 +207,12 @@ class PeopleSeeder extends Seeder
             [$thirdGen['Maria Theresa'], $secondGen['Ferdinand Benedictus']],
             [$thirdGen['Maria Theresa'], $secondGen['Maria Carolina']],
         ]);
+        $this->setProfilePicture([
+            [$thirdGen['Carlo Buonaparte'], 'carlo-buonaparte.jpeg', ['x' => 51, 'y' => 27]],
+            [$thirdGen['Letizia Ramolino'], 'letizia-ramolino.jpg', ['x' => 49, 'y' => 15]],
+            [$thirdGen['Frans Karl'], 'frans-karl.jpg', ['x' => 51, 'y' => 28]],
+            [$thirdGen['Maria Theresa'], 'maria-theresa-2.jpeg', ['x' => 52, 'y' => 26]],
+        ]);
 
         $fourthGeneration = [
             [
@@ -208,7 +222,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Saint Helena'),
                 'date_of_birth' => Carbon::parseFromLocale('15-08-1769', $locale),
                 'date_of_death' => Carbon::parseFromLocale('05-05-1821', $locale),
-                'profile_img_path' => 'images/napoleon-bonaparte.jpg',
                 'gender' => 'M',
             ],
             [
@@ -218,7 +231,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Livorno'),
                 'date_of_birth' => Carbon::parseFromLocale('15-08-1778', $locale),
                 'date_of_death' => Carbon::parseFromLocale('05-05-1846', $locale),
-                'profile_img_path' => 'images/lodewijk-bonaparte.jpg',
                 'gender' => 'M',
             ],
             [
@@ -229,7 +241,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Paris'),
                 'date_of_birth' => Carbon::parseFromLocale('23-06-1763', $locale),
                 'date_of_death' => Carbon::parseFromLocale('29-05-1814', $locale),
-                'profile_img_path' => 'images/josphine-beauharnais.jpg',
                 'gender' => 'F',
             ],
             [
@@ -241,7 +252,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Paris'),
                 'date_of_birth' => Carbon::parseFromLocale('28-05-1760', $locale),
                 'date_of_death' => Carbon::parseFromLocale('23-07-1794', $locale),
-                'profile_img_path' => 'images/alexandre-beauharnais.jpg',
                 'gender' => 'M',
             ],
             [
@@ -251,7 +261,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Parma'),
                 'date_of_birth' => Carbon::parseFromLocale('12-12-1791', $locale),
                 'date_of_death' => Carbon::parseFromLocale('17-12-1847', $locale),
-                'profile_img_path' => 'images/marie-lucia.jpg',
                 'gender' => 'F',
             ]
         ];
@@ -270,6 +279,13 @@ class PeopleSeeder extends Seeder
             [$fourthGen['Marie Lucia'], $thirdGen['Frans Karl']],
             [$fourthGen['Marie Lucia'], $thirdGen['Maria Theresa']],
         ]);
+        $this->setProfilePicture([
+            [$fourthGen['Napoleon Bonaparte'], 'napoleon-bonaparte.jpg', ['x' => 52, 'y' => 19]],
+            [$fourthGen['Lodewijk Bonaparte'], 'lodewijk-bonaparte.jpg', ['x' => 48, 'y' => 35]],
+            [$fourthGen['Joséphine Beauharnais'], 'josephine-beauharnais.jpeg', ['x' => 37, 'y' => 28]],
+            [$fourthGen['Alexandre Beauharnais'], 'alexandre-beauharnais.jpeg', ['x' => 54, 'y' => 36]],
+            [$fourthGen['Marie Lucia'], 'marie-lucia.jpg', ['x' => 59, 'y' => 23]],
+        ]);
 
         $fifthGeneration = [
             [
@@ -280,7 +296,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Munich'),
                 'date_of_birth' => Carbon::parseFromLocale('03-09-1781', $locale),
                 'date_of_death' => Carbon::parseFromLocale('21-02-1824', $locale),
-                'profile_img_path' => 'images/eguene-beauharnais.jpg',
                 'gender' => 'M',
             ],
             [
@@ -291,7 +306,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Arenenberg'),
                 'date_of_birth' => Carbon::parse('10-04-1783'),
                 'date_of_death' => Carbon::parse('05-10-1837'),
-                'profile_img_path' => 'images/hortense-beauharnais.jpg',
                 'gender' => 'F',
             ],
             [
@@ -301,7 +315,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('Vienna'),
                 'date_of_birth' => Carbon::parse('20-03-1811'),
                 'date_of_death' => Carbon::parse('22-07-1832'),
-                'profile_img_path' => 'images/francois-bonaparte.jpg',
                 'gender' => 'M',
             ],
         ];
@@ -319,6 +332,11 @@ class PeopleSeeder extends Seeder
             [$fifthGen['Francois Bonaparte'], $fourthGen['Napoleon Bonaparte']],
             [$fifthGen['Francois Bonaparte'], $fourthGen['Marie Lucia']],
         ]);
+        $this->setProfilePicture([
+            [$fifthGen['Eugène Beauharnais'], 'eugene-beauharnais.jpeg', ['x' => 58, 'y' => 31]],
+            [$fifthGen['Hortense Beauharnais'], 'hortense-beauharnais.jpg', ['x' => 52, 'y' => 22]],
+            [$fifthGen['Francois Bonaparte'], 'francois-bonaparte.jpg', ['x' => 46, 'y' => 40]],
+        ]);
 
         $sixthGeneration = [
             [
@@ -328,7 +346,6 @@ class PeopleSeeder extends Seeder
                 'place_of_death_id' => $cityId('London'),
                 'date_of_birth' => Carbon::parseFromLocale('20-03-1808', $locale),
                 'date_of_death' => Carbon::parseFromLocale('09-01-1873', $locale),
-                'profile_img_path' => 'images/karel-bonaparte.jpg',
                 'gender' => 'M',
             ]
         ];
@@ -337,6 +354,9 @@ class PeopleSeeder extends Seeder
         $this->setParents([
             [$sixthGen['Karel Bonaparte'], $fourthGen['Lodewijk Bonaparte']],
             [$sixthGen['Karel Bonaparte'], $fifthGen['Hortense Beauharnais']],
+        ]);
+        $this->setProfilePicture([
+            [$sixthGen['Karel Bonaparte'], 'karel-bonaparte.jpg', ['x' => 52, 'y' => 22]],
         ]);
     }
 
@@ -362,6 +382,35 @@ class PeopleSeeder extends Seeder
     {
         foreach ($relationship as [$child, $parent]) {
             $child->parents()->attach($parent);
+        }
+    }
+
+    private function setProfilePicture(array $profilePictures): void
+    {
+        foreach ($profilePictures as $profilePicture) {
+            try {
+            $x = $profilePicture[2]['x'] ?? 50;
+            $y = $profilePicture[2]['y'] ?? 50;
+
+            $profilePictureId = DB::table('media_manager_items')->insertGetId([
+                'container_id' => '2',
+                'file' => $profilePicture[1],
+                'mime_type' => 'image/jpeg',
+                'alt_text' => $profilePicture[0]->full_name,
+                'focal_point' => json_encode(['x' => $x, 'y' => $y])
+            ]);
+
+            $profilePicture[0]->profile_img = $profilePictureId;
+            $profilePicture[0]->save();
+            } catch (\Exception $e) {
+                // Log the error for debugging
+                \Log::error('Failed to set profile picture', [
+                    'profilePicture' => $profilePicture,
+                    'error' => $e->getMessage(),
+                ]);
+
+                throw new \Exception("An error occurred while setting the profile picture. Please try again later.");
+            }
         }
     }
 }
