@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use AO\Auth\TwoFactorAuthentication\Http\Middleware\CheckTwoFactorAuthenticationEnabled;
+use App\Http\Middleware\ForceJSONResponse;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -40,6 +41,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            ForceJSONResponse::class,
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
