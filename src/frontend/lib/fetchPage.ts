@@ -3,11 +3,11 @@ export const fetchPage = async (slug: string) => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${slug}`, {
             credentials: "include",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
             next: {
-                revalidate: process.env.NEXT_PRIVATE_DEBUG === "true" ? 0 : 60,
-            },
+                revalidate: process.env.NEXT_PRIVATE_DEBUG === "true" ? 0 : 60
+            }
         });
         return res.json();
     } catch (error) {
