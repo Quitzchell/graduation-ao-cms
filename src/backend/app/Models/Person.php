@@ -35,7 +35,12 @@ class Person extends Eloquent
 
     public function parents(): BelongsToMany
     {
-        return $this->belongsToMany(Person::class, 'person_parents', 'person_id', 'parent_id');
+        return $this->belongsToMany(Person::class, 'child_parents', 'child_id', 'parent_id');
+    }
+
+    public function children(): BelongsToMany
+    {
+        return $this->belongsToMany(Person::class, 'child_parents','parent_id', 'child_id');
     }
 
     /* Attributes */
