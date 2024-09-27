@@ -1,6 +1,6 @@
-<template name="Default page">
+<template name="Home page">
     <field type="media-item" name="header_image" title="Header: Image"/>
     <field type="text" name="header_title" title="Header: Title"/>
     <field type="text" name="header_subtitle" title="Header: Subtitle"/>
-<!--    <field type="blocks" name="blocks" title="Content blokken"  blocks=""/>-->
+        <field type="blocks" name="blocks" title="Content blokken"  blocks=""/>
 </template>
