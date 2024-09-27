@@ -195,7 +195,7 @@ return [
         App\Providers\EventServiceProvider::class,
         AO\Auth\AuthServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        AO\MediaManager\MediaManagerServiceProvider::class
+        AO\MediaManager\MediaManagerServiceProvider::class,
     ],
 
     /*
