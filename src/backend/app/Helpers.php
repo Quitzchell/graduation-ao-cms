@@ -2,12 +2,8 @@
 
 if (!function_exists('manifest')) {
     /**
-    * Pull hashed name from manifest.
-    *
-    * @param string $file_path
-    * @param string $dir
-    * @return string
-    */
+     * Pull hashed name from manifest.
+     */
     function manifest(string $file_path, $dir = 'dist'): string
     {
         if (!file_exists($manifest_path = public_path($dir . '/manifest.json'))) {
