@@ -15,9 +15,14 @@ final class RenderDefaultTemplate extends TemplateRenderer
 
     public function execute(\Page $page): JsonResponse
     {
+        $headerDTO = [
+            'image' => $page->mediaItemUrl('header_image', 1280, 600),
+            'title' => $page->content('header_title'),
+            'subtitle' => $page->content('header_subtitle'),
+        ];
+
         return $this->render($page, [
-            'title' => $page->name,
-            'header_image' => $page->mediaItemUrl('header_image', 1280, 600),
+            'header_items' => $headerDTO,
             'blocks' => $this->resolver->execute($page, 'blocks'),
         ]);
     }
