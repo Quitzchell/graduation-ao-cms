@@ -23,8 +23,6 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->date('date_of_death')->nullable();
             $table->enum('gender', ['M', 'F', 'X'])->default('X');
-            $table->foreignIdFor(Person::class, 'father_id')->nullable();
-            $table->foreignIdFor(Person::class, 'mother_id')->nullable();
             $table->string('profile_img')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
