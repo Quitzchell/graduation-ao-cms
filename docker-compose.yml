@@ -4,7 +4,7 @@ services:
 
         build:
             context: .
-            dockerfile: dev.dockerfile
+            dockerfile: dev.backend.dockerfile
             args:
                 # Choose your Docker base image based on your PHP version
                 IMAGE: allesonline/laravel:php8.3-node20-alpine3.19-dev # CMS version 2.14 - 2.15

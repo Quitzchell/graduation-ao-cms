@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import Default from "@/app/(templates)/default";
+import Home from "@/app/(templates)/home";
 import { fetchPage } from "@/lib/fetchPage";
 
-import Default from "@/app/(templates)/default";
-
 const templates = {
+    home: Home,
     default: Default,
 };
 
@@ -20,6 +21,7 @@ export default async function Page({ params }: PageProps) {
 
     if (templates[page?._template] !== undefined) {
         const Template = templates[page._template];
+        console.log(Template);
         return <Template {...page} />;
     }
 

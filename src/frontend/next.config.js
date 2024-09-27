@@ -6,11 +6,18 @@ const nextConfig = {
     },
     images: {
         unoptimized: true,
-        domains: [process.env.NEXT_PUBLIC_BACKEND_URL],
         remotePatterns: [
+            // Local
             {
                 protocol: "https",
-                hostname: process.env.ASSETS_URL,
+                hostname: "graduation-ao-cms-admin.local.alles.onl",
+                port: "",
+                pathname: "/**",
+            },
+            // Staging
+            {
+                protocol: "https",
+                hostname: "graduation-ao-cms-backend.staging.alles.onl",
                 port: "",
                 pathname: "/**",
             },
