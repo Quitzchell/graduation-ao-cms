@@ -18,18 +18,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('middle_name')->nullable();
             $table->string('surname');
-            $table->foreignIdFor(City::class, 'place_of_birth_id');
-            $table->foreignIdFor(City::class, 'place_of_death_id');
             $table->date('date_of_birth')->nullable();
             $table->date('date_of_death')->nullable();
+            $table->foreignIdFor(City::class, 'place_of_birth_id');
+            $table->foreignIdFor(City::class, 'place_of_death_id');
             $table->enum('gender', ['M', 'F', 'X'])->default('X');
             $table->string('profile_img')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('mother_id')->references('id')->on('people')->nullOnDelete();
-            $table->foreign('father_id')->references('id')->on('people')->nullOnDelete();
         });
     }
 
