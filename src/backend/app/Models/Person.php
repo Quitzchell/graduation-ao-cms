@@ -4,9 +4,8 @@ namespace App\Models;
 
 use AO\Laravel\Eloquent;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Person extends Eloquent
 {
@@ -18,6 +17,8 @@ class Person extends Eloquent
         "gender",
         "date_of_birth",
         "date_of_death",
+        "place_of_birth",
+        "place_of_death"
     ];
 
     /* Relations */
@@ -43,6 +44,16 @@ class Person extends Eloquent
         return $this->belongsToMany(Person::class, 'child_parents','parent_id', 'child_id');
     }
 
+    public function nationality(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'place_of_birth_id')->with('Country');
+    }
+
+    public function placeOfDeath(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'place_of_death_id')->with('Country');
+    }
+
     /* Attributes */
 
     public function relationshipNames(): Attribute
@@ -55,7 +66,7 @@ class Person extends Eloquent
     public function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn() => implode(' ', [$this->name, $this->surname])
+            get: fn() => implode(' ', [$this->name, $this->middle_name, $this->surname])
         );
     }
 

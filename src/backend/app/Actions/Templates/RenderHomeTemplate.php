@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Actions\Templates;
 
+use App\Actions\DTO\PersonDTO;
 use App\Models\Person;
+use Illuminate\Support\Collection;
 use Illuminate\Http\JsonResponse;
+use Page;
 
 final class RenderHomeTemplate extends TemplateRenderer
 {
@@ -14,7 +17,7 @@ final class RenderHomeTemplate extends TemplateRenderer
         //
     }
 
-    public function execute(\Page $page): JsonResponse
+    public function execute(Page $page): JsonResponse
     {
         $headerDTO = [
             'image' => $page->mediaItemUrl('header_image', 1280, 600),
@@ -29,8 +32,14 @@ final class RenderHomeTemplate extends TemplateRenderer
         ]);
     }
 
-    private function familyTree()
+    private function familyTree(): Collection
     {
-        return Person::with(['parents', 'children'])->get();
+        $people = Person::with(['parents', 'children'])->get();
+        $treeData = collect();
+        foreach ($people as $person) {
+            $treeData->push(PersonDTO::make($person));
+        }
+
+        return $treeData;
     }
 }
