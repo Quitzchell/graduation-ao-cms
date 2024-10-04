@@ -161,6 +161,7 @@ const config: Config = {
             spacing: extendedSizes,
             margin: extendedSizes,
             padding: extendedSizes,
+            maxHeight: extendedSizes,
         },
     },
     plugins: [],
