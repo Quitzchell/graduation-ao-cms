@@ -377,7 +377,7 @@ class FormCustomTagsModule extends BaseModule implements RelatedToModel
         $filter = [];
         foreach ($this->model->{$this->reverse_relation} as $reversedRelation) {
             $relatedPivotKeyName = $reversedRelation->{$this->name}()->getRelatedPivotKeyName();
-            if ($reversedRelation->relationships()->where($relatedPivotKeyName, $this->model->getKey())->exists()) {
+            if ($reversedRelation->{$this->relation_name}->where($relatedPivotKeyName, $this->model->getKey())->exists()) {
                 $filter[] = $reversedRelation->getKey();
             };
         }
