@@ -21,7 +21,7 @@ CacheHandler.onCreation(async () => {
                 socket: {
                     host: process.env.REDIS_HOST ?? "localhost",
                     port: process.env.REDIS_PORT ?? 6379,
-                    tls: process.env.REDIS_SCHEME === "tls",
+                    tls: (process.env.REDIS_SCHEME || "tls") === "tls",
                     rejectUnauthorized: false,
                     reconnectStrategy: () => (isReady ? 5000 : false),
                 },

@@ -1,13 +1,11 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import Default from "@/app/(templates)/default";
 import Home from "@/app/(templates)/home";
-import { fetchPage } from "@/lib/fetchPage";
+import { fetchPage } from "@/lib/fetchUtils";
 
 const templates = {
     home: Home,
-    default: Default,
 };
 
 type PageProps = {
