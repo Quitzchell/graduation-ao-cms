@@ -67,6 +67,8 @@ return [
             'endpoint' => env('CLOUD_STORAGE_ENDPOINT'),
             'region' => env('CLOUD_STORAGE_REGION'),
             'bucket' => env('CLOUD_STORAGE_BUCKET'),
+            'url' => env('CLOUD_STORAGE_CDN_URL'),
+            'visibility' => 'public',
         ],
 
     ],
