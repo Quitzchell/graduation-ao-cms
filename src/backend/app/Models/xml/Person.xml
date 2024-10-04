@@ -15,8 +15,8 @@
                options="config:options.gender"/>
 
         <!-- Relations -->
-        <field type="custom_tags" name="relationships" title="Relationships"
-               reverse_relation="reverseRelationships" relation_on="App\Models\Person"
+        <field type="custom_tags" name="spouses" title="Spouses"
+               reverse_relation="reverseSpouses" relation_on="App\Models\Person"
                exclude_self="true" relation_name="full_name" order_by="name"/>
         <field type="custom_tags" name="parents" title="Parents"
                relation_on="App\Models\Person" exclude_self="true"
@@ -27,7 +27,7 @@
                options="config:options.boolean" value="1"/>
 
         <!-- Dynamic -->
-        <field type="dynamic" name="relationship_names" title="Relationships"/>
+        <field type="dynamic" name="spouse_names" title="Spouses"/>
         <field type="dynamic" name="parent_names" title="Parents"/>
     </fields>
 
@@ -43,7 +43,7 @@
             <field name="surname"/>
             <field name="date_of_birth"/>
             <field name="gender"/>
-            <field name="relationship_names"/>
+            <field name="spouse_names"/>
             <field name="parent_names"/>
             <field name="active"/>
         </list>
@@ -53,7 +53,7 @@
             <field name="surname"/>
             <field name="date_of_birth"/>
             <field name="gender"/>
-            <field name="relationships"/>
+            <field name="spouses"/>
             <field name="parents"/>
 
             <field name="active"/>
@@ -64,7 +64,7 @@
             <field name="surname"/>
             <field name="date_of_birth"/>
             <field name="gender"/>
-            <field name="relationships"/>
+            <field name="spouses"/>
             <field name="parents"/>
 
             <field name="active"/>
