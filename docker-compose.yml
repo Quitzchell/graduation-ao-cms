@@ -12,6 +12,9 @@ services:
         user:
             docker:docker
 
+        ports:
+            - "8080:8080"
+
         labels:
             # These labels are used by Traefik 2 for routing traffic to the container
             # These labels make create 2 endpoint based on the PROJECT_NAME env variable injected by the Makefile:
@@ -46,6 +49,9 @@ services:
 
             # This will run `php artisan schedule:run` every minute
             - ENABLE_SCHEDULER=0
+
+        extra_hosts:
+            - "graduation-ao-cms-admin.local.alles.onl:host-gateway"
 
         volumes:
 
