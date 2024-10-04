@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Actions\Templates;
 
-use App\Actions\DTO\PersonDTO;
+use App\Models\DTO\PersonDTO;
 use App\Models\Person;
-use Illuminate\Support\Collection;
 use Illuminate\Http\JsonResponse;
 use Page;
 
@@ -19,27 +18,21 @@ final class RenderHomeTemplate extends TemplateRenderer
 
     public function execute(Page $page): JsonResponse
     {
-        $headerDTO = [
-            'image' => $page->mediaItemUrl('header_image', 1280, 600),
-            'title' => $page->content('header_title'),
-            'subtitle' => $page->content('header_subtitle'),
-        ];
-
         return $this->render($page, [
-            'header_items' => $headerDTO,
-            'people' => $this->familyTree(),
+            'bgImage' => $page->mediaItemUrl('header_image', 1280, 600),
+            'headerItems' => [
+                'title' => $page->content('header_title'),
+                'subtitle' => $page->content('header_subtitle'),
+            ],
+            'people' => $this->retrievePeople(),
             'blocks' => $this->resolver->execute($page, 'blocks'),
         ]);
     }
 
-    private function familyTree(): Collection
+    private function retrievePeople(): array
     {
-        $people = Person::with(['parents', 'children'])->get();
-        $treeData = collect();
-        foreach ($people as $person) {
-            $treeData->push(PersonDTO::make($person));
-        }
-
-        return $treeData;
+        return Person::all()->random(8)->map(function (Person $person) {
+            return PersonDTO::make($person);
+        })->toArray();
     }
 }
