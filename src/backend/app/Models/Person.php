@@ -6,10 +6,22 @@ use AO\Laravel\Eloquent;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 
-class Person extends Eloquent
+class Person extends Eloquent implements UrlAble
 {
     protected $table = 'people';
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->uuid)) {
+                $model->uuid = Str::uuid()->toString();
+            }
+        });
+    }
 
     protected $fillable = [
         "name",
@@ -22,16 +34,14 @@ class Person extends Eloquent
     ];
 
     /* Relations */
-    public function relationships(): BelongsToMany
+    public function spouses(): BelongsToMany
     {
-        return $this->belongsToMany(Person::class, 'person_relationships', 'person_id', 'partner_id')
-            ->withPivot('relationship_type');
+        return $this->belongsToMany(Person::class, 'person_spouses', 'person_id', 'spouse_id');
     }
 
-    public function reverseRelationships(): BelongsToMany
+    public function reverseSpouses(): BelongsToMany
     {
-        return $this->belongsToMany(Person::class, 'person_relationships', 'partner_id', 'person_id')
-            ->withPivot('relationship_type');
+        return $this->belongsToMany(Person::class, 'person_spouses', 'spouse_id', 'person_id');
     }
 
     public function parents(): BelongsToMany
@@ -44,7 +54,7 @@ class Person extends Eloquent
         return $this->belongsToMany(Person::class, 'child_parents','parent_id', 'child_id');
     }
 
-    public function nationality(): BelongsTo
+    public function placeOfBirth(): BelongsTo
     {
         return $this->belongsTo(City::class, 'place_of_birth_id')->with('Country');
     }
@@ -56,10 +66,10 @@ class Person extends Eloquent
 
     /* Attributes */
 
-    public function relationshipNames(): Attribute
+    public function spouseNames(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->getFormattedRelationshipNames()
+            get: fn() => $this->getFormattedSpouseNames()
         );
     }
 
@@ -78,15 +88,15 @@ class Person extends Eloquent
     }
 
     /* Helpers */
-    public function allRelationships()
+    public function allSpouses()
     {
-        return $this->relationships->merge($this->reverseRelationships);
+        return $this->spouses->merge($this->reverseSpouses);
     }
 
-    private function getFormattedRelationshipNames(): string
+    private function getFormattedSpouseNames(): string
     {
-        $relationships = $this->relationships->merge($this->reverseRelationships);
-        $names = $relationships->map(fn($relationship) => "{$relationship->name} {$relationship->surname}");
+        $spouses = $this->spouses->merge($this->reverseSpouses);
+        $names = $spouses->map(fn($spouse) => "{$spouse->name} {$spouse->surname}");
         return $names->implode(', ');
     }
 }

@@ -10,16 +10,15 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('person_relationships', function (Blueprint $table) {
+        Schema::create('person_spouses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('person_id');
-            $table->unsignedBigInteger('partner_id');
-            $table->enum('relationship_type', ['partnership', 'married', 'divorced', 'widowed']);
+            $table->unsignedBigInteger('spouse_id');
 
-            $table->unique(['person_id', 'partner_id']);
+            $table->unique(['person_id', 'spouse_id']);
 
             $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
-            $table->foreign('partner_id')->references('id')->on('people')->onDelete('cascade');
+            $table->foreign('spouse_id')->references('id')->on('people')->onDelete('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('person_relationships');
+        Schema::dropIfExists('person_spouses');
     }
 };

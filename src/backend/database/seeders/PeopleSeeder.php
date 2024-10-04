@@ -72,7 +72,7 @@ class PeopleSeeder extends Seeder
         ];
 
         $firstGen = $this->createPeople($firstGeneration);
-        $this->setRelationships([
+        $this->setSpouses([
             [$firstGen['Francis Stephen'], $firstGen['Maria Theresa']],
             [$firstGen['Charles Sebastian'], $firstGen['Maria Amalia']]
         ]);
@@ -134,7 +134,7 @@ class PeopleSeeder extends Seeder
         ];
 
         $secondGen = $this->createPeople($secondGeneration);
-        $this->setRelationships([
+        $this->setSpouses([
             [$secondGen['Peter Leopold'], $secondGen['Marie Louise']],
             [$secondGen['Ferdinand Benedictus'], $secondGen['Maria Carolina']]
         ]);
@@ -196,7 +196,7 @@ class PeopleSeeder extends Seeder
         ];
 
         $thirdGen = $this->createPeople($thirdGeneration);
-        $this->setRelationships([
+        $this->setSpouses([
             [$thirdGen['Carlo Buonaparte'], $thirdGen['Letizia Ramolino']],
             [$thirdGen['Frans Karl'], $thirdGen['Maria Theresa']]
         ]);
@@ -266,7 +266,7 @@ class PeopleSeeder extends Seeder
         ];
 
         $fourthGen = $this->createPeople($fourthGeneration);
-        $this->setRelationships([
+        $this->setSpouses([
             [$fourthGen['Napoleon Bonaparte'], $fourthGen['Joséphine Beauharnais']],
             [$fourthGen['Napoleon Bonaparte'], $fourthGen['Marie Lucia']],
             [$fourthGen['Alexandre Beauharnais'], $fourthGen['Joséphine Beauharnais']],
@@ -320,7 +320,7 @@ class PeopleSeeder extends Seeder
         ];
 
         $fifthGen = $this->createPeople($fifthGeneration);
-        $this->setRelationships([
+        $this->setSpouses([
             [$fifthGen['Hortense Beauharnais'], $fourthGen['Lodewijk Bonaparte']],
         ]);
 
@@ -371,10 +371,10 @@ class PeopleSeeder extends Seeder
         return $people;
     }
 
-    private function setRelationships(array $relationships): void
+    private function setSpouses(array $spouses): void
     {
-        foreach ($relationships as [$person1, $person2]) {
-            $person1->relationships()->attach($person2);
+        foreach ($spouses as [$person1, $person2]) {
+            $person1->spouses()->attach($person2);
         }
     }
 
