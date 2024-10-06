@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import localFont from "next/font/local";
 
 import "./globals.css";
+import Navigation from "@/components/common/Navigation/Navigation";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -18,6 +19,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
     return (
         <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Navigation />
         {children}
         </body>
         </html>

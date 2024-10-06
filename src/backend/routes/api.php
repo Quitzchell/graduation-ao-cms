@@ -1,6 +1,8 @@
 <?php
 
+use App\Actions\Navigation\RenderNavigation;
 use App\Actions\Person\FetchPersonAction;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('fetch-person/{uuid}', FetchPersonAction::class);
+Route::get('/navigation', RenderNavigation::class);
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/reset-password', [AuthController::class, 'resetPassword']);
+Route::middleware('auth:sanctum')->get('/user', [AuthController::class, 'user']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::any('{all}', [\App\Http\Controllers\ContentController::class, 'getIndex'])
     ->where('all', '.*')

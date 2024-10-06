@@ -5,9 +5,9 @@ use AO\Component\Helpers\MenuConfigBuilder;
 $menu = (new MenuConfigBuilder())->build([
     'mediamanager',
     'separator',
-    app_path('Models/xml/Person.xml'),
-    'separator',
     app_path('Models/xml/User.xml'),
+    'separator',
+    app_path('Models/xml/FrontendUser.xml'),
 ]);
 
 return [

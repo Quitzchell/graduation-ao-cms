@@ -31,4 +31,9 @@ final readonly class BlockData implements Arrayable, JsonSerializable
     {
         return $this->toArray();
     }
+
+    public function getData(): Block
+    {
+        return $this->data;
+    }
 }

@@ -19,13 +19,14 @@ class DatabaseSeeder extends Seeder
             ManagedContentSeeder::class,
             SettingsSeeder::class,
             UsersSeeder::class,
+            CategorySeeder::class,
+            TopicSeeder::class,
+            HomePageSeeder::class,
         ];
 
         if (app()->environment() === 'local') {
             $seeders = array_merge($seeders, [
-                CountrySeeder::class,
-                CitySeeder::class,
-                PeopleSeeder::class,
+
             ]);
         }
 

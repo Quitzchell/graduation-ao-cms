@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use AO\Component\Models\Interfaces\Publishable;
-use App\Actions\Templates\RenderDefaultTemplate;
+use App\Actions\Templates\RenderBlogTemplate;
 use App\Actions\Templates\RenderHomeTemplate;
+use App\Actions\Templates\RenderPersonTemplate;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\Factory as ViewFactory;
+use Page;
 
 class ContentController extends \ContentController
 {
@@ -48,17 +50,17 @@ class ContentController extends \ContentController
         abort(404);
     }
 
-    public function templateHome(\Page $page, RenderHomeTemplate $renderer): JsonResponse
+    public function templateHome(Page $page, RenderHomeTemplate $renderer): JsonResponse
     {
         return $renderer->execute($page);
     }
 
-    public function templateDefault(\Page $page, RenderDefaultTemplate $renderer): JsonResponse
+    public function templateBlog(Page $page, RenderBlogTemplate $renderer): JsonResponse
     {
         return $renderer->execute($page);
     }
 
-    public function templateRedirect(\Page $page): \Illuminate\Http\RedirectResponse
+    public function templateRedirect(Page $page): RedirectResponse
     {
         return redirect($page->content()->url('link'));
     }

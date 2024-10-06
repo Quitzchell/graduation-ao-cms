@@ -12,17 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('people', function (Blueprint $table) {
+        Schema::create('frontend_users', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
-            $table->string('name');
-            $table->string('middle_name')->nullable();
-            $table->string('surname');
-            $table->date('date_of_birth')->nullable();
-            $table->date('date_of_death')->nullable();
-            $table->foreignIdFor(City::class, 'place_of_birth_id');
-            $table->foreignIdFor(City::class, 'place_of_death_id');
-            $table->enum('gender', ['M', 'F', 'X'])->default('X');
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->string('email')->unique();
+            $table->enum('gender', ['M', 'F', 'X'])->nullable();
             $table->string('profile_img')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
