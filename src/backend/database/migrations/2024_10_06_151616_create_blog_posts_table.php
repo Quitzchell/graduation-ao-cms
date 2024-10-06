@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('excerpt')->nullable();
             $table->foreignIdFor(Category::class);
+            $table->boolean('published')->default(true);
             $table->timestamps();
         });
     }

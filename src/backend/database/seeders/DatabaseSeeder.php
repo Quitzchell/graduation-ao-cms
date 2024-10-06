@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BlogPost;
 use App\Models\Country;
 use Illuminate\Database\Seeder;
 
@@ -20,7 +21,7 @@ class DatabaseSeeder extends Seeder
             SettingsSeeder::class,
             UsersSeeder::class,
             CategorySeeder::class,
-            TopicSeeder::class,
+            BlogPostSeeder::class,
             HomePageSeeder::class,
             BlogPageSeeder::class,
         ];

@@ -1,0 +1,32 @@
+<model>
+    <configuration>
+        <title>Blogposts</title>
+        <titleOne>Blogpost</titleOne>
+        <icon>fa fa-newspaper-o</icon>
+    </configuration>
+
+    <fields>
+        <field type="text" name="title" title="Title"/>
+        <field type="textarea" name="excerpt" title="Excerpt"/>
+        <field type="relation" name="category_id" title="Category"
+               relation_on="App\Model\Category" relation_name="name"/>
+    </fields>
+
+    <lists>
+        <list name="default">
+
+        </list>
+        <list name="add">
+
+        </list>
+        <list name="edit">
+
+        </list>
+        <list name="info">
+
+        </list>
+        <list name="overview">
+
+        </list>
+    </lists>
+</model>
