@@ -16,8 +16,8 @@ class Category extends Eloquent
     ];
 
     /* Relations */
-    public function topics(): HasMany
+    public function blogPosts(): HasMany
     {
-        return $this->hasMany(Topic::class);
+        return $this->hasMany(BlogPost::class);
     }
 }
