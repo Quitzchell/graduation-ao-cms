@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class HomepageSeeder extends Seeder
+class BlogPageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,8 +25,8 @@ class HomepageSeeder extends Seeder
     private function seedPageTable(): void
     {
         \Page::create([
-            'name' => 'home',
-            'template_name' => 'home',
+            'name' => 'Blog',
+            'template_name' => 'blog',
             'locked' => false,
             'created_at' => now(),
             'updated_at' => now(),
@@ -37,9 +37,9 @@ class HomepageSeeder extends Seeder
     {
         \ManagedContent::create([
             'order' => 1,
-            'uri' => 'home',
+            'uri' => 'blog',
             'parent_id' => 1,
-            'linkable_id' => 1,
+            'linkable_id' => 2,
             'linkable_type' => 'AO\Component\Models\Page',
             'locked' => false,
             'created_at' => now(),
@@ -49,10 +49,10 @@ class HomepageSeeder extends Seeder
 
     private function seedCmsLoaderTable(): void
     {
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 11; $i <= 17; $i++) {
             DB::table('cms_loader')->insert([
                 'owner_type' => 'AO\Component\Models\Page',
-                'owner_id' => 1,
+                'owner_id' => 2,
                 'content_id' => $i,
             ]);
         }
@@ -76,27 +76,6 @@ class HomepageSeeder extends Seeder
                 'group' => null
             ],
             [
-                'order' => 1,
-                'parent_id' => null,
-                'tag' => 'about',
-                'language' => null,
-                'group' => null
-            ],
-            [
-                'order' => 0,
-                'parent_id' => 3,
-                'tag' => 'title',
-                'language' => 'nl',
-                'group' => null
-            ],
-            [
-                'order' => 0,
-                'parent_id' => 3,
-                'tag' => 'text',
-                'language' => 'nl',
-                'group' => null
-            ],
-            [
                 'order' => 0,
                 'parent_id' => null,
                 'tag' => '_widgets',
@@ -105,28 +84,28 @@ class HomepageSeeder extends Seeder
             ],
             [
                 'order' => 0,
-                'parent_id' => 6,
+                'parent_id' => 13,
                 'tag' => 'seo',
                 'language' => null,
                 'group' => null
             ],
             [
                 'order' => 0,
-                'parent_id' => 7,
+                'parent_id' => 14,
                 'tag' => 'title',
                 'language' => 'nl',
                 'group' => null
             ],
             [
                 'order' => 0,
-                'parent_id' => 7,
+                'parent_id' => 14,
                 'tag' => 'keywords',
                 'language' => 'nl',
                 'group' => null
             ],
             [
                 'order' => 0,
-                'parent_id' => 7,
+                'parent_id' => 14,
                 'tag' => 'description',
                 'language' => 'nl',
                 'group' => null
@@ -142,35 +121,27 @@ class HomepageSeeder extends Seeder
     {
         $cmsStrings = [
             [
-                'content_id' => 1,
-                'value' => '1'
+                'content_id' => 11,
+                'value' => '2'
             ],
             [
-                'content_id' => 2,
-                'value' => 'La gloire est éphémère, mais l\'oubli est éternel.'
+                'content_id' => 12,
+                'value' => 'Blogposts'
             ],
             [
-                'content_id' => 3,
-                'value' => 'home/about'
-            ],
-            [
-                'content_id' => 4,
-                'value' => 'Bonjour à tous,'
-            ],
-            [
-                'content_id' => 6,
+                'content_id' => 13,
                 'value' => ''
             ],
             [
-                'content_id' => 7,
+                'content_id' => 14,
                 'value' => 'widgets/seo'
             ],
             [
-                'content_id' => 8,
+                'content_id' => 15,
                 'value' => ''
             ],
             [
-                'content_id' => 9,
+                'content_id' => 16,
                 'value' => ''
             ],
         ];
@@ -184,14 +155,11 @@ class HomepageSeeder extends Seeder
     {
         $cmsTexts = [
             [
-                'content_id' => 5,
-                'value' => '<p>I am Napoleon Bonaparte, exiled here on the remote island of Saint Helena. Once, I commanded vast armies, reshaped nations, and navigated the turbulent waters of European politics. Today, however, I find myself in the serene isolation of this distant land, where the ocean whispers tales of glory and defeat.</p>
-                        <p>As I pen my thoughts for you, dear readers, I invite you into my world&mdash;a realm of ambition, strategy, and, yes, introspection. Here, I shall share my reflections on leadership, the nature of power, and the lessons learned from both triumphs and trials.</p>
-                        <p>Join me as I explore the intricate tapestry of history, the weight of legacy, and the fleeting nature of fame. Whether you seek inspiration, knowledge, or simply the musings of a man who once stood at the pinnacle of power, I welcome you to my journey.</p>
-                        <p>&Agrave; bient&ocirc;t,<br />Napoleon</p>'
+                'content_id' => 10,
+                'value' => ''
             ],
             [
-                'content_id' => 10,
+                'content_id' => 17,
                 'value' => ''
             ]
         ];
@@ -205,7 +173,7 @@ class HomepageSeeder extends Seeder
         $mediaManagerItems = [
             [
                 'container_id' => 1,
-                'file' => 'napoleon-on-horseback.jpg',
+                'file' => 'napoleon-reading.jpg',
                 'mime_type' => 'image/jpeg',
                 'storage_path' => null,
                 'alt_text' => "",
