@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import Blog from "@/app/(templates)/blog";
+import BlogPost from "@/app/(templates)/blogpost";
 import Home from "@/app/(templates)/home";
 import { fetchPage } from "@/lib/fetchUtils";
 
@@ -9,6 +10,10 @@ const templates = {
     home: Home,
     blog: Blog,
 };
+
+const objects = {
+    blogpost: BlogPost
+}
 
 type PageProps = {
     params: { segments: string[] };
@@ -24,6 +29,13 @@ export default async function Page({ params }: PageProps) {
         console.log(Template);
 
         return <Template {...page} />;
+    }
+
+    if (objects[page?._object] !== undefined) {
+        const Object = objects[page._object];
+        console.log(Object)
+
+        return <Object {...page} />
     }
 
     return notFound();

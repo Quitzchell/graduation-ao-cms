@@ -21,9 +21,10 @@ class DatabaseSeeder extends Seeder
             SettingsSeeder::class,
             UsersSeeder::class,
             CategorySeeder::class,
-            BlogPostSeeder::class,
             HomePageSeeder::class,
             BlogPageSeeder::class,
+            BlogPostSeeder::class,
+            BlogPostContentSeeder::class,
         ];
 
         if (app()->environment() === 'local') {

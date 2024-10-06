@@ -1,6 +1,9 @@
 import React from "react";
 
+import Paragraph from "@/blocks/common/Paragraph"
+
 const components = {
+    "Common\\Paragraph": Paragraph,
 };
 
 function renderBlockComponent(block, props = {}) {
