@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use AO\Component\Models\Interfaces\Publishable;
+use App\Actions\Templates\RenderBlogDetail;
 use App\Actions\Templates\RenderBlogTemplate;
 use App\Actions\Templates\RenderHomeTemplate;
 use App\Actions\Templates\RenderPersonTemplate;
@@ -55,9 +56,16 @@ class ContentController extends \ContentController
         return $renderer->execute($page);
     }
 
-    public function templateBlog(Page $page, RenderBlogTemplate $renderer): JsonResponse
+    public function templateBlog(
+        Page               $page,
+        RenderBlogTemplate $overviewRenderer,
+        RenderBlogDetail   $detailRenderer,
+        ?string            $uuid = null
+    ): JsonResponse
     {
-        return $renderer->execute($page);
+        return !empty($uuid)
+            ? $detailRenderer->execute($uuid)
+            : $overviewRenderer->execute($page);
     }
 
     public function templateRedirect(Page $page): RedirectResponse

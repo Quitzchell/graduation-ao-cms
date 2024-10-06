@@ -14,10 +14,12 @@ return new class extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
+            $table->uuid();
             $table->string('title');
             $table->text('excerpt')->nullable();
             $table->foreignIdFor(Category::class);
             $table->boolean('published')->default(true);
+            $table->date('published_at');
             $table->timestamps();
         });
     }

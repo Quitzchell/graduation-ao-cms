@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Actions\Templates;
+namespace App\Actions\Abstracts;
 
 use Illuminate\Http\JsonResponse;
 

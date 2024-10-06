@@ -1,7 +1,7 @@
 import Image from "next/image";
 
+import Blocks from "@/blocks/Blocks";
 import About from "@/blocks/home/About";
-import Blocks from "@/components/Blocks";
 
 
 export default function Home({headerItems, aboutItems, blocks}) {

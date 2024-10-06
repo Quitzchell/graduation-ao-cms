@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Templates;
 
+use App\Actions\Abstracts\TemplateRenderer;
 use Illuminate\Http\JsonResponse;
 use Page;
 

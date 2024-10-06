@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Blocks\Data\Home;
+namespace App\Blocks\Data\Common;
 
 use App\Blocks\BaseBlock;
 
-class About extends BaseBlock
+class Paragraph extends BaseBlock
 {
     public string $title;
     public string $text;
@@ -14,4 +14,5 @@ class About extends BaseBlock
         $this->title = $block->content('title');
         $this->text = $block->content('text');
     }
+
 }
