@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             TopicSeeder::class,
             HomePageSeeder::class,
+            BlogPageSeeder::class,
         ];
 
         if (app()->environment() === 'local') {
