@@ -2,3 +2,5 @@
 /js
 /dist-admin
 mix-manifest.json
+/build
+/cache

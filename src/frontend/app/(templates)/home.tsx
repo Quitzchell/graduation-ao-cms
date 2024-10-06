@@ -1,40 +1,36 @@
+import Image from "next/image";
 
+import About from "@/blocks/home/About";
 import Blocks from "@/components/Blocks";
-import Hero from "@/components/Header/Hero";
-import PersonCard from "@/components/Person/PersonCard";
 
-export default function Home({bgImage, headerItems, people, blocks}) {
+
+export default function Home({headerItems, aboutItems, blocks}) {
     return (
         <>
-            <Hero image={bgImage}/>
-            <Header items={headerItems}/>
-            <People people={people}/>
+            <Header {...headerItems}/>
+            <About {...aboutItems}/>
             {blocks !== null && <Blocks blocks={blocks}/>}
         </>
     );
 }
 
-function Header({items}) {
+function Header({headerImage, headerTitle}) {
     return (
-        <div className="flex flex-col items-center md:items-start gap-y-4 pt-20 text-neutral-0 md:gap-y-6 md:pt-8">
-            <div className="px-4 md:px-8 flex w-80 flex-col gap-y-1 md:w-full md:gap-y-2">
-                <h1 className="text-center md:text-start text-4xl font-bold md:text-5xl">{items.title}</h1>
-                <h2 className="text-center md:text-start text-3xl md:text-4xl">{items.subtitle}</h2>
+        <header className="h-120 relative overflow-hidden w-screen">
+            <div className="h-full z-10 mt-20 flex justify-center items-center">
+                <div className="bg-neutral-900/80 w-full py-3">
+                    <h1 className="text-neutral-0 w-3/4 mx-auto font-bold uppercase text-center text-3xl">{headerTitle}</h1>
+                </div>
             </div>
-        </div>
+            <Image
+                src={headerImage}
+                alt="header image"
+                quality={100}
+                fill
+                priority
+                sizes="w-screen h-fit"
+                className="object-cover -z-10"
+            />
+        </header>
     )
 }
-
-function People({people}) {
-    return (
-        <section className={"container py-10 flex flex-wrap justify-center gap-6"}>
-            {people.map((person) => (
-                <PersonCard key={person.uuid} person={person}/>
-            ))}
-        </section>
-    )
-}
-
-
-
-
