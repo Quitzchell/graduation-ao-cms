@@ -34,7 +34,7 @@ export default function MobileMenu({menuItems}) {
                     {menuItems.map(({name, uri}, key) => (
                         <Link
                             key={key}
-                            href={`${uri}`}
+                            href={`/${uri}`}
                             className="text-lg font-bold text-neutral-900"
                             onClick={closeSheet}
                         >
