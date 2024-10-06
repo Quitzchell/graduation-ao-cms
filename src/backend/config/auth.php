@@ -65,10 +65,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'frontend_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\FrontendUser::class,
+        ],
     ],
 
     /*
@@ -89,6 +89,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'frontend_users' => [
+            'provider' => 'frontend_users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

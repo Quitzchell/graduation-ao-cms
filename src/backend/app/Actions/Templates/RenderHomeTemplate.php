@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Actions\Templates;
 
-use App\Models\DTO\PersonDTO;
-use App\Models\Person;
 use Illuminate\Http\JsonResponse;
 use Page;
 
@@ -18,21 +16,15 @@ final class RenderHomeTemplate extends TemplateRenderer
 
     public function execute(Page $page): JsonResponse
     {
+        $headerItems = [
+            'headerImage' => $page->mediaItemUrl('header_image', 1280, 600),
+            'headerTitle' => $page->content('header_title'),
+        ];
+
         return $this->render($page, [
-            'bgImage' => $page->mediaItemUrl('header_image', 1280, 600),
-            'headerItems' => [
-                'title' => $page->content('header_title'),
-                'subtitle' => $page->content('header_subtitle'),
-            ],
-            'people' => $this->retrievePeople(),
+            'headerItems' => $headerItems,
+            'aboutItems' => array_first($this->resolver->execute($page, 'about'))?->getData(),
             'blocks' => $this->resolver->execute($page, 'blocks'),
         ]);
-    }
-
-    private function retrievePeople(): array
-    {
-        return Person::all()->random(8)->map(function (Person $person) {
-            return PersonDTO::make($person);
-        })->toArray();
     }
 }

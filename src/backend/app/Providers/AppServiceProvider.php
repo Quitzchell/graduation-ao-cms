@@ -17,7 +17,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->register('AO\Module\ModuleServiceProvider');
         $this->app->register('AO\Component\ComponentServiceProvider');
-        ModuleRouter::getInstance()->prependProvider(new AppModuleProvider());
     }
 
     /**

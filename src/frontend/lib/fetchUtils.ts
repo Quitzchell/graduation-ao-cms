@@ -18,9 +18,9 @@ export const fetchPage = async (slug: string) => {
     return null;
 };
 
-export const fetchPerson = async (uuid: string) => {
+export const fetchMenu = async () => {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/fetch-person/${uuid}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/navigation`, {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json"
@@ -29,11 +29,11 @@ export const fetchPerson = async (uuid: string) => {
                 revalidate: process.env.NEXT_PRIVATE_DEBUG === "true" ? 0 : 60
             }
         });
-        return res.json()
+        return res.json();
     } catch (error) {
         // TODO error handling
         console.log(error);
     }
 
     return null;
-}
+};
