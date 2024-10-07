@@ -127,7 +127,7 @@ class BlogPageSeeder extends Seeder
             ],
             [
                 'content_id' => 12,
-                'value' => 'Blogposts',
+                'value' => 'Entries',
             ],
             [
                 'content_id' => 13,
