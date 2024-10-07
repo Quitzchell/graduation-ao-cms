@@ -140,7 +140,7 @@ class BlogPostContentSeeder extends Seeder
                     'alt_text' => '',
                     'focal_point' => json_encode(['x' => 50, 'y' => 50]),
                     'created_at' => now(),
-                    'updated_at' => now()
+                    'updated_at' => now(),
                 ]
             ));
         }

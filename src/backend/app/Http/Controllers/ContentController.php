@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use AO\Component\Models\Interfaces\Publishable;
+use AO\Component\Models\Page;
 use App\Actions\Objects\RenderBlogPost;
 use App\Actions\Templates\RenderBlogTemplate;
 use App\Actions\Templates\RenderHomeTemplate;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\Factory as ViewFactory;
-use Page;
 
 class ContentController extends \ContentController
 {
@@ -56,10 +56,10 @@ class ContentController extends \ContentController
     }
 
     public function templateBlog(
-        Page               $page,
+        Page $page,
         RenderBlogTemplate $overviewRenderer,
-        RenderBlogPost     $detailRenderer,
-        ?string            $uuid = null
+        RenderBlogPost $detailRenderer,
+        ?string $uuid = null
     ): JsonResponse {
         return ! empty($uuid)
             ? $detailRenderer->execute($uuid)
