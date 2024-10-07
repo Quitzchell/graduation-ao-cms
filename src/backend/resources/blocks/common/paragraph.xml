@@ -1,4 +1,5 @@
 <template name="Paragraph">
+    <field type="string" name="title" title="Title"/>
     <field type="html" name="text" title="Text"
            toolbar="formatselect | bold italic underline | charmap | link" plugins="charmap paste link format"/>
 </template>
