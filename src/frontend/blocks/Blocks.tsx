@@ -1,9 +1,11 @@
 import React from "react";
 
+import ImageContent from "@/blocks/common/Image";
 import Paragraph from "@/blocks/common/Paragraph"
 
 const components = {
     "Common\\Paragraph": Paragraph,
+    "Common\\Image": ImageContent,
 };
 
 function renderBlockComponent(block, props = {}) {

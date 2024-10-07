@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use AO\Component\Models\ManagedContent;
+use AO\Component\Models\Page;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +25,7 @@ class BlogPageSeeder extends Seeder
 
     private function seedPageTable(): void
     {
-        \Page::create([
+        Page::create([
             'name' => 'Blog',
             'template_name' => 'blog',
             'locked' => false,
@@ -34,7 +36,7 @@ class BlogPageSeeder extends Seeder
 
     private function seedManagedContentTable(): void
     {
-        \ManagedContent::create([
+        ManagedContent::create([
             'order' => 1,
             'uri' => 'blog',
             'parent_id' => 1,
@@ -174,16 +176,19 @@ class BlogPageSeeder extends Seeder
                 'container_id' => 1,
                 'file' => 'napoleon-reading.jpg',
                 'mime_type' => 'image/jpeg',
-                'storage_path' => null,
-                'alt_text' => '',
-                'focal_point' => json_encode(['x' => 50, 'y' => 50]),
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
         ];
 
         foreach ($mediaManagerItems as $mediaManagerItem) {
-            DB::table('media_manager_items')->insert($mediaManagerItem);
+            DB::table('media_manager_items')->insert(array_merge($mediaManagerItem,
+                [
+                    'storage_path' => null,
+                    'alt_text' => '',
+                    'focal_point' => json_encode(['x' => 50, 'y' => 50]),
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            ));
         }
     }
 }

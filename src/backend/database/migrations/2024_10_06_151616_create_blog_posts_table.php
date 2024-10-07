@@ -17,9 +17,10 @@ return new class extends Migration
             $table->uuid();
             $table->string('title');
             $table->text('excerpt')->nullable();
+            $table->string('image')->nullable();
             $table->foreignIdFor(Category::class);
-            $table->boolean('published')->default(true);
             $table->date('published_at');
+            $table->boolean('published')->default(true);
             $table->timestamps();
         });
     }

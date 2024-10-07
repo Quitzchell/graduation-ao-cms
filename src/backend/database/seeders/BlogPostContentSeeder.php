@@ -19,7 +19,7 @@ class BlogPostContentSeeder extends Seeder
 
     private function seedCmsLoaderTable(): void
     {
-        for ($i = 18; $i <= 38; $i++) {
+        for ($i = 18; $i <= 40; $i++) {
             DB::table('cms_loader')->insert([
                 'owner_type' => BlogPost::class,
                 'owner_id' => 1,
@@ -37,21 +37,23 @@ class BlogPostContentSeeder extends Seeder
             ['order' => 2, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
             ['order' => 0, 'parent_id' => 21, 'tag' => 'title', 'language' => 'nl', 'group' => null],
             ['order' => 0, 'parent_id' => 21, 'tag' => 'text', 'language' => 'nl', 'group' => null],
-            ['order' => 3, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
+            ['order' => 4, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
             ['order' => 0, 'parent_id' => 24, 'tag' => 'title', 'language' => 'nl', 'group' => null],
             ['order' => 0, 'parent_id' => 24, 'tag' => 'text', 'language' => 'nl', 'group' => null],
-            ['order' => 4, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
+            ['order' => 5, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
             ['order' => 0, 'parent_id' => 27, 'tag' => 'title', 'language' => 'nl', 'group' => null],
             ['order' => 0, 'parent_id' => 27, 'tag' => 'text', 'language' => 'nl', 'group' => null],
-            ['order' => 5, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
+            ['order' => 6, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
             ['order' => 0, 'parent_id' => 30, 'tag' => 'title', 'language' => 'nl', 'group' => null],
             ['order' => 0, 'parent_id' => 30, 'tag' => 'text', 'language' => 'nl', 'group' => null],
-            ['order' => 6, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
+            ['order' => 7, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
             ['order' => 0, 'parent_id' => 33, 'tag' => 'title', 'language' => 'nl', 'group' => null],
             ['order' => 0, 'parent_id' => 33, 'tag' => 'text', 'language' => 'nl', 'group' => null],
-            ['order' => 7, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
+            ['order' => 8, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
             ['order' => 0, 'parent_id' => 36, 'tag' => 'title', 'language' => 'nl', 'group' => null],
             ['order' => 0, 'parent_id' => 36, 'tag' => 'text', 'language' => 'nl', 'group' => null],
+            ['order' => 3, 'parent_id' => null, 'tag' => 'blocks', 'language' => null, 'group' => null],
+            ['order' => 0, 'parent_id' => 39, 'tag' => 'image', 'language' => null, 'group' => null],
         ];
 
         foreach ($cmsContent as $content) {
@@ -76,6 +78,8 @@ class BlogPostContentSeeder extends Seeder
             ['content_id' => 34, 'value' => 'The Human Element'],
             ['content_id' => 36, 'value' => 'common/paragraph'],
             ['content_id' => 37, 'value' => 'Conclusion'],
+            ['content_id' => 39, 'value' => 'common/image'],
+            ['content_id' => 40, 'value' => '4'],
         ];
 
         foreach ($cmsStrings as $cmsString) {
@@ -113,8 +117,8 @@ class BlogPostContentSeeder extends Seeder
             [
                 'content_id' => 38,
                 'value' => '<p>In conclusion, military strategy and tactics are not merely theoretical concepts; they are dynamic practices that require constant learning and adaptation. As you navigate the complexities of warfare, remember the importance of terrain, surprise, logistics, communication, adaptability, and the human element. These principles have served me well throughout my campaigns, and I hope they provide you with valuable insights as you delve into the art of military strategy.</p>
-                        <p>Until next time, may your strategies be bold, and your victories resounding!</p>
-                        <p>Napoleon Bonaparte<br /><em>Commander, Strategist, and Enthusiast of the Art of War</em></p>',
+                        <br /><p>Until next time, may your strategies be bold, and your victories resounding!</p>
+                        <br /><p>Napoleon Bonaparte<br /><em>Commander, Strategist, and Enthusiast of the Art of War</em></p>',
             ],
         ];
 
@@ -125,10 +129,20 @@ class BlogPostContentSeeder extends Seeder
 
     private function seedMediaManagerItemsTable(): void
     {
-        $mediaManagerItems = [];
+        $mediaManagerItems = [
+            ['container_id' => 1, 'file' => 'napoleon-war-advice.webp', 'mime_type' => 'image/webp'],
+        ];
 
         foreach ($mediaManagerItems as $mediaManagerItem) {
-            DB::table('media_manager_items')->insert($mediaManagerItem);
+            DB::table('media_manager_items')->insert(array_merge($mediaManagerItem,
+                [
+                    'storage_path' => null,
+                    'alt_text' => '',
+                    'focal_point' => json_encode(['x' => 50, 'y' => 50]),
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            ));
         }
     }
 }
