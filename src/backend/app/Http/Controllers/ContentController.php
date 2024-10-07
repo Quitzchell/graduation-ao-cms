@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use AO\Component\Models\Interfaces\Publishable;
-use App\Actions\Templates\RenderBlogDetail;
+use App\Actions\Objects\RenderBlog;
 use App\Actions\Templates\RenderBlogTemplate;
 use App\Actions\Templates\RenderHomeTemplate;
-use App\Actions\Templates\RenderPersonTemplate;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\Factory as ViewFactory;
@@ -24,11 +23,11 @@ class ContentController extends \ContentController
 
         $page = $this->resolvePage($uri, $segments);
 
-        if ($page instanceof Publishable && !$this->checkPublished($page)) {
+        if ($page instanceof Publishable && ! $this->checkPublished($page)) {
             abort(404);
         }
 
-        if (!$page) {
+        if (! $page) {
             $page = $this->missingPage($uri);
             if ($page instanceof RedirectResponse) {
                 return $page;
@@ -57,13 +56,12 @@ class ContentController extends \ContentController
     }
 
     public function templateBlog(
-        Page               $page,
+        Page $page,
         RenderBlogTemplate $overviewRenderer,
-        RenderBlogDetail   $detailRenderer,
-        ?string            $uuid = null
-    ): JsonResponse
-    {
-        return !empty($uuid)
+        RenderBlog $detailRenderer,
+        ?string $uuid = null
+    ): JsonResponse {
+        return ! empty($uuid)
             ? $detailRenderer->execute($uuid)
             : $overviewRenderer->execute($page);
     }

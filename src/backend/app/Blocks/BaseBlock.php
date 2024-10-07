@@ -10,7 +10,7 @@ abstract class BaseBlock implements Block
 {
     public function toArray(): array
     {
-        return (array)$this;
+        return (array) $this;
     }
 
     public function jsonSerialize(): mixed

@@ -1,9 +1,10 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace App\Models;
 
+use Eloquent;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -14,12 +15,8 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
-use Eloquent;
 
-class FrontendUser extends Eloquent implements
-    AuthenticatableContract,
-    AuthorizableContract,
-    CanResetPasswordContract
+class FrontendUser extends Eloquent implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
     use Authenticatable;
     use Authorizable;
@@ -42,15 +39,13 @@ class FrontendUser extends Eloquent implements
     }
 
     protected $fillable = [
-        "username",
-        "email",
-        "password"
+        'username',
+        'email',
+        'password',
     ];
 
     /* Relations */
 
-
     /* Attributes */
-
 
 }

@@ -6,6 +6,6 @@ class DashboardController extends Controller
 {
     public function getIndex(): \Illuminate\Http\RedirectResponse
     {
-        return redirect(config('component-skins.prefix') . 'content');
+        return redirect(config('component-skins.prefix').'content');
     }
 }

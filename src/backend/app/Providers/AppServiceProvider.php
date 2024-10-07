@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use AO\Module\Routers\ModuleRouter;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 
@@ -34,8 +33,6 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Sets specific PHP ini parameters based on ENV values
-     *
-     * @return void
      */
     private function updatePHPIniFromConfig(): void
     {

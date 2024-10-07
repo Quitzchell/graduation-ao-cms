@@ -5,9 +5,9 @@ return [
 
         'filesystem' => [
 
-            'source' => env('MEDIA_MANAGER_SOURCE_DISK', env("FILESYSTEM_DISK")),
+            'source' => env('MEDIA_MANAGER_SOURCE_DISK', env('FILESYSTEM_DISK')),
 
-            'cache' => env('MEDIA_MANAGER_CACHE_DISK', env("FILESYSTEM_DISK")),
+            'cache' => env('MEDIA_MANAGER_CACHE_DISK', env('FILESYSTEM_DISK')),
 
         ],
 

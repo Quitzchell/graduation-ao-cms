@@ -14,9 +14,7 @@ class BlogPostDTO
         public string $categoryName,
         public int $categoryId,
         public string $publishedAt,
-    )
-    {
-    }
+    ) {}
 
     public static function make(BlogPost $blogPost)
     {

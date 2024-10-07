@@ -18,6 +18,7 @@ final readonly class ResolveBlocks
 
     /**
      * @return array<int, BlockData>
+     *
      * @throws BindingResolutionException
      */
     public function execute(ProvidesContent $providesContent, string $blockName): array

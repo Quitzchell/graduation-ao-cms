@@ -6,6 +6,6 @@
  */
 
 return [
-     // Matching the memory limit with the limit in the kubernetes config
-//    'memory_limit' => env('PHP_INI_MEMORY_LIMIT', '128M'),
+    // Matching the memory limit with the limit in the kubernetes config
+    //    'memory_limit' => env('PHP_INI_MEMORY_LIMIT', '128M'),
 ];

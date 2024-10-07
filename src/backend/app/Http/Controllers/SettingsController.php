@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use AO\Component\Http\Controllers\Traits\SingleInstanceManager;
-use ObjectManager;
 use App\Models\Settings;
+use ObjectManager;
 
 class SettingsController extends ObjectManager
 {

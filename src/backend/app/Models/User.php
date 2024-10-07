@@ -6,7 +6,6 @@ namespace App\Models;
 
 use AO\Auth\TwoFactorAuthentication\Interfaces\TwoFactorAuthenticatable as TwoFactorAuthenticatableContract;
 use AO\Auth\TwoFactorAuthentication\Models\Traits\TwoFactorAuthenticatable;
-use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -17,11 +16,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends \Eloquent implements
-    AuthenticatableContract,
-    AuthorizableContract,
-    CanResetPasswordContract,
-    TwoFactorAuthenticatableContract
+class User extends \Eloquent implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract, TwoFactorAuthenticatableContract
 {
     use Authenticatable;
     use Authorizable;
@@ -80,26 +75,26 @@ class User extends \Eloquent implements
 
     public static function validatorAddRules()
     {
-        return array(
+        return [
             'username' => 'required|unique:users',
             'password' => 'required|min:8',
             'fullname' => 'required',
-            'email' => 'required|email|unique:users'
-        );
+            'email' => 'required|email|unique:users',
+        ];
     }
 
     public function validatorEditRules()
     {
-        return array(
+        return [
             'username' => 'required',
             'fullname' => 'required',
-            'email' => "required|email|unique:$this->table,email,$this->id"
-        );
+            'email' => "required|email|unique:$this->table,email,$this->id",
+        ];
     }
 
     public static function validatorMessages()
     {
-        return array(
+        return [
             'username.required' => 'U dient een gebruikersnaam in te voeren.',
             'username.unique' => 'Deze gebruikersnaam is al in gebruik.',
             'password.required' => 'U dient een wachtwoord in te voeren.',
@@ -108,7 +103,6 @@ class User extends \Eloquent implements
             'email.required' => 'U dient uw e-mail adres in te voeren.',
             'email.email' => 'U dient een e-mail adres in te voeren.',
             'email.unique' => 'Dit e-mail adres is al in gebruik op een account.',
-        );
+        ];
     }
-
 }

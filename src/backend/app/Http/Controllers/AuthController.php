@@ -26,7 +26,7 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
         } catch (\Exception $e) {
-            return response()->json(["error" => $e->getMessage()]);
+            return response()->json(['error' => $e->getMessage()]);
         }
 
         return response()->json(['message' => 'User registered successfully!']);
@@ -41,7 +41,7 @@ class AuthController extends Controller
 
         $user = FrontendUser::where('username', $request->username)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'username' => ['The provided credentials are incorrect.'],
             ]);
@@ -68,7 +68,7 @@ class AuthController extends Controller
         );
 
         if ($status === Password::RESET_LINK_SENT) {
-            return response()->json(['message' => "Password reset link sent to " . request('email')]);
+            return response()->json(['message' => 'Password reset link sent to '.request('email')]);
         } else {
             return response()->json(['error' => 'Unable to send reset link. Please try again later.'], 500);
         }
@@ -77,6 +77,7 @@ class AuthController extends Controller
     public function logout(Request $request): JsonResponse
     {
         $request->user()->tokens()->delete();
+
         return response()->json(['message' => 'Logged out']);
     }
 }
