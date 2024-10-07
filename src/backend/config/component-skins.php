@@ -6,6 +6,7 @@ $menu = (new MenuConfigBuilder)->build([
     'mediamanager',
     'separator',
     app_path('Models/xml/BlogPost.xml'),
+    app_path('Models/xml/Category.xml'),
     'separator',
     app_path('Models/xml/User.xml'),
     app_path('Models/xml/FrontendUser.xml'),
