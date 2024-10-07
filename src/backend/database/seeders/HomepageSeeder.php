@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -66,71 +65,71 @@ class HomepageSeeder extends Seeder
                 'parent_id' => null,
                 'tag' => 'header_image',
                 'language' => null,
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => null,
                 'tag' => 'header_title',
                 'language' => 'nl',
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 1,
                 'parent_id' => null,
                 'tag' => 'about',
                 'language' => null,
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => 3,
                 'tag' => 'title',
                 'language' => 'nl',
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => 3,
                 'tag' => 'text',
                 'language' => 'nl',
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => null,
                 'tag' => '_widgets',
                 'language' => null,
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => 6,
                 'tag' => 'seo',
                 'language' => null,
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => 7,
                 'tag' => 'title',
                 'language' => 'nl',
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => 7,
                 'tag' => 'keywords',
                 'language' => 'nl',
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => 7,
                 'tag' => 'description',
                 'language' => 'nl',
-                'group' => null
-            ]
+                'group' => null,
+            ],
         ];
 
         foreach ($cmsContent as $content) {
@@ -143,35 +142,35 @@ class HomepageSeeder extends Seeder
         $cmsStrings = [
             [
                 'content_id' => 1,
-                'value' => '1'
+                'value' => '1',
             ],
             [
                 'content_id' => 2,
-                'value' => 'La gloire est éphémère, mais l\'oubli est éternel.'
+                'value' => 'La gloire est éphémère, mais l\'oubli est éternel.',
             ],
             [
                 'content_id' => 3,
-                'value' => 'home/about'
+                'value' => 'home/about',
             ],
             [
                 'content_id' => 4,
-                'value' => 'Bonjour à tous,'
+                'value' => 'Bonjour à tous,',
             ],
             [
                 'content_id' => 6,
-                'value' => ''
+                'value' => '',
             ],
             [
                 'content_id' => 7,
-                'value' => 'widgets/seo'
+                'value' => 'widgets/seo',
             ],
             [
                 'content_id' => 8,
-                'value' => ''
+                'value' => '',
             ],
             [
                 'content_id' => 9,
-                'value' => ''
+                'value' => '',
             ],
         ];
 
@@ -188,12 +187,12 @@ class HomepageSeeder extends Seeder
                 'value' => '<p>I am Napoleon Bonaparte, exiled here on the remote island of Saint Helena. Once, I commanded vast armies, reshaped nations, and navigated the turbulent waters of European politics. Today, however, I find myself in the serene isolation of this distant land, where the ocean whispers tales of glory and defeat.</p>
                         <p>As I pen my thoughts for you, dear readers, I invite you into my world&mdash;a realm of ambition, strategy, and, yes, introspection. Here, I shall share my reflections on leadership, the nature of power, and the lessons learned from both triumphs and trials.</p>
                         <p>Join me as I explore the intricate tapestry of history, the weight of legacy, and the fleeting nature of fame. Whether you seek inspiration, knowledge, or simply the musings of a man who once stood at the pinnacle of power, I welcome you to my journey.</p>
-                        <p>&Agrave; bient&ocirc;t,<br />Napoleon</p>'
+                        <p>&Agrave; bient&ocirc;t,<br />Napoleon</p>',
             ],
             [
                 'content_id' => 10,
-                'value' => ''
-            ]
+                'value' => '',
+            ],
         ];
         foreach ($cmsTexts as $cmsText) {
             DB::table('cms_content_text')->insert($cmsText);
@@ -208,11 +207,11 @@ class HomepageSeeder extends Seeder
                 'file' => 'napoleon-on-horseback.jpg',
                 'mime_type' => 'image/jpeg',
                 'storage_path' => null,
-                'alt_text' => "",
-                'focal_point' => json_encode(["x" => 50, "y" => 50]),
+                'alt_text' => '',
+                'focal_point' => json_encode(['x' => 50, 'y' => 50]),
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
         ];
 
         foreach ($mediaManagerItems as $mediaManagerItem) {

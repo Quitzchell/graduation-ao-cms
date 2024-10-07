@@ -2,14 +2,14 @@
 
 return [
 
-    "boolean" => [
-        0 => "No",
-        1 => "Yes"
+    'boolean' => [
+        0 => 'No',
+        1 => 'Yes',
     ],
 
-    "gender" => [
-        "M" => "Male",
-        "F" => "Female",
-        "X" => "Non-binary"
-    ]
+    'gender' => [
+        'M' => 'Male',
+        'F' => 'Female',
+        'X' => 'Non-binary',
+    ],
 ];

@@ -1,12 +1,12 @@
 <?php
 
-if (!function_exists('manifest')) {
+if (! function_exists('manifest')) {
     /**
      * Pull hashed name from manifest.
      */
     function manifest(string $file_path, $dir = 'dist'): string
     {
-        if (!file_exists($manifest_path = public_path($dir . '/manifest.json'))) {
+        if (! file_exists($manifest_path = public_path($dir.'/manifest.json'))) {
             return $file_path;
         }
 
@@ -21,13 +21,13 @@ if (!function_exists('manifest')) {
             $path = implode('/', $file);
         }
 
-        return $path . '/' . $manifest[$filename];
+        return $path.'/'.$manifest[$filename];
     }
 }
 
-if (!function_exists('nullIfEmpty')) {
+if (! function_exists('nullIfEmpty')) {
     function nullIfEmpty(mixed $val, mixed $ret = null): mixed
     {
-        return !empty($val) ? ($ret ?? $val) : null;
+        return ! empty($val) ? ($ret ?? $val) : null;
     }
 }

@@ -26,7 +26,7 @@ class ManagedContentSeeder extends Seeder
             [
                 'name' => 'Hidden',
                 'order' => 3,
-            ]
+            ],
         ];
 
         foreach ($defaultMenus as $menu) {

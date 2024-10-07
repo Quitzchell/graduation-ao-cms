@@ -12,7 +12,7 @@ class Category extends Eloquent
     protected $table = 'blog_categories';
 
     protected $fillable = [
-        'name'
+        'name',
     ];
 
     /* Relations */

@@ -7,6 +7,7 @@ use App\Blocks\BaseBlock;
 class About extends BaseBlock
 {
     public string $title;
+
     public string $text;
 
     public function __construct(\CmsContent $block)

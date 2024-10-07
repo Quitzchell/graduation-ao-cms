@@ -1,7 +1,6 @@
 <?php
 
 use App\Actions\Navigation\RenderNavigation;
-use App\Actions\Person\FetchPersonAction;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 

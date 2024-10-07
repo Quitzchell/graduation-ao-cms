@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -66,50 +65,50 @@ class BlogPageSeeder extends Seeder
                 'parent_id' => null,
                 'tag' => 'header_image',
                 'language' => null,
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => null,
                 'tag' => 'header_title',
                 'language' => 'nl',
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => null,
                 'tag' => '_widgets',
                 'language' => null,
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => 13,
                 'tag' => 'seo',
                 'language' => null,
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => 14,
                 'tag' => 'title',
                 'language' => 'nl',
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => 14,
                 'tag' => 'keywords',
                 'language' => 'nl',
-                'group' => null
+                'group' => null,
             ],
             [
                 'order' => 0,
                 'parent_id' => 14,
                 'tag' => 'description',
                 'language' => 'nl',
-                'group' => null
-            ]
+                'group' => null,
+            ],
         ];
 
         foreach ($cmsContent as $content) {
@@ -122,27 +121,27 @@ class BlogPageSeeder extends Seeder
         $cmsStrings = [
             [
                 'content_id' => 11,
-                'value' => '2'
+                'value' => '2',
             ],
             [
                 'content_id' => 12,
-                'value' => 'Blogposts'
+                'value' => 'Blogposts',
             ],
             [
                 'content_id' => 13,
-                'value' => ''
+                'value' => '',
             ],
             [
                 'content_id' => 14,
-                'value' => 'widgets/seo'
+                'value' => 'widgets/seo',
             ],
             [
                 'content_id' => 15,
-                'value' => ''
+                'value' => '',
             ],
             [
                 'content_id' => 16,
-                'value' => ''
+                'value' => '',
             ],
         ];
 
@@ -156,12 +155,12 @@ class BlogPageSeeder extends Seeder
         $cmsTexts = [
             [
                 'content_id' => 10,
-                'value' => ''
+                'value' => '',
             ],
             [
                 'content_id' => 17,
-                'value' => ''
-            ]
+                'value' => '',
+            ],
         ];
         foreach ($cmsTexts as $cmsText) {
             DB::table('cms_content_text')->insert($cmsText);
@@ -176,11 +175,11 @@ class BlogPageSeeder extends Seeder
                 'file' => 'napoleon-reading.jpg',
                 'mime_type' => 'image/jpeg',
                 'storage_path' => null,
-                'alt_text' => "",
-                'focal_point' => json_encode(["x" => 50, "y" => 50]),
+                'alt_text' => '',
+                'focal_point' => json_encode(['x' => 50, 'y' => 50]),
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
+            ],
         ];
 
         foreach ($mediaManagerItems as $mediaManagerItem) {

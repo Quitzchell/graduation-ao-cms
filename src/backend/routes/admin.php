@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-if (!function_exists('createRoutesForMenuItem')) {
+if (! function_exists('createRoutesForMenuItem')) {
     function createRoutesForMenuItem(array $menuItem)
     {
         if (isset($menuItem['skip_route_generation']) && $menuItem['skip_route_generation']) {
@@ -34,50 +34,50 @@ if (!function_exists('createRoutesForMenuItem')) {
     }
 }
 
-if (!function_exists('contentManagerRoutes')) {
+if (! function_exists('contentManagerRoutes')) {
     function contentManagerRoutes(array $menuItem)
     {
         /* ContentManager routes */
         Route::group(['prefix' => $menuItem['href']], function () use ($menuItem) {
             $controller = $menuItem['controller'] ?? studly_case($menuItem['href']).'Controller';
             $controller = 'App\\Http\\Controllers\\'.$controller;
-            Route::post("/update", [$controller, 'postUpdate']);
-            Route::get("/lock", [$controller, 'getLock']);
-            Route::get("/copy", [$controller, 'getCopy']);
-            Route::get("/edit-child/{id}/{child}", [$controller, 'getEditChild']);
-            Route::post("/edit-child/{id}/{child}", [$controller, 'postEditChild']);
-            Route::post("/edit-child/{id}/{child}/edit", [$controller, 'postEditChild']);
+            Route::post('/update', [$controller, 'postUpdate']);
+            Route::get('/lock', [$controller, 'getLock']);
+            Route::get('/copy', [$controller, 'getCopy']);
+            Route::get('/edit-child/{id}/{child}', [$controller, 'getEditChild']);
+            Route::post('/edit-child/{id}/{child}', [$controller, 'postEditChild']);
+            Route::post('/edit-child/{id}/{child}/edit', [$controller, 'postEditChild']);
         });
     }
 }
 
-if (!function_exists('ObjectManagerRoutes')) {
+if (! function_exists('ObjectManagerRoutes')) {
     function ObjectManagerRoutes(array $menuItem)
     {
         Route::group(['prefix' => $menuItem['href']], function () use ($menuItem) {
             $controller = $menuItem['controller'] ?? studly_case($menuItem['href']).'Controller';
             $controller = 'App\\Http\\Controllers\\'.$controller;
             /* ObjectManager routes */
-            Route::get("", [$controller, 'getIndex']);
-            Route::get("/overview", [$controller, 'getOverview']);
-            Route::get("/sortable-overview", [$controller, 'SortableOver']);
-            Route::get("/view/{id}", [$controller, 'getView']);
-            Route::get("/add", [$controller, 'getAdd']);
-            Route::post("/add", [$controller, 'postAdd']);
-            Route::get("/edit/{id}", [$controller, 'getEdit']);
-            Route::post("/edit/{id}/{view?}", [$controller, 'postEdit']);
-            Route::get("/lock/{id}", [$controller, 'getLock']);
-            Route::get("/delete/{id}", [$controller, 'getDelete']);
-            Route::post("/delete", [$controller, 'postDelete']);
-            Route::get("/new-relation/{id}/{call}", [$controller, 'getNewRelation']);
-            Route::post("/new-relation/{id}/{call}", [$controller, 'postNewRelation']);
-            Route::get("/toggle-relation/{id}/{call}", [$controller, 'getToggleRelation']);
-            Route::get("/edit-relations/{id}/{call}", [$controller, 'getEditRelations']);
-            Route::get("/edit-relations-items/{modelId}/{call}", [$controller, 'getEditRelationsItems']);
-            Route::post("/order", [$controller, 'postOrder']);
-            Route::post("/toggle-property/{id}/{property}", [$controller, 'postToggleProperty']);
-            Route::get("/overview-items", [$controller, 'getOverviewItems']);
-            Route::get("/export-excel/{list?}", [$controller, 'getExportExcel']);
+            Route::get('', [$controller, 'getIndex']);
+            Route::get('/overview', [$controller, 'getOverview']);
+            Route::get('/sortable-overview', [$controller, 'SortableOver']);
+            Route::get('/view/{id}', [$controller, 'getView']);
+            Route::get('/add', [$controller, 'getAdd']);
+            Route::post('/add', [$controller, 'postAdd']);
+            Route::get('/edit/{id}', [$controller, 'getEdit']);
+            Route::post('/edit/{id}/{view?}', [$controller, 'postEdit']);
+            Route::get('/lock/{id}', [$controller, 'getLock']);
+            Route::get('/delete/{id}', [$controller, 'getDelete']);
+            Route::post('/delete', [$controller, 'postDelete']);
+            Route::get('/new-relation/{id}/{call}', [$controller, 'getNewRelation']);
+            Route::post('/new-relation/{id}/{call}', [$controller, 'postNewRelation']);
+            Route::get('/toggle-relation/{id}/{call}', [$controller, 'getToggleRelation']);
+            Route::get('/edit-relations/{id}/{call}', [$controller, 'getEditRelations']);
+            Route::get('/edit-relations-items/{modelId}/{call}', [$controller, 'getEditRelationsItems']);
+            Route::post('/order', [$controller, 'postOrder']);
+            Route::post('/toggle-property/{id}/{property}', [$controller, 'postToggleProperty']);
+            Route::get('/overview-items', [$controller, 'getOverviewItems']);
+            Route::get('/export-excel/{list?}', [$controller, 'getExportExcel']);
         });
     }
 }
@@ -85,7 +85,7 @@ if (!function_exists('ObjectManagerRoutes')) {
 Route::group(['middleware' => 'auth'], function () {
     // Admin menu items
     foreach (config('component-skins.menu') as $menuItem) {
-        if (array_key_exists('href', $menuItem) && !array_key_exists('sub_menus', $menuItem)) {
+        if (array_key_exists('href', $menuItem) && ! array_key_exists('sub_menus', $menuItem)) {
             createRoutesForMenuItem($menuItem);
         } elseif (array_key_exists('sub_menus', $menuItem)) {
             foreach ($menuItem['sub_menus'] as $submenuItem) {

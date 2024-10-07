@@ -14,7 +14,7 @@ class RemindersController extends Controller
     {
         $response = $broker->sendResetLink(request()->only('email'), function (Message $message) {
             $message->from("noreply@{$_SERVER['SERVER_NAME']}");
-            $message->subject("Password Reset");
+            $message->subject('Password Reset');
         });
 
         switch ($response) {
