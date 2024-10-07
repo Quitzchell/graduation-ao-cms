@@ -7,10 +7,10 @@ namespace App\Models;
 use AO\Component\Models\Interfaces\ProvidesContent;
 use AO\Component\Models\Traits\HasContent;
 use AO\Component\Models\Traits\HasOverviewWithDetail;
+use AO\Laravel\Eloquent;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
-use AO\Laravel\Eloquent;
 
 class BlogPost extends Eloquent implements ProvidesContent
 {

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Actions\Templates;
 
+use AO\Component\Models\Page;
 use App\Actions\Abstracts\TemplateRenderer;
 use Illuminate\Http\JsonResponse;
-use Page;
 
 final class RenderHomeTemplate extends TemplateRenderer
 {

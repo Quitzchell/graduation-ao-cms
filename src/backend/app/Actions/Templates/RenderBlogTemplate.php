@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Templates;
 
+use AO\Component\Models\Page;
 use App\Actions\Abstracts\TemplateRenderer;
 use App\Models\BlogPost;
 use App\Models\DTO\BlogPostDTO;
@@ -16,7 +17,7 @@ final class RenderBlogTemplate extends TemplateRenderer
         //
     }
 
-    public function execute(\Page $page): JsonResponse
+    public function execute(Page $page): JsonResponse
     {
         $headerItems = [
             'headerImage' => $page->mediaItemUrl('header_image', 1280, 600),
