@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function ImageContent({image}) {
     return (
-        <div className={'container py-3'}>
+        <div className='w-fit mx-auto py-3 px-8'>
             <Image
                 src={image}
                 alt={"image"}

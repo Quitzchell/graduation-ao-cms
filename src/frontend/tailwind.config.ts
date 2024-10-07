@@ -19,21 +19,20 @@ const config: Config = {
     ],
     theme: {
         screens: {
-            sm: '640px',
-            md: '768px',
-            lg: '1024px',
-            xl: '1280px',
-            '2xl': '1536px'
+            sm: "640px",
+            md: "768px",
+            lg: "1280px",
+            xl: "1536px",
         },
         container: {
             center: true,
             padding: {
-                DEFAULT: '1rem',
-                sm: '1rem',
-                md: '1.5rem',
-                lg: '6.75rem',
-                xl: '8rem'
-            }
+                DEFAULT: "1.25rem",
+                sm: "3.50rem",
+                md: "4rem",
+                lg: "6.75rem",
+                xl: "15rem",
+            },
         },
         colors: {
             transparent: 'transparent',
