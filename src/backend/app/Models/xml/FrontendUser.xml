@@ -8,7 +8,7 @@
     <fields>
         <field name="username" title="Gebruikersnaam" type="text" maxlength="255" />
         <field name="password" title="Wachtwoord" type="password" maxlength="120" />
-        <field name="email" title="E-mailadres" type="text" maxlength="255" />
+        <field name="email" title="Email" type="text" maxlength="255" />
     </fields>
 
     <lists>
