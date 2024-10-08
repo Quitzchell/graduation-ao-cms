@@ -18,16 +18,15 @@ class DatabaseSeeder extends Seeder
             ManagedContentSeeder::class,
             SettingsSeeder::class,
             UsersSeeder::class,
-            CategorySeeder::class,
-            HomePageSeeder::class,
-            BlogPageSeeder::class,
-            BlogPostSeeder::class,
-            BlogPostContentSeeder::class,
         ];
 
         if (app()->environment() === 'local') {
             $seeders = array_merge($seeders, [
-
+                CategorySeeder::class,
+                HomePageSeeder::class,
+                BlogPageSeeder::class,
+                BlogPostSeeder::class,
+                BlogPostContentSeeder::class,
             ]);
         }
 
