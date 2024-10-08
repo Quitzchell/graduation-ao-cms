@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('excerpt')->nullable();
             $table->string('image')->nullable();
-            $table->foreignIdFor(Category::class);
+            $table->foreignIdFor(Category::class)->constrained('blog_categories');
             $table->date('published_at');
             $table->boolean('published')->default(true);
             $table->timestamps();
