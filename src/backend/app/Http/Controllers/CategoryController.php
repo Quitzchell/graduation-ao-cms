@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use ObjectManager;
 use App\Models\Category;
+use ObjectManager;
 
 class CategoryController extends ObjectManager
 {
