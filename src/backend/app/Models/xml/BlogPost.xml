@@ -47,10 +47,18 @@
             <field name="title"/>
             <field name="excerpt"/>
             <field name="category_name"/>
+            <field name="published_at"/>
+            <field name="published"/>
         </list>
         <list name="overview">
             <field name="title"/>
             <field name="category_name"/>
+        </list>
+        <list name="category_relation">
+            <field name="title"/>
+            <field name="category_name"/>
+            <field name="published_at"/>
+            <field name="published"/>
         </list>
     </lists>
 </model>
