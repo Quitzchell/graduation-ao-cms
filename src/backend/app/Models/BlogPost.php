@@ -37,7 +37,10 @@ class BlogPost extends Eloquent implements ProvidesContent
     protected $fillable = [
         'title',
         'excerpt',
+        'image',
         'category_id',
+        'published_at',
+        'published',
     ];
 
     /* Relations */
