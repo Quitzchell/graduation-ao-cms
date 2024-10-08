@@ -14,4 +14,8 @@
             <field name="name"/>
         </list>
     </lists>
+
+    <relations>
+        <relation call="blogPosts" title="Blog posts" button="none" list="category_relation"/>
+    </relations>
 </model>
