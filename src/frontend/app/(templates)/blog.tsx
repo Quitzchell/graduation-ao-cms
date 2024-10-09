@@ -1,6 +1,6 @@
 import Blocks from "@/blocks/Blocks";
 import BlogPostCard from "@/blocks/blog/BlogPostCard";
-import Header from "@/blocks/blog/Header";
+import Header from "@/blocks/common/Header";
 
 
 export default function Blog({headerItems, blogPostItems, blocks}) {
