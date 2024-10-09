@@ -1,5 +1,5 @@
 <template name="Blog page">
     <field type="media-item" name="header_image" title="Header: Image"/>
     <field type="text" name="header_title" title="Header: Title"/>
-    <field type="blocks" name="blocks" title="Content blokken" blocks="" exclude_blocks="home/*"/>
+    <field type="blocks" name="blocks" title="Content blokken" blocks="common/*" exclude_blocks="home/*"/>
 </template>

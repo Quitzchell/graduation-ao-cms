@@ -1,0 +1,5 @@
+<template name="Shop page">
+    <field type="media-item" name="header_image" title="Header: Image"/>
+    <field type="text" name="header_title" title="Header: Title"/>'
+    <field type="blocks" name="blocks" title="Content blokken" blocks="common/*, review/*" exclude_blocks="home/*"/>
+</template>
