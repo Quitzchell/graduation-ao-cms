@@ -7,7 +7,7 @@ use App\Actions\Templates\ResolveBlocks;
 use App\Models\BlogPost;
 use Illuminate\Http\JsonResponse;
 
-class RenderBlogPost extends DetailRenderer
+final class RenderBlogPost extends DetailRenderer
 {
     public function __construct(
         private readonly ResolveBlocks $resolver,

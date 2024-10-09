@@ -10,7 +10,7 @@ uses(RefreshDatabase::class);
 uses(WithoutMiddleware::class);
 
 beforeEach(function () {
-   $this->seed(CategorySeeder::class);
+    $this->seed(CategorySeeder::class);
 });
 
 it('can create a blog post', function () {
@@ -38,7 +38,6 @@ it('can create a blog post', function () {
         'published' => 1,
     ]);
 });
-
 
 // Test case for editing a blog post
 it('can edit a blog post', function () {
@@ -78,4 +77,3 @@ it('can edit a blog post', function () {
         'published' => 0,
     ]);
 });
-
