@@ -6,18 +6,13 @@ use Illuminate\Contracts\Validation\ImplicitRule;
 
 class EmptyIf implements ImplicitRule
 {
-    /** @var string $field */
-    private $field;
+    private string $field;
 
-    /** @var string $message */
-    private $message;
+    private string $message;
 
     /**
      * Create a new rule instance.
-     *
-     * @param string $field
-     * @param string $message
-     * @return void
+
      */
     public function __construct(string $field, string $message)
     {
@@ -27,10 +22,6 @@ class EmptyIf implements ImplicitRule
 
     /**
      * Determine if the validation rule passes.
-     *
-     * @param string $attribute
-     * @param mixed $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
@@ -41,8 +32,6 @@ class EmptyIf implements ImplicitRule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {
