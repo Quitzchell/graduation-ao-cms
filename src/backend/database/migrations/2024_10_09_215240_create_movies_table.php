@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(Director::class)->constrained();
             $table->year('release_year');
             $table->text('description')->nullable();
+            $table->text('trailer_url')->nullable();
             $table->foreignIdFor(Review::class)->nullable()->constrained();
             $table->timestamps();
         });
