@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
                 ReviewSeeder::class,
                 MovieSeeder::class,
                 BookSeeder::class,
+                ReviewContentSeeder::class,
             ]);
         }
 
