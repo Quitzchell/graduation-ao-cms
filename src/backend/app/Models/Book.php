@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use Eloquent;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 class Book extends Eloquent
@@ -38,5 +40,19 @@ class Book extends Eloquent
     public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class);
+    }
+
+    public function authorName(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this?->author->full_name
+        );
+    }
+
+    public function publishedYearFormatted(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => Carbon::parse($this->published_year)->format('Y')
+        );
     }
 }

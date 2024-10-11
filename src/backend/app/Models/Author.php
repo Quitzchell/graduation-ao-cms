@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Eloquent;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Author extends Eloquent
@@ -28,8 +30,17 @@ class Author extends Eloquent
         'birthdate',
     ];
 
-    public function books(): BelongsToMany
+    public function books(): HasMany
     {
-        return $this->belongsToMany(Book::class);
+        return $this->hasMany(Book::class);
+    }
+
+    /* Attributes */
+
+    public function fullName(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => implode(' ', [$this->name, $this->middle_name, $this->surname])
+        );
     }
 }

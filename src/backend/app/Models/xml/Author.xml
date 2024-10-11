@@ -13,7 +13,7 @@
         <field type="date" name="date_of_birth" title="Date of Birth" empty="true"/>
 
         <!-- Relation fields -->
-        <field type="tags" name="books" title="Books written" relation_on="Books" relation_name="title"/>
+        <field type="tags" name="books" title="Books written" relation_on="Book" relation_name="title"/>
         <field type="dynamic" name="book_names" title="Books written"/>
         <field type="dynamic" name="full_name" title="Name"/>
     </fields>
