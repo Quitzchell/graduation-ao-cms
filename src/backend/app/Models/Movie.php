@@ -20,6 +20,12 @@ class Movie extends Eloquent
                 $model->uuid = Str::uuid()->toString();
             }
         });
+
+        static::saving(function ($model) {
+            if ($model->release_year) {
+                $model->release_year = Carbon::parse($model->release_year)->format('Y');
+            }
+        });
     }
 
     protected $table = 'movies';
@@ -53,14 +59,14 @@ class Movie extends Eloquent
     public function directorName(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->director?->full_name,
+            get: fn() => $this->director?->full_name,
         );
     }
 
     public function actorNames(): Attribute
     {
         return Attribute::make(
-            get: fn () => implode(', ', $this->actors->map(fn ($actor) => $actor->full_name)->toArray()),
+            get: fn() => implode(', ', $this->actors->map(fn($actor) => $actor->full_name)->toArray()),
         );
     }
 
@@ -68,7 +74,35 @@ class Movie extends Eloquent
     public function releaseYearFormatted(): Attribute
     {
         return Attribute::make(
-            get: fn () => Carbon::parse($this->release_year)->format('Y')
+            get: fn() => Carbon::parse($this->release_year)->format('Y')
         );
+    }
+
+    /* Validation */
+    public static function validatorAddRules(): array
+    {
+        return [
+            'title' => 'required',
+            'director_id' => 'required',
+            'actors' => 'nullable',
+            'description' => 'required',
+            'release_year' => 'required',
+        ];
+    }
+
+    public function validatorEditRules(): array
+    {
+        return static::validatorAddRules();
+    }
+
+    protected static function validatorMessages(): array
+    {
+        return [
+            'title.required' => 'The title field is required.',
+            'director_id.required' => 'The director field is required.',
+            'actors.nullable' => 'The actors field is optional.',
+            'description.required' => 'The description field is required.',
+            'release_year.required' => 'The release year field is required.',
+        ];
     }
 }
