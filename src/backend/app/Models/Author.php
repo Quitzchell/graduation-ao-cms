@@ -6,7 +6,7 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
-class Writer extends Eloquent
+class Author extends Eloquent
 {
     protected static function boot(): void
     {
@@ -19,7 +19,7 @@ class Writer extends Eloquent
         });
     }
 
-    protected $table = 'writers';
+    protected $table = 'authors';
 
     protected $fillable = [
         'name',

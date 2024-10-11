@@ -1,8 +1,8 @@
 <model>
     <configuration>
-        <title>Actors</title>
-        <titleOne>Actor</titleOne>
-        <icon>fa fa-star</icon>
+        <title>Directors</title>
+        <titleOne>Director</titleOne>
+        <icon>fa fa-bullhorn</icon>
     </configuration>
 
     <fields>
@@ -14,7 +14,7 @@
 
         <!-- Relation fields -->
         <field type="tags" name="movies" title="Movies Starred In" relation_on="Movie" relation_name="title"/>
-        <field type="dynamic" name="movie_names" title="Movies starred in"/>
+        <field type="dynamic" name="movie_names" title="Movies directed"/>
         <field type="dynamic" name="full_name" title="Name"/>
     </fields>
 
