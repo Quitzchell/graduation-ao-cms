@@ -27,7 +27,9 @@ class DatabaseSeeder extends Seeder
                 BlogPageSeeder::class,
                 BlogPostSeeder::class,
                 BlogPostContentSeeder::class,
+                ReviewSeeder::class,
                 MovieSeeder::class,
+                BookSeeder::class,
             ]);
         }
 
