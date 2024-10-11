@@ -41,7 +41,7 @@ class Director extends Eloquent
     public function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn() => implode(' ', [$this->name, $this->middle_name, $this->surname])
+            get: fn () => implode(' ', [$this->name, $this->middle_name, $this->surname])
         );
     }
 

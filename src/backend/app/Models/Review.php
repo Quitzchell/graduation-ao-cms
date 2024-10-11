@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Rules\EmptyIf;
 use Eloquent;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
@@ -47,12 +45,12 @@ class Review extends Eloquent
             'excerpt' => 'required',
             'books' => [
                 'nullable',
-//                'required_without:movies',
+                //                'required_without:movies',
                 'prohibited_if:movies,!=,null',
             ],
             'movies' => [
                 'nullable',
-//                'required_without:books',
+                //                'required_without:books',
                 'prohibited_if:books,!=,null',
             ],
         ];
@@ -79,5 +77,4 @@ class Review extends Eloquent
             'movies.prohibited_if' => 'The movies field must be empty if books are provided.',
         ];
     }
-
 }

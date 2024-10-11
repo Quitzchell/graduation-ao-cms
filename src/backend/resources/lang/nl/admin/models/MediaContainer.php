@@ -2,11 +2,11 @@
 
 return [
     'configuration' => [
-        'title' => 'Media Containers',
+        'title'    => 'Media Containers',
         'titleOne' => 'Media Container',
     ],
     'fields' => [
-        'name' => 'Naam',
-        'parent_id' => 'Container',
+        'name'          => 'Naam',
+        'parent_id'     => 'Container',
     ],
 ];
