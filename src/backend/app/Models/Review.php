@@ -49,18 +49,19 @@ class Review extends Eloquent
     public function subject(): Attribute
     {
         return Attribute::make(
-            get: fn() => array_first(array_filter([$this->movies->first()->title, $this->books?->first()?->title]))
+            get: fn () => array_first(array_filter([$this->movies->first()->title, $this->books?->first()?->title]))
         );
     }
 
     public function subjectType(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->movies->count() > 0 ? 'Movie' : 'Book'
+            get: fn () => $this->movies->count() > 0 ? 'Movie' : 'Book'
         );
     }
 
     /* Validation */
+
     public static function validatorAddRules(): array
     {
         return [

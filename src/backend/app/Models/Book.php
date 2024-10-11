@@ -55,18 +55,19 @@ class Book extends Eloquent
     public function authorName(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this?->author->full_name
+            get: fn () => $this?->author->full_name
         );
     }
 
     public function publishedYearFormatted(): Attribute
     {
         return Attribute::make(
-            get: fn() => Carbon::parse($this->published_year)->format('Y')
+            get: fn () => Carbon::parse($this->published_year)->format('Y')
         );
     }
 
     /* Validation */
+
     public static function validatorAddRules(): array
     {
         return [

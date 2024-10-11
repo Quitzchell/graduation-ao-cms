@@ -60,14 +60,14 @@ class Movie extends Eloquent
     public function directorName(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->director?->full_name,
+            get: fn () => $this->director?->full_name,
         );
     }
 
     public function actorNames(): Attribute
     {
         return Attribute::make(
-            get: fn() => implode(', ', $this->actors->map(fn($actor) => $actor->full_name)->toArray()),
+            get: fn () => implode(', ', $this->actors->map(fn ($actor) => $actor->full_name)->toArray()),
         );
     }
 
@@ -76,7 +76,7 @@ class Movie extends Eloquent
     public function releaseYearFormatted(): Attribute
     {
         return Attribute::make(
-            get: fn() => Carbon::parse($this->release_year)->format('Y')
+            get: fn () => Carbon::parse($this->release_year)->format('Y')
         );
     }
 
