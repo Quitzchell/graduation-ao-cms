@@ -56,6 +56,7 @@ class Movie extends Eloquent
     }
 
     /* Attributes */
+
     public function directorName(): Attribute
     {
         return Attribute::make(
@@ -71,6 +72,7 @@ class Movie extends Eloquent
     }
 
     /* Attributes */
+
     public function releaseYearFormatted(): Attribute
     {
         return Attribute::make(
@@ -79,6 +81,7 @@ class Movie extends Eloquent
     }
 
     /* Validation */
+
     public static function validatorAddRules(): array
     {
         return [
