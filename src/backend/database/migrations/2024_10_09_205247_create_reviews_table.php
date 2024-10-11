@@ -1,11 +1,12 @@
 <?php
 
+use App\Models\Book;
+use App\Models\Movie;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,7 +15,7 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->morphs('reviewable');
+            $table->text('title')->nullable();
             $table->text('excerpt')->nullable();
             $table->unsignedInteger('score');
             $table->timestamps();

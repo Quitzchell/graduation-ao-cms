@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Review;
+use App\Models\Author;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,9 +14,10 @@ return new class extends Migration
             $table->id();
             $table->uuid();
             $table->string('title');
-            $table->string('author');
+            $table->foreignIdFor(Author::class)->constrained();
             $table->year('published_year');
             $table->text('description')->nullable();
+            $table->foreignIdFor(Review::class)->nullable()->constrained();
             $table->timestamps();
         });
     }
