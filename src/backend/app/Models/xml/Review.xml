@@ -12,16 +12,24 @@
         <field type="number" name="score" title="Score" max="10" min="0"/>
 
         <!-- Review fields -->
+        <field type="dynamic" name="subject" title="Subject"/>
+        <field type="dynamic" name="subject_type" title="Type"/>
         <field type="edit-relation" name="books" title="Book"
                relation_on="App\Models\Book" relation_name="title"
                col="6" max="1"/>
         <field type="edit-relation" name="movies" title="Movie"
                relation_on="Movie" relation_name="title"
                col="6" max="1"/>
+
+        <!-- Block fields -->
+        <field type="blocks" name="blocks" title="Content" blocks="common/*"/>
     </fields>
 
     <lists>
         <list name="default">
+            <field name="title"/>
+            <field name="subject_type"/>
+            <field name="subject"/>
             <field name="score"/>
         </list>
         <list name="add">
@@ -30,6 +38,7 @@
             <field name="movies"/>
             <field name="excerpt"/>
             <field name="score"/>
+            <field name="blocks"/>
         </list>
         <list name="edit">
             <field name="title"/>
@@ -37,9 +46,12 @@
             <field name="movies"/>
             <field name="excerpt"/>
             <field name="score"/>
+            <field name="blocks"/>
         </list>
         <list name="info">
             <field name="title"/>
+            <field name="subject_type"/>
+            <field name="subject"/>
             <field name="score"/>
         </list>
     </lists>
