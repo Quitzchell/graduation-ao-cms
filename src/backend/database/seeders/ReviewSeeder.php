@@ -45,7 +45,7 @@ class ReviewSeeder extends Seeder
                 //                    <p>As for whether I escaped St. Helena, I will leave that for you to decide, dear readers. I will say this: legends, it seems, never die.</p>'
             ],
             [
-                'title' => 'Napoleon\'s Verdict: A Review of Waterloo (1970)',
+                'title' => 'Napoleon\'s Verdict: A Review of Waterloo',
                 'excerpt' => 'Waterloo is a film that seeks to immortalize my greatest defeat, and while it succeeds in its spectacle, it falters in portraying the true depth of my command and the complexity of my choices. The battle of Waterloo was not simply a brawl between two massive armies. It was a finely orchestrated chess game. The film captures the chaos of war, but it misses the precision of command.',
                 'score' => 9,
                 //                'review' => '<p><strong>My dear readers,</strong></p>
