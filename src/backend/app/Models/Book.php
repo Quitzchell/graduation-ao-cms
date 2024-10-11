@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Eloquent;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 
 class Book extends Eloquent
@@ -22,14 +23,20 @@ class Book extends Eloquent
     protected $table = 'books';
 
     protected $fillable = [
+        'author_id',
         'title',
-        'author',
         'published_year',
         'description',
+        'review_id',
     ];
 
-    public function reviews(): MorphMany
+    public function reviews(): HasOne
     {
-        return $this->morphMany(Review::class, 'reviewable');
+        return $this->hasOne(Review::class);
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(Author::class);
     }
 }

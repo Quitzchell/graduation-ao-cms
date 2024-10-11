@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
@@ -28,8 +29,26 @@ class Actor extends Eloquent
         'date_of_birth',
     ];
 
+    /* Relations */
+
     public function movies(): BelongsToMany
     {
         return $this->belongsToMany(Movie::class);
+    }
+
+    /* Attributes */
+
+    public function fullName(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => implode(' ', [$this->name, $this->middle_name, $this->surname])
+        );
+    }
+
+    public function movieNames(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => implode(', ', $this->movies->map(fn ($movie) => $movie->title)->toArray())
+        );
     }
 }
