@@ -25,7 +25,7 @@ class Author extends Eloquent
         'name',
         'middle_name',
         'surname',
-        'birthdate'
+        'birthdate',
     ];
 
     public function books(): BelongsToMany

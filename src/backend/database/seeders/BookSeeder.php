@@ -2,11 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Actor;
-use App\Models\Book;
-use App\Models\Director;
-use App\Models\Movie;
 use App\Models\Author;
+use App\Models\Book;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -30,7 +27,7 @@ class BookSeeder extends Seeder
                     'title' => 'Talleyrand',
                     'published_year' => Carbon::parse('01-01-1932')->year,
                     'description' => 'Duff Cooper\'s classic biography charts the remarkable progress of Talleyrand, a silver-tongued master diplomat, infamous turncoat, peacekeeper and libertine.',
-//                    'review_id' => 4
+                    //                    'review_id' => 4
                 ],
             ],
         ];
@@ -48,7 +45,7 @@ class BookSeeder extends Seeder
                 'title' => $bookData['book']['title'],
                 'published_year' => $bookData['book']['published_year'],
                 'description' => $bookData['book']['description'],
-//                'review_id' => $bookData['book']['review_id'],
+                //                'review_id' => $bookData['book']['review_id'],
             ]);
 
         }
