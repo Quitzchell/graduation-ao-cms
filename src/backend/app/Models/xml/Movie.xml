@@ -10,6 +10,7 @@
         <field type="text" name="title" title="Title"/>
         <field type="date" name="release_year" title="Release date"/>
         <field type="textarea" name="description" title="Description"/>
+        <field type="video" name="trailer_url" title="Trailer link (YouTube or Vimeo)"/>
 
         <field type="relation" name="director_id" title="Director" relation_on="Director" relation_name="fullName"/>
         <field type="tags" name="actors" title="Actors" relation_on="Actor" relation_name="fullName"/>
@@ -37,6 +38,7 @@
             <field name="release_year"/>
             <field name="actors"/>
             <field name="description"/>
+            <field name="trailer_url"/>
         </list>
         <list name="edit">
             <field name="title"/>
@@ -44,6 +46,7 @@
             <field name="release_year"/>
             <field name="actors"/>
             <field name="description"/>
+            <field name="trailer_url"/>
         </list>
         <list name="info">
             <field name="title"/>
