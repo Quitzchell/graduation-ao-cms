@@ -20,6 +20,12 @@ class Book extends Eloquent
                 $model->uuid = Str::uuid()->toString();
             }
         });
+
+        static::saving(function ($model) {
+            if ($model->published_year) {
+                $model->published_year = Carbon::parse($model->published_year)->format('Y');
+            }
+        });
     }
 
     protected $table = 'books';
@@ -32,6 +38,8 @@ class Book extends Eloquent
         'review_id',
     ];
 
+    /* Relations */
+
     public function reviews(): HasOne
     {
         return $this->hasOne(Review::class);
@@ -42,10 +50,12 @@ class Book extends Eloquent
         return $this->belongsTo(Author::class);
     }
 
+    /* Attributes */
+
     public function authorName(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this?->author->full_name
+            get: fn() => $this?->author->full_name
         );
     }
 
@@ -54,5 +64,31 @@ class Book extends Eloquent
         return Attribute::make(
             get: fn() => Carbon::parse($this->published_year)->format('Y')
         );
+    }
+
+    /* Validation */
+    public static function validatorAddRules(): array
+    {
+        return [
+            'title' => 'required',
+            'author_id' => 'required',
+            'description' => 'required',
+            'published_year' => 'required',
+        ];
+    }
+
+    public function validatorEditRules(): array
+    {
+        return static::validatorAddRules();
+    }
+
+    protected static function validatorMessages(): array
+    {
+        return [
+            'title.required' => 'The title field is required. Please provide a title for the item.',
+            'author_id.required' => 'The author field is required. Please select an author.',
+            'description.required' => 'The description field is required. Please provide a description.',
+            'published_year.required' => 'The published year field is required. Please enter the year of publication.',
+        ];
     }
 }
