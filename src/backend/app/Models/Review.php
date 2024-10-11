@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use AO\Component\Models\Traits\HasContent;
+use App\Rules\EmptyIf;
 use Eloquent;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Review extends Eloquent
 {
+    use HasContent;
+
     protected static function boot(): void
     {
         parent::boot();
@@ -27,6 +32,8 @@ class Review extends Eloquent
         'score',
     ];
 
+    /* Relations */
+
     public function books(): HasMany
     {
         return $this->hasMany(Book::class);
@@ -37,6 +44,22 @@ class Review extends Eloquent
         return $this->hasMany(Movie::class);
     }
 
+    /* Attributes */
+
+    public function subject(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => array_first(array_filter([$this->movies->first()->title, $this->books?->first()?->title]))
+        );
+    }
+
+    public function subjectType(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->movies->count() > 0 ? 'Movie' : 'Book'
+        );
+    }
+
     /* Validation */
     public static function validatorAddRules(): array
     {
@@ -45,13 +68,19 @@ class Review extends Eloquent
             'excerpt' => 'required',
             'books' => [
                 'nullable',
-                //                'required_without:movies',
-                'prohibited_if:movies,!=,null',
+                'required_without:movies',
+                new EmptyIf(
+                    'movies',
+                    'Only one object can be reviewed at a time',
+                ),
             ],
             'movies' => [
                 'nullable',
-                //                'required_without:books',
-                'prohibited_if:books,!=,null',
+                'required_without:books',
+                new EmptyIf(
+                    'books',
+                    'Only one object can be reviewed at a time',
+                ),
             ],
         ];
     }
@@ -70,11 +99,9 @@ class Review extends Eloquent
 
             // Books field validation messages
             'books.required_without' => 'The books field is required when no movies are provided.',
-            'books.prohibited_if' => 'The books field must be empty if movies are provided.',
 
             // Movies field validation messages
             'movies.required_without' => 'The movies field is required when no books are provided.',
-            'movies.prohibited_if' => 'The movies field must be empty if books are provided.',
         ];
     }
 }
