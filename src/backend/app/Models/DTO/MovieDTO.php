@@ -14,9 +14,7 @@ class MovieDTO implements Reviewable
         public ?int $releaseYear,
         public ?string $description,
         public ?string $trailerUrl,
-    )
-    {
-    }
+    ) {}
 
     public static function make(Movie $movie): self
     {

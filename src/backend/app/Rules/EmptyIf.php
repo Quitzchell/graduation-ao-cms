@@ -12,7 +12,6 @@ class EmptyIf implements ImplicitRule
 
     /**
      * Create a new rule instance.
-
      */
     public function __construct(string $field, string $message)
     {

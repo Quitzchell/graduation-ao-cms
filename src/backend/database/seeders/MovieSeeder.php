@@ -47,7 +47,7 @@ class MovieSeeder extends Seeder
                     'release_year' => Carbon::parse('01-01-2023')->year,
                     'description' => 'An epic that details the chequered rise and fall of French Emperor Napoleon Bonaparte and his relentless journey to power through the prism of his addictive, volatile relationship with his wife, Josephine.',
                     'review_id' => 1,
-                    'trailer_url' => 'https://www.youtube.com/embed/OAZWXUkrjPc?si=CRI4HC1qwv7f_cVS'
+                    'trailer_url' => 'https://www.youtube.com/embed/OAZWXUkrjPc?si=CRI4HC1qwv7f_cVS',
                 ],
             ],
 
