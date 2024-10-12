@@ -2,7 +2,4 @@
 
 namespace App\Models\Interface;
 
-interface Reviewable
-{
-
-}
+interface Reviewable {}

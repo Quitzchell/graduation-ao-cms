@@ -133,7 +133,7 @@ class BlogPostContentSeeder extends Seeder
             [
                 'container_id' => 1,
                 'file' => 'napoleon-war-advice.webp',
-                'mime_type' => 'image/webp'
+                'mime_type' => 'image/webp',
             ],
         ];
 

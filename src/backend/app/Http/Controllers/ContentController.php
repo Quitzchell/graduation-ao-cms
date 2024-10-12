@@ -70,10 +70,10 @@ class ContentController extends \ContentController
     public function templateReview(
         Page $page,
         RenderReviewTemplate $overviewRenderer,
-//        RenderBlogPost $detailRenderer,
+        //        RenderBlogPost $detailRenderer,
         ?string $uuid = null
     ): JsonResponse {
-            return $overviewRenderer->execute($page);
+        return $overviewRenderer->execute($page);
     }
 
     public function templateRedirect(Page $page): RedirectResponse

@@ -13,9 +13,7 @@ class BookDTO implements Reviewable
         public ?int $authorId,
         public ?int $publishedYear,
         public ?string $description,
-    )
-    {
-    }
+    ) {}
 
     public static function make(Movie $movie): self
     {

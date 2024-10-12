@@ -10,7 +10,6 @@ use App\Models\Book;
 use App\Models\DTO\BookDTO;
 use App\Models\DTO\MovieDTO;
 use App\Models\DTO\ReviewDTO;
-use App\Models\Interface\Reviewable;
 use App\Models\Movie;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
@@ -46,8 +45,6 @@ final class RenderReviewTemplate extends TemplateRenderer
 function getReviews($model, string $reviewable): Collection
 {
     return $model::with('review')->get()
-        ->filter(fn($item) => $item->review)
-        ->map(fn($item) => ReviewDTO::make($item->review, $reviewable::make($item)));
+        ->filter(fn ($item) => $item->review)
+        ->map(fn ($item) => ReviewDTO::make($item->review, $reviewable::make($item)));
 }
-
-

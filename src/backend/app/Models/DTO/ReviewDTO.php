@@ -13,11 +13,10 @@ class ReviewDTO
         public string $excerpt,
         public string $score,
         public Reviewable $reviewable
-    )
-    {
-    }
+    ) {}
 
-    public static function make(Review $review, Reviewable $reviewable) {
+    public static function make(Review $review, Reviewable $reviewable)
+    {
         return new self(
             $review->uuid,
             $review->title,
