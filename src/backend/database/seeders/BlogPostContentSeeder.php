@@ -130,7 +130,11 @@ class BlogPostContentSeeder extends Seeder
     private function seedMediaManagerItemsTable(): void
     {
         $mediaManagerItems = [
-            ['container_id' => 1, 'file' => 'napoleon-war-advice.webp', 'mime_type' => 'image/webp'],
+            [
+                'container_id' => 1,
+                'file' => 'napoleon-war-advice.webp',
+                'mime_type' => 'image/webp'
+            ],
         ];
 
         foreach ($mediaManagerItems as $mediaManagerItem) {

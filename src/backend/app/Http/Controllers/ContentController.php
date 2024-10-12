@@ -9,6 +9,7 @@ use AO\Component\Models\Page;
 use App\Actions\Objects\RenderBlogPost;
 use App\Actions\Templates\RenderBlogTemplate;
 use App\Actions\Templates\RenderHomeTemplate;
+use App\Actions\Templates\RenderReviewTemplate;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\Factory as ViewFactory;
@@ -64,6 +65,15 @@ class ContentController extends \ContentController
         return ! empty($uuid)
             ? $detailRenderer->execute($uuid)
             : $overviewRenderer->execute($page);
+    }
+
+    public function templateReview(
+        Page $page,
+        RenderReviewTemplate $overviewRenderer,
+//        RenderBlogPost $detailRenderer,
+        ?string $uuid = null
+    ): JsonResponse {
+            return $overviewRenderer->execute($page);
     }
 
     public function templateRedirect(Page $page): RedirectResponse

@@ -40,7 +40,7 @@ class Movie extends Eloquent
 
     /* Relations */
 
-    public function reviews(): BelongsTo
+    public function review(): BelongsTo
     {
         return $this->belongsTo(Review::class);
     }

@@ -40,9 +40,9 @@ class Book extends Eloquent
 
     /* Relations */
 
-    public function reviews(): HasOne
+    public function review(): BelongsTo
     {
-        return $this->hasOne(Review::class);
+        return $this->belongsTo(Review::class);
     }
 
     public function author(): BelongsTo

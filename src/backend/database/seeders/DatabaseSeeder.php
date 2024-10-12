@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
                 MovieSeeder::class,
                 BookSeeder::class,
                 ReviewContentSeeder::class,
+                ReviewPageSeeder::class,
             ]);
         }
 
