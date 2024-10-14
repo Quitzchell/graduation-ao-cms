@@ -10,6 +10,7 @@
         <field type="text" name="title" title="Title"/>
         <field type="textarea" name="excerpt" title="Excerpt"/>
         <field type="number" name="score" title="Score" max="10" min="0"/>
+        <field type="media-item" name="image" title="Image"/>
 
         <!-- Review fields -->
         <field type="dynamic" name="subject" title="Subject"/>
@@ -36,6 +37,7 @@
             <field name="title"/>
             <field name="books"/>
             <field name="movies"/>
+            <field name="image"/>
             <field name="excerpt"/>
             <field name="score"/>
             <field name="blocks"/>
@@ -44,6 +46,7 @@
             <field name="title"/>
             <field name="books"/>
             <field name="movies"/>
+            <field name="image"/>
             <field name="excerpt"/>
             <field name="score"/>
             <field name="blocks"/>

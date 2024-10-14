@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use AO\Component\Models\Interfaces\ProvidesContent;
 use AO\Component\Models\Traits\HasContent;
 use App\Rules\EmptyIf;
 use Eloquent;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
-class Review extends Eloquent
+class Review extends Eloquent implements ProvidesContent
 {
     use HasContent;
 
