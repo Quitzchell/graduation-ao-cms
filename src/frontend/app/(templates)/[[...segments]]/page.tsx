@@ -4,15 +4,19 @@ import { notFound } from "next/navigation";
 import Blog from "@/app/(templates)/blog";
 import BlogPost from "@/app/(templates)/blogpost";
 import Home from "@/app/(templates)/home";
+import Review from "@/app/(templates)/review";
+import ReviewItem from "@/app/(templates)/reviewItem";
 import { fetchPage } from "@/lib/fetchUtils";
 
 const templates = {
     home: Home,
     blog: Blog,
+    review: Review
 };
 
 const objects = {
-    blogpost: BlogPost
+    blogpost: BlogPost,
+    review: ReviewItem
 }
 
 type PageProps = {

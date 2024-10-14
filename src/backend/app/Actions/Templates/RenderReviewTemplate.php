@@ -28,8 +28,8 @@ final class RenderReviewTemplate extends TemplateRenderer
             'headerTitle' => $page->content('header_title'),
         ];
 
-        $movieReviews = getReviews(Movie::class, MovieDTO::class);
-        $bookReviews = getReviews(Book::class, BookDTO::class);
+        $movieReviews = $this->getReviews(Movie::class, MovieDTO::class);
+        $bookReviews = $this->getReviews(Book::class, BookDTO::class);
 
         $reviews = collect($movieReviews)
             ->merge($bookReviews);
@@ -40,11 +40,11 @@ final class RenderReviewTemplate extends TemplateRenderer
             'blocks' => $this->resolver->execute($page, 'blocks'),
         ]);
     }
-}
 
-function getReviews($model, string $reviewable): Collection
-{
-    return $model::with('review')->get()
-        ->filter(fn ($item) => $item->review)
-        ->map(fn ($item) => ReviewDTO::make($item->review, $reviewable::make($item)));
+    private function getReviews($model, string $reviewable): Collection
+    {
+        return $model::with('review')->get()
+            ->filter(fn($item) => $item->review)
+            ->map(fn($item) => ReviewDTO::make($item->review, $reviewable::make($item)));
+    }
 }

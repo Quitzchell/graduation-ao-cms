@@ -6,7 +6,8 @@ namespace App\Http\Controllers;
 
 use AO\Component\Models\Interfaces\Publishable;
 use AO\Component\Models\Page;
-use App\Actions\Objects\RenderBlogPost;
+use App\Actions\Objects\RenderBlogPostObject;
+use App\Actions\Objects\RenderReviewObject;
 use App\Actions\Templates\RenderBlogTemplate;
 use App\Actions\Templates\RenderHomeTemplate;
 use App\Actions\Templates\RenderReviewTemplate;
@@ -57,23 +58,25 @@ class ContentController extends \ContentController
     }
 
     public function templateBlog(
-        Page $page,
-        RenderBlogTemplate $overviewRenderer,
-        RenderBlogPost $detailRenderer,
-        ?string $uuid = null
+        Page                 $page,
+        RenderBlogTemplate   $overviewRenderer,
+        RenderBlogPostObject $objectRenderer,
+        ?string              $uuid = null
     ): JsonResponse {
         return ! empty($uuid)
-            ? $detailRenderer->execute($uuid)
+            ? $objectRenderer->execute($uuid)
             : $overviewRenderer->execute($page);
     }
 
     public function templateReview(
-        Page $page,
+        Page                 $page,
         RenderReviewTemplate $overviewRenderer,
-        //        RenderBlogPost $detailRenderer,
-        ?string $uuid = null
+        RenderReviewObject   $objectRenderer,
+        ?string              $uuid = null
     ): JsonResponse {
-        return $overviewRenderer->execute($page);
+        return ! empty($uuid)
+            ? $objectRenderer->execute($uuid)
+            : $overviewRenderer->execute($page);
     }
 
     public function templateRedirect(Page $page): RedirectResponse

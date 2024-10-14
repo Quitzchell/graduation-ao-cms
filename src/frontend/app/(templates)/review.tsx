@@ -1,18 +1,11 @@
 import Blocks from "@/blocks/Blocks";
-import Header from "@/blocks/common/Header";
+import TemplateHeader from "@/blocks/common/TemplateHeader";
+import ReviewCard from "@/blocks/review/ReviewCard";
 
-function ReviewCard({reviewItem}) {
+export default function Review({headerItems, reviewItems, blocks}) {
     return (
         <div>
-
-        </div>
-    )
-}
-
-export default function review({headerItems, reviewItems, blocks}) {
-    return (
-        <div>
-            <Header {...headerItems} />
+            <TemplateHeader {...headerItems} />
             <section className="container py-5 md:py-8 flex flex-col gap-y-4">
                 {reviewItems.map((reviewItem) => (
                     <ReviewCard key={reviewItem.uuid} reviewItem={reviewItem}/>

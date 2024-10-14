@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function BlogPostHeader({image, title}) {
+export default function DetailHeader({image, title}) {
     return (
         <header className="h-80 md:h-100 lg:h-140 lg:container relative overflow-hidden w-screen">
             <div className="h-full z-10 flex justify-center items-end">

@@ -16,7 +16,10 @@ return new class extends Migration
             $table->uuid();
             $table->text('title')->nullable();
             $table->text('excerpt')->nullable();
+            $table->text('image')->nullable();
             $table->unsignedInteger('score');
+            $table->date('published_at');
+            $table->boolean('published')->default(true);
             $table->timestamps();
         });
     }

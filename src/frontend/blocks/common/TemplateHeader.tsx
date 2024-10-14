@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Header({headerImage, headerTitle}) {
+export default function TemplateHeader({headerImage, headerTitle}) {
     return (
         <header className="h-80 md:h-100 lg:h-140 relative overflow-hidden w-screen">
             <div className="h-full z-10 flex justify-center items-end">
