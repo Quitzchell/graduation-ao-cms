@@ -1,4 +1,4 @@
-ARG IMAGE
+ARG IMAGE=alpine:3.19
 FROM ${IMAGE}
 
 USER root
