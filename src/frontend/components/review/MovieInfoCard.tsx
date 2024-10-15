@@ -4,7 +4,7 @@ export default function MovieInfoCard({title, director, actors, releaseYear, tra
     return (
         <>
             <div className="rounded-md p-4 border flex flex-col gap-y-4 mb-8">
-                <div className="grid grid-cols-2 ">
+                <div className="grid xs:grid-col-1 sm:grid-cols-2 ">
                     <div>
                         <p>Movie: {title} </p>
                         {director && <p>Director: {director.fullName}</p>}
