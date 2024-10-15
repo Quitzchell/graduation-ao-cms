@@ -1,6 +1,6 @@
 
 import Blocks from "@/blocks/Blocks";
-import DetailHeader from "@/blocks/common/DetailHeader";
+import DetailHeader from "@/components/common/DetailHeader";
 
 export default function BlogPost({title, image, blocks}) {
     return (

@@ -10,8 +10,8 @@ export default function Home({headerItems, aboutItems, blocks}) {
             <Header {...headerItems}/>
             <div className={"container"}>
                 <About {...aboutItems}/>
-                {blocks !== null && <Blocks blocks={blocks}/>}
             </div>
+            {blocks !== null && <Blocks blocks={blocks}/>}
         </>
     );
 }

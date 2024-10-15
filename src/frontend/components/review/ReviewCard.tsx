@@ -6,7 +6,7 @@ import {Button} from "@/components/ui/button";
 export default function ReviewCard({reviewItem}) {
     const {uuid, title, excerpt, score, reviewable} = reviewItem
     return (
-        <div className="p-4 border rounded-md flex flex-col gap-y-2 md:gap-y-4">
+        <div className="p-4 border rounded-md flex flex-col gap-y-4">
             <div>
                 <Title title={title}/>
                 <Subtitle
@@ -27,7 +27,7 @@ function Title({title}) {
 
 function Subtitle({type, score}) {
     return (
-        <div className="grid grid-cols-2">
+        <div className="flex flex-col">
             <p className="text-sm">Category: {capitalize(type)}</p>
             <p className='text-sm'>Verdict: {score}/10</p>
         </div>
