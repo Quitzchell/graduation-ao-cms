@@ -1,5 +1,5 @@
 import Blocks from "@/blocks/Blocks";
-import DetailHeader from "@/blocks/common/DetailHeader";
+import DetailHeader from "@/components/common/DetailHeader";
 import MovieInfoCard from "@/components/review/MovieInfoCard";
 
 

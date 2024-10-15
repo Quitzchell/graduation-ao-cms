@@ -6,16 +6,28 @@ export default function MovieInfoCard({title, director, actors, releaseYear, tra
             <div className="rounded-md p-4 border flex flex-col gap-y-4 mb-8">
                 <div className="grid xs:grid-col-1 sm:grid-cols-2 ">
                     <div>
-                        <p>Movie: {title} </p>
-                        {director && <p>Director: {director.fullName}</p>}
+                        <p>
+                            <span className="font-bold">Movie: </span>
+                            {title}
+                        </p>
+                        {director && <p>
+                            <span className="font-bold">Director: </span>
+                            {director.fullName}
+                        </p>}
                     </div>
                     <div>
-                        <p>Release Year: {releaseYear}</p>
+                        <p>
+                            <span className="font-bold">Release Year: </span>
+                            {releaseYear}
+                        </p>
                     </div>
                 </div>
                 <div>
                     {actors && (
-                        <p>Lead actors: {actors.map((actor) => actor.fullName).join(', ')}</p>
+                        <p>
+                            <span className="font-bold">Lead actors: </span>
+                            {actors.map((actor) => actor.fullName).join(', ')}
+                        </p>
                     )}
                 </div>
             </div>
