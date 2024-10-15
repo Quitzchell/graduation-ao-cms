@@ -14,7 +14,6 @@ class BlogPostContentSeeder extends Seeder
         $this->seedCmsContentTable();
         $this->seedCmsContentStringTable();
         $this->seedCmsContentTextTable();
-        $this->seedMediaManagerItemsTable();
     }
 
     private function seedCmsLoaderTable(): void
@@ -127,26 +126,26 @@ class BlogPostContentSeeder extends Seeder
         }
     }
 
-    private function seedMediaManagerItemsTable(): void
-    {
-        $mediaManagerItems = [
-            [
-                'container_id' => 1,
-                'file' => 'napoleon-war-advice.webp',
-                'mime_type' => 'image/webp',
-            ],
-        ];
-
-        foreach ($mediaManagerItems as $mediaManagerItem) {
-            DB::table('media_manager_items')->insert(array_merge($mediaManagerItem,
-                [
-                    'storage_path' => null,
-                    'alt_text' => '',
-                    'focal_point' => json_encode(['x' => 50, 'y' => 50]),
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]
-            ));
-        }
-    }
+//    private function seedMediaManagerItemsTable(): void
+//    {
+//        $mediaManagerItems = [
+//            [
+//                'container_id' => 1,
+//                'file' => 'napoleon-war-advice.webp',
+//                'mime_type' => 'image/webp',
+//            ],
+//        ];
+//
+//        foreach ($mediaManagerItems as $mediaManagerItem) {
+//            DB::table('media_manager_items')->insert(array_merge($mediaManagerItem,
+//                [
+//                    'storage_path' => null,
+//                    'alt_text' => '',
+//                    'focal_point' => json_encode(['x' => 50, 'y' => 50]),
+//                    'created_at' => now(),
+//                    'updated_at' => now(),
+//                ]
+//            ));
+//        }
+//    }
 }

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 
         if (app()->environment() === 'local') {
             $seeders = array_merge($seeders, [
+                MediaItemSeeder::class,
                 CategorySeeder::class,
                 HomePageSeeder::class,
                 BlogPageSeeder::class,

@@ -18,7 +18,6 @@ class HomepageSeeder extends Seeder
         $this->seedCmsContentTable();
         $this->seedCmsContentStringTable();
         $this->seedCmsContentTextTable();
-        $this->seedMediaManagerItemsTable();
     }
 
     private function seedPageTable(): void
@@ -196,26 +195,6 @@ class HomepageSeeder extends Seeder
         ];
         foreach ($cmsTexts as $cmsText) {
             DB::table('cms_content_text')->insert($cmsText);
-        }
-    }
-
-    private function seedMediaManagerItemsTable(): void
-    {
-        $mediaManagerItems = [
-            [
-                'container_id' => 1,
-                'file' => 'napoleon-on-horseback.jpg',
-                'mime_type' => 'image/jpeg',
-                'storage_path' => null,
-                'alt_text' => '',
-                'focal_point' => json_encode(['x' => 50, 'y' => 50]),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ];
-
-        foreach ($mediaManagerItems as $mediaManagerItem) {
-            DB::table('media_manager_items')->insert($mediaManagerItem);
         }
     }
 }

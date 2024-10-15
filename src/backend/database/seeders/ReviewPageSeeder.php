@@ -20,7 +20,6 @@ class ReviewPageSeeder extends Seeder
         $this->seedCmsContentTable();
         $this->seedCmsContentStringTable();
         $this->seedCmsContentTextTable();
-        $this->seedMediaManagerItemsTable();
     }
 
     private function seedPageTable(): void
@@ -123,7 +122,7 @@ class ReviewPageSeeder extends Seeder
         $cmsStrings = [
             [
                 'content_id' => 122,
-                'value' => '6',
+                'value' => '5',
             ],
             [
                 'content_id' => 123,
@@ -162,29 +161,6 @@ class ReviewPageSeeder extends Seeder
         ];
         foreach ($cmsTexts as $cmsText) {
             DB::table('cms_content_text')->insert($cmsText);
-        }
-    }
-
-    private function seedMediaManagerItemsTable(): void
-    {
-        $mediaManagerItems = [
-            [
-                'container_id' => 1,
-                'file' => 'napoleon-reviews.jpg',
-                'mime_type' => 'image/jpeg',
-            ],
-        ];
-
-        foreach ($mediaManagerItems as $mediaManagerItem) {
-            DB::table('media_manager_items')->insert(array_merge($mediaManagerItem,
-                [
-                    'storage_path' => null,
-                    'alt_text' => '',
-                    'focal_point' => json_encode(['x' => 50, 'y' => 50]),
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]
-            ));
         }
     }
 }
