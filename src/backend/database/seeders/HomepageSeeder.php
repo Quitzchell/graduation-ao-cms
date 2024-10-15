@@ -23,7 +23,7 @@ class HomepageSeeder extends Seeder
     private function seedPageTable(): void
     {
         \Page::create([
-            'name' => 'home',
+            'name' => 'Home',
             'template_name' => 'home',
             'locked' => false,
             'created_at' => now(),
