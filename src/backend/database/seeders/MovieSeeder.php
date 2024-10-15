@@ -44,7 +44,7 @@ class MovieSeeder extends Seeder
                 ],
                 'movie' => [
                     'title' => 'Napoleon',
-                    'release_year' => Carbon::parse('01-01-2023')->year,
+                    'release_year' => Carbon::parse('01-01-2023'),
                     'description' => 'An epic that details the chequered rise and fall of French Emperor Napoleon Bonaparte and his relentless journey to power through the prism of his addictive, volatile relationship with his wife, Josephine.',
                     'review_id' => 1,
                     'trailer_url' => 'https://www.youtube.com/embed/OAZWXUkrjPc?si=CRI4HC1qwv7f_cVS',
@@ -81,7 +81,7 @@ class MovieSeeder extends Seeder
                 ],
                 'movie' => [
                     'title' => 'Monsieur N.',
-                    'release_year' => Carbon::parse('01-01-2003')->year,
+                    'release_year' => Carbon::parse('01-01-2003'),
                     'description' => 'How could Napoleon, the man of war and pioneering military strategist, meekly accept being locked up on a storm-lashed rock in the middle of the Atlantic ocean? What system of defence, and thus of attack, can he dream up to loosen his jailers\' grip? On Saint Helena, the far-flung island chosen by his enemies, Napoleon fights a mysterious battle, his last and most important, and one that history has kept secret all these years.',
                     'review_id' => 2,
                 ],
@@ -115,7 +115,7 @@ class MovieSeeder extends Seeder
                 ],
                 'movie' => [
                     'title' => 'Waterloo',
-                    'release_year' => Carbon::parse('01-01-1970')->year,
+                    'release_year' => Carbon::parse('01-01-1970'),
                     'description' => 'Facing the decline of everything he has worked to obtain, conqueror Napoleon Bonaparte and his army confront the British at the Battle of Waterloo.',
                     'review_id' => 3,
                 ],

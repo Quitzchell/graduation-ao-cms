@@ -13,7 +13,7 @@ class BlogPostSeeder extends Seeder
     public function run(): void
     {
         $this->seedMilitaryStrategyTacticsBogPosts();
-        $this->seedMediaManagerItemsTable();
+//        $this->seedMediaManagerItemsTable();
     }
 
     private function seedMilitaryStrategyTacticsBogPosts(): void
@@ -35,22 +35,4 @@ class BlogPostSeeder extends Seeder
         }
     }
 
-    private function seedMediaManagerItemsTable(): void
-    {
-        $mediaManagerItems = [
-            ['container_id' => 1, 'file' => 'napoleon-war.webp', 'mime_type' => 'image/webp'],
-        ];
-
-        foreach ($mediaManagerItems as $mediaManagerItem) {
-            DB::table('media_manager_items')->insert(array_merge($mediaManagerItem,
-                [
-                    'storage_path' => null,
-                    'alt_text' => '',
-                    'focal_point' => json_encode(['x' => 50, 'y' => 50]),
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]
-            ));
-        }
-    }
 }
