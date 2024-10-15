@@ -1,6 +1,6 @@
 import Blocks from "@/blocks/Blocks";
 import TemplateHeader from "@/blocks/common/TemplateHeader";
-import ReviewCard from "@/blocks/review/ReviewCard";
+import ReviewCard from "@/components/review/ReviewCard";
 
 export default function Review({headerItems, reviewItems, blocks}) {
     return (

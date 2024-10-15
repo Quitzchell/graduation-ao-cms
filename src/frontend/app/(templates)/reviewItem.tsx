@@ -1,6 +1,6 @@
 import Blocks from "@/blocks/Blocks";
 import DetailHeader from "@/blocks/common/DetailHeader";
-import MovieInfoCard from "@/blocks/review/MovieInfoCard";
+import MovieInfoCard from "@/components/review/MovieInfoCard";
 
 
 export default function ReviewItem({title, image, reviewItem, blocks}) {
