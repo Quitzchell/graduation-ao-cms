@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('frontend_users', function (Blueprint $table) {
             $table->id();
-            $table->uuid()->unique();
             $table->string('username')->unique();
+            $table->string('slug')->unique();
             $table->string('password');
             $table->string('email')->unique();
             $table->enum('gender', ['M', 'F', 'X'])->nullable();

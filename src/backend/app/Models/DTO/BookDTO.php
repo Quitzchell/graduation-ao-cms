@@ -2,28 +2,30 @@
 
 namespace App\Models\DTO;
 
+use App\Models\Book;
 use App\Models\Interface\Reviewable;
-use App\Models\Movie;
 
 class BookDTO implements Reviewable
 {
     public function __construct(
-        public ?string $uuid,
+        public ?int $id,
         public ?string $title,
+        public ?string $slug,
         public ?int $authorId,
         public ?int $publishedYear,
         public ?string $description,
         public string $type,
     ) {}
 
-    public static function make(Movie $movie): self
+    public static function make(Book $book): self
     {
         return new self(
-            $movie->uuid,
-            $movie->title,
-            $movie->director_id,
-            $movie->release_year,
-            $movie->description,
+            $book->id,
+            $book->title,
+            $book->slug,
+            $book->director_id,
+            $book->release_year,
+            $book->description,
             'book'
         );
     }

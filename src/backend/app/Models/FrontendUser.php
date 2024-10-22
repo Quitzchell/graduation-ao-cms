@@ -31,9 +31,9 @@ class FrontendUser extends Eloquent implements AuthenticatableContract, Authoriz
     {
         parent::boot();
 
-        static::creating(function ($model) {
-            if (empty($model->uuid)) {
-                $model->uuid = Str::uuid()->toString();
+        static::creating(function (self $model) {
+            if (empty($model->slug)) {
+                $model->slug =  Str::slug($model->username);
             }
         });
     }

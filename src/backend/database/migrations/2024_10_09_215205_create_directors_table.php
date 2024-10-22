@@ -10,10 +10,10 @@ return new class extends Migration
     {
         Schema::create('directors', function (Blueprint $table) {
             $table->id();
-            $table->uuid();
             $table->string('name');
             $table->string('middle_name')->nullable();
             $table->string('surname');
+            $table->string('slug')->unique();
             $table->date('date_of_birth')->nullable();
             $table->timestamps();
         });

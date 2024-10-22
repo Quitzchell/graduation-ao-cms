@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->uuid();
             $table->text('title')->nullable();
+            $table->string('slug')->unique();
             $table->text('excerpt')->nullable();
             $table->text('image')->nullable();
             $table->unsignedInteger('score');

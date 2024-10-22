@@ -12,8 +12,8 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->uuid();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->foreignIdFor(Author::class)->constrained();
             $table->year('published_year');
             $table->text('description')->nullable();

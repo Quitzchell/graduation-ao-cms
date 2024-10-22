@@ -4,12 +4,14 @@ namespace App\Models\DTO;
 
 use App\Models\BlogPost;
 use Illuminate\Support\Carbon;
+use phpDocumentor\Reflection\Types\Integer;
 
 class BlogPostDTO
 {
     public function __construct(
-        public ?string $uuid,
+        public ?int $id,
         public ?string $title,
+        public ?string $slug,
         public ?string $excerpt,
         public ?string $categoryName,
         public ?int $categoryId,
@@ -19,8 +21,9 @@ class BlogPostDTO
     public static function make(BlogPost $blogPost)
     {
         return new self(
-            $blogPost->uuid,
+            $blogPost->id,
             $blogPost->title,
+            $blogPost->slug,
             $blogPost->excerpt,
             $blogPost->category->name,
             $blogPost->category->getKey(),
