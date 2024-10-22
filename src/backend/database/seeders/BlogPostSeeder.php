@@ -6,14 +6,12 @@ use App\Models\BlogPost;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class BlogPostSeeder extends Seeder
 {
     public function run(): void
     {
         $this->seedMilitaryStrategyTacticsBogPosts();
-//        $this->seedMediaManagerItemsTable();
     }
 
     private function seedMilitaryStrategyTacticsBogPosts(): void
@@ -34,5 +32,4 @@ class BlogPostSeeder extends Seeder
             );
         }
     }
-
 }
