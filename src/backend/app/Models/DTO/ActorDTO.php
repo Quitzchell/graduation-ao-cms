@@ -13,8 +13,7 @@ class ActorDTO
         public ?string $middleName,
         public ?string $surname,
         public ?string $dateOfBirth
-    )
-    {
+    ) {
         $this->fullName = implode(' ', array_filter([$name, $middleName, $surname]));
     }
 

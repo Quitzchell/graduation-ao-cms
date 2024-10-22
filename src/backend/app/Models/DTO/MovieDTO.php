@@ -7,21 +7,18 @@ use App\Models\Interface\Reviewable;
 use App\Models\Movie;
 use Illuminate\Support\Collection;
 
-
 class MovieDTO implements Reviewable
 {
     public function __construct(
-        public ?string      $uuid,
-        public ?string      $title,
-        public ?int         $releaseYear,
-        public ?string      $description,
-        public ?string      $trailerUrl,
+        public ?string $uuid,
+        public ?string $title,
+        public ?int $releaseYear,
+        public ?string $description,
+        public ?string $trailerUrl,
         public ?DirectorDTO $director,
-        public Collection   $actors,
-        public string       $type
-    )
-    {
-    }
+        public Collection $actors,
+        public string $type
+    ) {}
 
     public static function make(Movie $movie): self
     {
@@ -31,7 +28,7 @@ class MovieDTO implements Reviewable
         }
 
         $actors = collect();
-        if (!empty($movie->actors)) {
+        if (! empty($movie->actors)) {
             foreach ($movie->actors as $actor) {
                 $actors = $actors->push(ActorDTO::make($actor));
             }

@@ -4,16 +4,13 @@ namespace App\Actions\Objects;
 
 use App\Actions\Abstracts\DetailRenderer;
 use App\Actions\Templates\ResolveBlocks;
-use App\Models\BlogPost;
 use App\Models\Book;
 use App\Models\DTO\BookDTO;
 use App\Models\DTO\MovieDTO;
-use App\Models\DTO\ReviewDTO;
 use App\Models\Interface\Reviewable;
 use App\Models\Movie;
 use App\Models\Review;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Collection;
 
 final class RenderReviewObject extends DetailRenderer
 {
@@ -39,7 +36,7 @@ final class RenderReviewObject extends DetailRenderer
     private function getReview(string $model, Review $review, string $dtoClass): ?Reviewable
     {
         $object = $model::with('review')?->where('review_id', $review->getKey())->first();
-        if (!$object) {
+        if (! $object) {
             return null;
         }
 

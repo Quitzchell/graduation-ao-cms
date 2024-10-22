@@ -24,7 +24,7 @@ class ReviewDTO
             $review->title,
             $review->excerpt,
             $review->score,
-            Carbon::parse($review->published_at)->format("d-m-Y"),
+            Carbon::parse($review->published_at)->format('d-m-Y'),
             $reviewable
         );
 

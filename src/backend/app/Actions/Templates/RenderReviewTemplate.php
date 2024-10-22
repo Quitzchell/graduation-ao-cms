@@ -44,7 +44,7 @@ final class RenderReviewTemplate extends TemplateRenderer
     private function getReviews($model, string $reviewable): Collection
     {
         return $model::with('review')->get()
-            ->filter(fn($item) => $item->review)
-            ->map(fn($item) => ReviewDTO::make($item->review, $reviewable::make($item)));
+            ->filter(fn ($item) => $item->review)
+            ->map(fn ($item) => ReviewDTO::make($item->review, $reviewable::make($item)));
     }
 }

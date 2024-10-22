@@ -7,13 +7,13 @@ use App\Models\Director;
 class DirectorDTO
 {
     public ?string $fullName;
+
     public function __construct(
         public ?string $name,
         public ?string $middleName,
         public ?string $surname,
         public ?string $dateOfBirth
-    )
-    {
+    ) {
         $this->fullName = implode(' ', array_filter([$name, $middleName, $surname]));
     }
 

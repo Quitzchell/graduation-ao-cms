@@ -58,10 +58,10 @@ class ContentController extends \ContentController
     }
 
     public function templateBlog(
-        Page                 $page,
-        RenderBlogTemplate   $overviewRenderer,
+        Page $page,
+        RenderBlogTemplate $overviewRenderer,
         RenderBlogPostObject $objectRenderer,
-        ?string              $uuid = null
+        ?string $uuid = null
     ): JsonResponse {
         return ! empty($uuid)
             ? $objectRenderer->execute($uuid)
@@ -69,10 +69,10 @@ class ContentController extends \ContentController
     }
 
     public function templateReview(
-        Page                 $page,
+        Page $page,
         RenderReviewTemplate $overviewRenderer,
-        RenderReviewObject   $objectRenderer,
-        ?string              $uuid = null
+        RenderReviewObject $objectRenderer,
+        ?string $uuid = null
     ): JsonResponse {
         return ! empty($uuid)
             ? $objectRenderer->execute($uuid)

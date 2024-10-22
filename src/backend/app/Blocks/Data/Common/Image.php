@@ -6,7 +6,7 @@ use App\Blocks\BaseBlock;
 
 class Image extends BaseBlock
 {
-    public $image;
+    public string $image;
 
     public function __construct(\CmsContent $block)
     {
