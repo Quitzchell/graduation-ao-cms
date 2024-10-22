@@ -7,8 +7,11 @@ use App\Blocks\BaseBlock;
 class CallToAction extends BaseBlock
 {
     public mixed $title;
+
     public mixed $text;
+
     public mixed $buttonUrl;
+
     public mixed $buttonText;
 
     public function __construct(\CmsContent $block)
