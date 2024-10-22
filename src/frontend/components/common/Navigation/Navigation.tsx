@@ -17,6 +17,10 @@ export default async function Navigation() {
                 <NavigationWrapper className={"flex lg:hidden"}>
                     <MobileMenu menuItems={menuItems}/>
                 </NavigationWrapper>
+
+                <NavigationWrapper className={"hidden lg:flex"}>
+                    <DesktopMenu menuItems={menuItems}/>
+                </NavigationWrapper>
             </div>
         </nav>
     );
