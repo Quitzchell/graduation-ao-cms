@@ -22,6 +22,7 @@ class MediaItemSeeder extends Seeder
             ['container_id' => 1, 'file' => 'napoleon-reviews.jpg', 'mime_type' => 'image/jpeg'],
             ['container_id' => 1, 'file' => 'napoleon-ridley-scott.jpg', 'mime_type' => 'image/jpeg'],
             ['container_id' => 1, 'file' => 'monsieur-n.webp', 'mime_type' => 'image/webp'],
+            ['container_id' => 1, 'file' => 'waterloo-review.jpg', 'mime_type' => 'image/jpeg'],
         ];
 
         foreach ($mediaManagerItems as $mediaManagerItem) {
