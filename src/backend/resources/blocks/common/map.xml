@@ -1,0 +1,5 @@
+<template name="Map">
+    <field type="text" name="title" title="Title"/>
+    <field type="html" name="text" title="Text" height="200"/>
+    <field type="map" name="location" title="Location"/>
+</template>

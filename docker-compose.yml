@@ -1,76 +1,44 @@
 services:
 
     backend:
-
         build:
             context: .
             dockerfile: dev.backend.dockerfile
             args:
-                # Choose your Docker base image based on your PHP version
-                IMAGE: allesonline/laravel:php8.3-node20-alpine3.19-dev # CMS version 2.14 - 2.15
-
+                IMAGE: allesonline/laravel:php8.3-node20-alpine3.19-dev
         user:
             docker:docker
-
         ports:
             - "8080:8080"
-
         labels:
-            # These labels are used by Traefik 2 for routing traffic to the container
-            # These labels make create 2 endpoint based on the PROJECT_NAME env variable injected by the Makefile:
-            # - {project_name}.local.alles.onl
-            # Both endpoints have SSL termination through Traefik, so you need to make sure that the application code enforces HTTPS routes
             - "traefik.enable=true"
             - "traefik.docker.network=traefik_network"
             - 'traefik.http.routers.${PROJECT_NAME}-web.rule=Host(`${PROJECT_NAME}-admin.local.alles.onl`)'
             - "traefik.http.routers.${PROJECT_NAME}-web.entrypoints=web,websecure"
             - "traefik.http.routers.${PROJECT_NAME}-web.service=${PROJECT_NAME}-web"
             - "traefik.http.services.${PROJECT_NAME}-web.loadbalancer.server.port=8080"
-
         environment:
-
-            # Run `composer install` on startup
             - COMPOSER_INSTALL=0
-
-            # Run `php artisan migrate --force` on startup
             - ARTISAN_MIGRATE=0
-
-            # Run `php artisan schedule-monitor:sync` for syncing with OhDear, you will probably not use this in local development
             - ARTISAN_SCHEDULE_MONITOR_SYNC=0
-
-            # Run the NGINX process on startup, this should only be disabled when running php command directly in a container
             - ENABLE_NGINX=1
-
-            # Run the PHP-FPM process on startup, this should only be disabled when running php command directly in a container
             - ENABLE_PHP_FPM=1
-
-            # If you have installed laravel/horizon in your project, this will automatically run it as a background process
             - ENABLE_HORIZON=0
-
-            # This will run `php artisan schedule:run` every minute
             - ENABLE_SCHEDULER=0
-
         extra_hosts:
             - "graduation-ao-cms-admin.local.alles.onl:host-gateway"
-
         volumes:
-
-            # Adjust this to the root directory of the project, never change /var/www/html
             - ./src/backend:/var/www/html
-
         networks:
             - default
-            - traefik_network # Used by Traefik 2for auto-discovery and routing
+            - traefik_network
 
     frontend:
-
         build:
             context: .
             dockerfile: dev.frontend.dockerfile
-
         ports:
             - "3000:3000"
-
         labels:
             - "traefik.enable=true"
             - "traefik.docker.network=traefik_network"
@@ -78,18 +46,30 @@ services:
             - "traefik.http.routers.${PROJECT_NAME}-npm.entrypoints=npm,websecure"
             - "traefik.http.routers.${PROJECT_NAME}-npm.service=${PROJECT_NAME}-npm"
             - "traefik.http.services.${PROJECT_NAME}-npm.loadbalancer.server.port=3000"
-
         volumes:
-
-            # Adjust this to the root directory of the project, never change /var/www/html
             - ./src/frontend:/var/www/html
-
         networks:
             - default
-            - traefik_network # Used by Traefik 2for auto-discovery and routing
+            - traefik_network
+
+    cypress:
+        build:
+            context: .
+            dockerfile: "dev.cypress.dockerfile"
+        container_name: cypress
+        depends_on:
+            - frontend # Wait for the frontend to be ready before running tests
+        extra_hosts:
+            - "graduation-ao-cms.local.alles.onl:host-gateway"
+        networks:
+            - default
+            - traefik_network
+        environment:
+            - CYPRESS_baseUrl=http://${PROJECT_NAME}.local.alles.onl:3000 # Cypress will target the frontend service
+        volumes:
+            - ./src/frontend:/e2e # Mount frontend code into Cypress container
 
 networks:
     default:
-    traefik_network: # Created by Traefik 2
+    traefik_network:
         external: true
-
