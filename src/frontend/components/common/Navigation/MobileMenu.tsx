@@ -35,7 +35,7 @@ export default function MobileMenu({menuItems}) {
                         <Link
                             key={key}
                             href={`/${uri}`}
-                            className="text-lg font-bold text-neutral-900"
+                            className="text-lg font-bold text-red-300"
                             onClick={closeSheet}
                         >
                             {name}
