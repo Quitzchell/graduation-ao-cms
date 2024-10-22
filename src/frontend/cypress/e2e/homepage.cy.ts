@@ -6,17 +6,17 @@ describe('Home Page Tests', () => {
         cy.visit('/', {timeout: 60000});
     });
 
-    it('should render the navigation correctly', () => {
-        cy.get('[data-cypress="navigation"]')
-            .should('exist')
-            .and('be.visible');
-    })
-
     it('should render the page successfully', () => {
         cy.get('body')
             .should('exist')
             .and('be.visible');
     });
+
+    it('should render the navigation correctly', () => {
+        cy.get('[data-cypress="navigation"]')
+            .should('exist')
+            .and('be.visible');
+    })
 
     it('should render the header with correct text', () => {
         cy.get('[data-cypress="header-title"]')
