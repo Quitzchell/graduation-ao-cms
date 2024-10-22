@@ -4,7 +4,7 @@ import {Button} from "@/components/ui/button";
 
 export default function CallToAction({title, text, buttonUrl, buttonText}) {
     return (
-        <section className="bg-teal-75">
+        <section className="bg-teal-75" data-cypress="call-to-action-block">
             <div className="container">
                 <div className="py-10 flex flex-col gap-y-6 text-neutral-900">
                     <div className="flex flex-col gap-y-4">

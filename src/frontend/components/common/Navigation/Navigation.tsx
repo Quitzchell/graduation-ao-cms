@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import DesktopMenu from "@/components/common/Navigation/DesktopMenu";
 import MobileMenu from "@/components/common/Navigation/MobileMenu";
 import {fetchMenu} from "@/lib/fetchUtils";
 import {cn} from "@/lib/utils";
@@ -8,12 +9,12 @@ export default async function Navigation() {
     const menuItems = await fetchMenu();
 
     return (
-        <nav
-            className="bg-neutral-0 ">
+        <nav className="bg-neutral-0" data-cypress="navigation">
             <div className="container flex items-center justify-between z-50 h-12">
-                <Link href={'/home'}>
-                    <h1 className={"text-2xl font-bold text-red-300"}>Bonaparte</h1>
+                <Link href={'/home'} data-cypress="navigation-home">
+                    <h1 className="text-2xl font-bold text-red-300">Bonaparte</h1>
                 </Link>
+
                 <NavigationWrapper className={"flex lg:hidden"}>
                     <MobileMenu menuItems={menuItems}/>
                 </NavigationWrapper>
@@ -25,7 +26,6 @@ export default async function Navigation() {
         </nav>
     );
 }
-
 
 function NavigationWrapper({children, className}) {
     return (

@@ -12,6 +12,10 @@ build:
 up:
 	PROJECT_NAME="$(project_name)" docker compose up --no-build
 
+.PHONY: cypress
+cypress:
+	PROJECT_NAME="$(project_name)" docker-compose up --build cypress
+
 .PHONY: login-front
 login-front:
 	docker exec -it "$(project_name)-frontend-1" /bin/sh

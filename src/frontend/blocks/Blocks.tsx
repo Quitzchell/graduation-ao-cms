@@ -2,12 +2,14 @@ import React from "react";
 
 import CallToAction from "@/blocks/common/CallToAction";
 import ImageContent from "@/blocks/common/Image";
+import Map from "@/blocks/common/Map"
 import Paragraph from "@/blocks/common/Paragraph"
 
 const components = {
     "Common\\Paragraph": Paragraph,
     "Common\\Image": ImageContent,
-    "Common\\CallToAction": CallToAction
+    "Common\\CallToAction": CallToAction,
+    "Common\\Map": Map
 };
 
 function renderBlockComponent(block, props = {}) {
