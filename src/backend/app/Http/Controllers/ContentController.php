@@ -61,10 +61,10 @@ class ContentController extends \ContentController
         Page $page,
         RenderBlogTemplate $overviewRenderer,
         RenderBlogPostObject $objectRenderer,
-        ?string $uuid = null
+        ?string $slug = null
     ): JsonResponse {
-        return ! empty($uuid)
-            ? $objectRenderer->execute($uuid)
+        return ! empty($slug)
+            ? $objectRenderer->execute($slug)
             : $overviewRenderer->execute($page);
     }
 
@@ -72,10 +72,10 @@ class ContentController extends \ContentController
         Page $page,
         RenderReviewTemplate $overviewRenderer,
         RenderReviewObject $objectRenderer,
-        ?string $uuid = null
+        ?string $slug = null
     ): JsonResponse {
-        return ! empty($uuid)
-            ? $objectRenderer->execute($uuid)
+        return ! empty($slug)
+            ? $objectRenderer->execute($slug)
             : $overviewRenderer->execute($page);
     }
 

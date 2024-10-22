@@ -14,8 +14,16 @@ class Author extends Eloquent
         parent::boot();
 
         static::creating(function ($model) {
-            if (empty($model->uuid)) {
-                $model->uuid = Str::uuid()->toString();
+            if (empty($model->slug)) {
+                $slug = Str::slug(trim(implode(' ',[$model->name, $model->middle_name, $model->surname])));
+                $count = 1;
+
+                while ($model::where('slug', $slug)->exists()) {
+                    $slug = "{$slug}-{$count}";
+                    $count++;
+                }
+
+                $model->slug = $slug;
             }
         });
     }
@@ -26,7 +34,7 @@ class Author extends Eloquent
         'name',
         'middle_name',
         'surname',
-        'birthdate',
+        'date_of_birth',
     ];
 
     public function books(): HasMany

@@ -8,7 +8,7 @@ export default function Review({headerItems, reviewItems, blocks}) {
             <TemplateHeader {...headerItems} />
             <section className="container py-5 md:py-8 flex flex-col gap-y-6">
                 {reviewItems.map((reviewItem) => (
-                    <ReviewCard key={reviewItem.uuid} reviewItem={reviewItem}/>
+                    <ReviewCard key={reviewItem.id} reviewItem={reviewItem}/>
                 ))}
             </section>
             {blocks !== null && <Blocks blocks={blocks}/>}

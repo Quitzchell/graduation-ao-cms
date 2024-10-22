@@ -14,9 +14,17 @@ class Book extends Eloquent
     {
         parent::boot();
 
-        static::creating(function ($model) {
-            if (empty($model->uuid)) {
-                $model->uuid = Str::uuid()->toString();
+        static::creating(function (self $model) {
+            if (empty($model->slug)) {
+                $slug = Str::slug($model->title);
+                $count = 1;
+
+                while ($model::where('slug', $slug)->exists()) {
+                    $slug = "{$slug}-{$count}";
+                    $count++;
+                }
+
+                $model->slug = $slug;
             }
         });
 

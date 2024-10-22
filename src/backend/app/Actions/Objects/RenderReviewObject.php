@@ -18,9 +18,9 @@ final class RenderReviewObject extends DetailRenderer
         private readonly ResolveBlocks $resolver,
     ) {}
 
-    public function execute(string $uuid): JsonResponse
+    public function execute(string $slug): JsonResponse
     {
-        $review = Review::where('uuid', $uuid)->firstOrFail();
+        $review = Review::where('slug', $slug)->firstOrFail();
 
         $movie = $this->getReview(Movie::class, $review, MovieDTO::class);
         $book = $this->getReview(Book::class, $review, BookDTO::class);

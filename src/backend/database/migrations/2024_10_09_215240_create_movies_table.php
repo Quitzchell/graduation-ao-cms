@@ -12,8 +12,8 @@ return new class extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->uuid();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->foreignIdFor(Director::class)->constrained();
             $table->year('release_year');
             $table->text('description')->nullable();

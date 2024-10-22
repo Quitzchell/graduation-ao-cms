@@ -13,9 +13,9 @@ final class RenderBlogPostObject extends DetailRenderer
         private readonly ResolveBlocks $resolver,
     ) {}
 
-    public function execute(string $uuid): JsonResponse
+    public function execute(string $slug): JsonResponse
     {
-        $blogPost = BlogPost::where('uuid', $uuid)->firstOrFail();
+        $blogPost = BlogPost::where('slug', $slug)->firstOrFail();
 
         return $this->render(BlogPost::class, [
             'title' => $blogPost->title,

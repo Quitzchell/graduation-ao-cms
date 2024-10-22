@@ -4,7 +4,7 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 
 export default function ReviewCard({reviewItem}) {
-    const {uuid, title, excerpt, score, reviewable} = reviewItem
+    const {slug, title, excerpt, score, reviewable} = reviewItem
     return (
         <div className="p-4 border rounded-md flex flex-col gap-y-4">
             <div>
@@ -16,7 +16,7 @@ export default function ReviewCard({reviewItem}) {
             </div>
 
             <p>{excerpt}</p>
-            <Button asChild><Link href={`review/${uuid}`}>Read more</Link></Button>
+            <Button asChild><Link href={`review/${slug}`}>Read more</Link></Button>
         </div>
     )
 }

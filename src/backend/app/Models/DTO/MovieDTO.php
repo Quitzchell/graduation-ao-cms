@@ -10,8 +10,9 @@ use Illuminate\Support\Collection;
 class MovieDTO implements Reviewable
 {
     public function __construct(
-        public ?string $uuid,
+        public ?int $id,
         public ?string $title,
+        public ?string $slug,
         public ?int $releaseYear,
         public ?string $description,
         public ?string $trailerUrl,
@@ -35,8 +36,9 @@ class MovieDTO implements Reviewable
         }
 
         return new self(
-            $movie->uuid,
+            $movie->id,
             $movie->title,
+            $movie->slug,
             $movie->release_year,
             $movie->description,
             $movie->trailer_url,

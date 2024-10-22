@@ -14,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
-            $table->uuid();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('excerpt')->nullable();
             $table->string('image')->nullable();
             $table->foreignIdFor(Category::class)->constrained('blog_categories');
