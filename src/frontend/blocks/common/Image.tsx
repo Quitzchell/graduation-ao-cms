@@ -12,6 +12,7 @@ export default function ImageContent({image}) {
                 priority
                 sizes="w-full h-full"
                 className="object-scale-down"
+                data-cypress="image-block"
             />
         </div>
     )
