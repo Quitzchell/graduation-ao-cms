@@ -6,7 +6,8 @@ import {fetchMenu} from "@/lib/fetchUtils";
 import {cn} from "@/lib/utils";
 
 export default async function Navigation() {
-    const menuItems = await fetchMenu();
+    let menuItems = [];
+    menuItems = await fetchMenu();
 
     return (
         <nav className="bg-neutral-0" data-cypress="navigation">

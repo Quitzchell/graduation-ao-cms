@@ -1,9 +1,8 @@
 import homepage from '../fixtures/homepage.json'
 
-
-describe('Home Page Tests', () => {
+describe('Homepage tests', () => {
     beforeEach(() => {
-        cy.visit('/', {timeout: 60000});
+        cy.visit('/');
     });
 
     it('should render the page successfully', () => {

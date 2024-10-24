@@ -2,7 +2,7 @@ import blogposts from '../fixtures/blogpost.json'
 
 describe('Battlefield Insights: The Art of Strategy and Tactics in Warfare - Blogpost tests', () => {
     beforeEach(() => {
-        cy.visit('/blog/battlefield-insights-the-art-of-strategy-and-tactics-in-warfare', {timeout: 60000});
+        cy.visit('blog/battlefield-insights-the-art-of-strategy-and-tactics-in-warfare');
     });
 
     it('should render the page successfully', () => {

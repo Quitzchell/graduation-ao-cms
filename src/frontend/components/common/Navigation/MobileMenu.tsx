@@ -31,7 +31,7 @@ export default function MobileMenu({menuItems}) {
                 className="w-5/6 shadow-lg bg-neutral-0"
             >
                 <div className="grid gap-6 text-lg font-medium">
-                    {menuItems.map(({name, uri}, key) => (
+                    {menuItems && menuItems.map(({name, uri}, key) => (
                         <Link
                             key={key}
                             href={`/${uri}`}
