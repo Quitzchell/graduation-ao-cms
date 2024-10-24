@@ -53,9 +53,7 @@ services:
             - traefik_network
 
     cypress:
-        build:
-            context: .
-            dockerfile: "dev.cypress.dockerfile"
+        image: cypress/included:13.15.0
         container_name: cypress
         depends_on:
             - frontend # Wait for the frontend to be ready before running tests
@@ -68,6 +66,7 @@ services:
             - CYPRESS_baseUrl=http://${PROJECT_NAME}.local.alles.onl:3000 # Cypress will target the frontend service
         volumes:
             - ./src/frontend:/e2e # Mount frontend code into Cypress container
+        working_dir: /e2e
 
 networks:
     default:
