@@ -6,7 +6,7 @@ import {Button} from "@/components/ui/button";
 export default function ReviewCard({reviewItem}) {
     const {slug, title, excerpt, score, reviewable} = reviewItem
     return (
-        <div className="p-4 border rounded-md flex flex-col gap-y-4">
+        <div data-cypress="review-card" className="p-4 border rounded-md flex flex-col gap-y-4">
             <div>
                 <Title title={title}/>
                 <Subtitle

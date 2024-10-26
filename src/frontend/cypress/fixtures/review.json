@@ -1,0 +1,25 @@
+{
+    "review_cards": [
+        {
+            "title": "Napoleon's Cinematic Dispatch: Ridley Scott’s Napoleon",
+            "category": "Movie",
+            "verdict": "6/10",
+            "description": "Ridley Scott’s Napoleon is, I suppose, what one might expect from a Hollywood epic—grand, dramatic, and larger than life, yet still missing the finer details. He gives the audience a glimpse of my glory, but only a glimpse. The complexity of my mind, the intricacies of my plans, the true depth of my ambition—these are but shadows in his film. I suppose I must live with the fact that no movie can truly capture the immensity of my life and achievements in a mere two hours.",
+            "readMoreLink": "review/napoleons-cinematic-dispatch-ridley-scotts-napoleon"
+        },
+        {
+            "title": "Napoleon's Reflection: A Review of Monsieur N.",
+            "category": "Movie",
+            "verdict": "8/10",
+            "description": "Monsieur N. attempts to marry history with fantasy, and while it succeeds in presenting an intriguing \"what if\" scenario, it does not quite capture the full measure of who I was. It portrays a Napoleon beaten down by exile and regret, but forgets that even in the twilight of my life, I remained a man of vision, ambition, and boundless pride. Still, I commend the filmmakers for daring to tell my story from a different angle, even if the conspiracy theories they propose are little more than a romantic dream.",
+            "readMoreLink": "review/napoleons-reflection-a-review-of-monsieur-n"
+        },
+        {
+            "title": "Napoleon's Verdict: A Review of Waterloo",
+            "category": "Movie",
+            "verdict": "9/10",
+            "description": "Waterloo is a film that seeks to immortalize my greatest defeat, and while it succeeds in its spectacle, it falters in portraying the true depth of my command and the complexity of my choices. The battle of Waterloo was not simply a brawl between two massive armies. It was a finely orchestrated chess game. The film captures the chaos of war, but it misses the precision of command.",
+            "readMoreLink": "review/napoleons-verdict-a-review-of-waterloo"
+        }
+    ]
+}
