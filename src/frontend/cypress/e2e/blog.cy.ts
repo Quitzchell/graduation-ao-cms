@@ -1,7 +1,11 @@
 import blog from '../fixtures/blog.json'
+
 describe('Blog overview tests', () => {
     beforeEach(() => {
-        cy.visit('blog');
+        cy.clearCookies();
+        cy.clearLocalStorage();
+        cy.wait(2000)
+        cy.visit('/blog');
     });
 
     it('should render the page successfully', () => {

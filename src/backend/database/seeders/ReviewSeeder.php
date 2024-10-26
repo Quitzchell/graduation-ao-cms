@@ -23,7 +23,7 @@ class ReviewSeeder extends Seeder
             ],
             [
                 'title' => 'Napoleon\'s Reflection: A Review of Monsieur N.',
-                'excerpt' => 'Monsieur N. attempts to marry history with fantasy, and while it succeeds in presenting an intriguing \'what if\' scenario, it does not quite capture the full measure of who I was. It portrays a Napoleon beaten down by exile and regret, but forgets that even in the twilight of my life, I remained a man of vision, ambition, and boundless pride. Still, I commend the filmmakers for daring to tell my story from a different angle, even if the conspiracy theories they propose are little more than a romantic dream.',
+                'excerpt' => 'Monsieur N. attempts to marry history with fantasy, and while it succeeds in presenting an intriguing "what if" scenario, it does not quite capture the full measure of who I was. It portrays a Napoleon beaten down by exile and regret, but forgets that even in the twilight of my life, I remained a man of vision, ambition, and boundless pride. Still, I commend the filmmakers for daring to tell my story from a different angle, even if the conspiracy theories they propose are little more than a romantic dream.',
                 'score' => 8,
                 'image' => 7,
                 'published_at' => Carbon::today(),

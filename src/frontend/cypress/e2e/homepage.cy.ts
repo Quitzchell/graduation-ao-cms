@@ -2,7 +2,10 @@ import homepage from '../fixtures/homepage.json'
 
 describe('Homepage tests', () => {
     beforeEach(() => {
-        cy.visit('/');
+        cy.clearCookies();
+        cy.clearLocalStorage();
+        cy.wait(2000)
+        cy.visit('/home');
     });
 
     it('should render the page successfully', () => {

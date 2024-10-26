@@ -3,8 +3,8 @@ import {YouTubeEmbed} from "@next/third-parties/google";
 export default function MovieInfoCard({title, director, actors, releaseYear, trailerUrl}) {
     return (
         <>
-            <div className="rounded-md p-4 border flex flex-col gap-y-4 mb-8">
-                <div className="grid xs:grid-col-1 sm:grid-cols-2 ">
+            <div data-cypress="movie-info" className="rounded-md p-4 border flex flex-col gap-y-4">
+                <div className="grid xs:grid-col-1 sm:grid-cols-2">
                     <div>
                         <p>
                             <span className="font-bold">Movie: </span>
@@ -30,17 +30,17 @@ export default function MovieInfoCard({title, director, actors, releaseYear, tra
                         </p>
                     )}
                 </div>
-            </div>
 
-            {trailerUrl &&
-                <div className="w-auto h-auto my-6">
-                    <YouTubeEmbed
-                        videoid={trailerUrl.match(/embed\/([a-zA-Z0-9_-]{11})/)[1]}
-                        params="controls=0"
-                        style="margin: 0 auto"
-                    />
-                </div>
-            }
+                {trailerUrl &&
+                    <div className="w-auto h-auto my-2 md:my-6">
+                        <YouTubeEmbed
+                            videoid={trailerUrl.match(/embed\/([a-zA-Z0-9_-]{11})/)[1]}
+                            params="controls=0"
+                            style="margin: 0 auto"
+                        />
+                    </div>
+                }
+            </div>
         </>
     )
 }
