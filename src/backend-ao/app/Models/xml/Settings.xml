@@ -1,0 +1,22 @@
+<model>
+    <configuration>
+        <title>Instellingen</title>
+        <titleOne>Instelling</titleOne>
+        <icon>fa fa-cogs</icon>
+    </configuration>
+
+    <fields>
+        <field type="text" name="meta_title" title="Meta titel" />
+        <field type="text" name="meta_keywords" title="Meta keywords" />
+        <field type="text" name="meta_description" title="Meta description" />
+    </fields>
+
+    <lists>
+        <list name="default">
+            <field name="meta_title" />
+            <field name="meta_keywords" />
+            <field name="meta_description" />
+        </list>
+    </lists>
+
+</model>
