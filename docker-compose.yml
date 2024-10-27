@@ -1,9 +1,9 @@
 services:
 
-    backend-ao:
+    backend:
         build:
             context: .
-            dockerfile: dev.backend-ao.dockerfile
+            dockerfile: dev.backend.dockerfile
             args:
                 IMAGE: allesonline/laravel:php8.3-node20-alpine3.19-dev
         user:
@@ -26,71 +26,12 @@ services:
             - ENABLE_HORIZON=0
             - ENABLE_SCHEDULER=0
         extra_hosts:
-            - "graduation-ao-cms-admin.local.alles.onl:host-gateway"
+            - "graduation-project-admin.local.alles.onl:host-gateway"
         volumes:
-            - ./src/backend-ao:/var/www/html
+            - ./src:/var/www/html
         networks:
             - default
             - traefik_network
-
-    backend-filament:
-        build:
-            context: .
-            dockerfile: dev.backend-filament.dockerfile
-        user:
-            docker:docker
-        ports:
-            - "8080:8080"
-        labels:
-            - "traefik.enable=true"
-            - "traefik.docker.network=traefik_network"
-            - 'traefik.http.routers.${PROJECT_NAME}-web.rule=Host(`${PROJECT_NAME}-admin.local.alles.onl`)'
-            - "traefik.http.routers.${PROJECT_NAME}-web.entrypoints=web,websecure"
-            - "traefik.http.routers.${PROJECT_NAME}-web.service=${PROJECT_NAME}-web"
-            - "traefik.http.services.${PROJECT_NAME}-web.loadbalancer.server.port=8080"
-        # environment:
-        extra_hosts:
-            - "graduation-ao-cms-admin.local.alles.onl:host-gateway"
-        volumes:
-            - ./src/backend-filament:/var/www/html
-        networks:
-            - default
-            - traefik_network
-
-    frontend:
-        build:
-            context: .
-            dockerfile: dev.frontend.dockerfile
-        ports:
-            - "3000:3000"
-        labels:
-            - "traefik.enable=true"
-            - "traefik.docker.network=traefik_network"
-            - 'traefik.http.routers.${PROJECT_NAME}-npm.rule=Host(`${PROJECT_NAME}.local.alles.onl`)'
-            - "traefik.http.routers.${PROJECT_NAME}-npm.entrypoints=npm,websecure"
-            - "traefik.http.routers.${PROJECT_NAME}-npm.service=${PROJECT_NAME}-npm"
-            - "traefik.http.services.${PROJECT_NAME}-npm.loadbalancer.server.port=3000"
-        volumes:
-            - ./src/frontend:/var/www/html
-        networks:
-            - default
-            - traefik_network
-
-    cypress:
-        image: cypress/included:13.15.0
-        container_name: cypress
-        depends_on:
-            - frontend # Wait for the frontend to be ready before running tests
-        extra_hosts:
-            - "graduation-ao-cms.local.alles.onl:host-gateway"
-        networks:
-            - default
-            - traefik_network
-        environment:
-            - CYPRESS_baseUrl=http://${PROJECT_NAME}.local.alles.onl:3000 # Cypress will target the frontend service
-        volumes:
-            - ./src/frontend:/e2e # Mount frontend code into Cypress container
-        working_dir: /e2e
 
 networks:
     default:
