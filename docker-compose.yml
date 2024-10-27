@@ -3,7 +3,7 @@ services:
     backend:
         build:
             context: .
-            dockerfile: dev.backend.dockerfile
+            dockerfile: dev.backend-ao.dockerfile
             args:
                 IMAGE: allesonline/laravel:php8.3-node20-alpine3.19-dev
         user:
@@ -28,7 +28,7 @@ services:
         extra_hosts:
             - "graduation-ao-cms-admin.local.alles.onl:host-gateway"
         volumes:
-            - ./src/backend:/var/www/html
+            - ./src/backend-ao:/var/www/html
         networks:
             - default
             - traefik_network
