@@ -1,12 +1,24 @@
 ssh_private_key=`cat ~/.ssh/id_rsa`
 project_name=$(notdir $(shell pwd))
 
-.PHONY: all
-all:build up
+# Define an optional SERVICE variable, defaulting to backend1 if not provided
+SERVICE ?= backend-ao
 
+.PHONY: all
+all: build up
+
+# Build target that builds the specified service (defaults to backend1 if none specified)
 .PHONY: build
 build:
-	PROJECT_NAME="$(project_name)" docker compose build --build-arg SSH_PRIVATE_KEY="${ssh_private_key}"
+	PROJECT_NAME="$(project_name)" docker compose build $(SERVICE) --build-arg SSH_PRIVATE_KEY="${ssh_private_key}"
+
+# Backend-specific build targets for each service
+.PHONY: ao filament
+ao:
+	PROJECT_NAME="$(project_name)" docker compose build backend-ao --build-arg SSH_PRIVATE_KEY="${ssh_private_key}"
+
+filament:
+	PROJECT_NAME="$(project_name)" docker compose build backend-filament
 
 .PHONY: up
 up:
@@ -14,12 +26,4 @@ up:
 
 .PHONY: cypress
 cypress:
-	PROJECT_NAME="$(project_name)" docker-compose up --build cypress
-
-.PHONY: login-front
-login-front:
-	docker exec -it "$(project_name)-frontend-1" /bin/sh
-
-.PHONY: login-back
-login-back:
-	docker exec -it "$(project_name)-backend-1" /bin/sh
+	PROJECT_NAME="$(project_name)" docker compose up --build cypress
