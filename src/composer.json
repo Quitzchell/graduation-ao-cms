@@ -1,9 +1,8 @@
 {
-    "name": "allesonline/ingrado-website",
+    "name": "allesonline/graduation-ao-cms",
     "type": "project",
-    "description": "Ingrado Website",
+    "description": " CMS",
     "keywords": [
-        "ingrado",
         "framework",
         "laravel"
     ],
@@ -40,8 +39,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Factories\\": "src/database/factories/",
+            "Database\\Seeders\\": "src/database/seeders/"
         },
         "files": [
             "app/Helpers.php"

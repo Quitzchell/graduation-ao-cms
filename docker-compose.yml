@@ -3,7 +3,7 @@ services:
     backend:
         build:
             context: .
-            dockerfile: dev.backend.dockerfile
+            dockerfile: dev.dockerfile
             args:
                 IMAGE: allesonline/laravel:php8.3-node20-alpine3.19-dev
         user:
