@@ -24,7 +24,6 @@ final class RenderHomeTemplate extends TemplateRenderer
 
         return $this->render($page, [
             'headerItems' => $headerItems,
-            'aboutItems' => array_first($this->resolver->execute($page, 'about'))?->getData(),
             'blocks' => $this->resolver->execute($page, 'blocks'),
         ]);
     }
