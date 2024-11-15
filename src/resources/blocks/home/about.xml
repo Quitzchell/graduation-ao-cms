@@ -1,5 +1,0 @@
-<template name="About">
-    <field type="text" name="title" title="Title" maxLength="100"/>
-    <field type="html" name="text" title="Text"
-           toolbar="bold italic underline | charmap | link"/>
-</template>
