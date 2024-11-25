@@ -1,0 +1,6 @@
+<template name="Call to Action">
+    <field type="text" name="title" title="Title"/>
+    <field type="html" name="text" title="Text" height="200" maxlength="400"/>
+    <field type="url" name="button_url" title="Button url" relations="Page:name"/>
+    <field type="text" name="button_text" title="Button text"/>
+</template>

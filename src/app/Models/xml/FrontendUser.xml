@@ -1,0 +1,37 @@
+<model>
+    <configuration>
+        <title>Frontend Users</title>
+        <titleOne>Frontend User</titleOne>
+        <icon>fa fa-users</icon>
+    </configuration>
+
+    <fields>
+        <field name="username" title="Gebruikersnaam" type="text" maxlength="255" />
+        <field name="password" title="Wachtwoord" type="password" maxlength="120" />
+        <field name="email" title="Email" type="text" maxlength="255" />
+    </fields>
+
+    <lists>
+        <list name="default" sort="username" sortOrder="ASC">
+            <field name="username" />
+            <field name="email" />
+        </list>
+        <list name="add" sort="username" sortOrder="ASC">
+            <field name="username" />
+            <field name="password" />
+            <field name="email" />
+        </list>
+        <list name="edit" sort="username" sortOrder="ASC">
+            <field name="username" />
+            <field name="email" />
+        </list>
+        <list name="info" sort="username" sortOrder="ASC">
+            <field name="username" />
+            <field name="email" />
+        </list>
+        <list name="overview">
+            <field name="username"/>
+            <field name="email" />
+        </list>
+    </lists>
+</model>

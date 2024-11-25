@@ -1,0 +1,5 @@
+<template name="Home page">
+    <field type="text" name="header_title" title="Header title"/>
+    <field type="media-item" name="header_image" title="Header image"/>
+    <field type="blocks" name="blocks" title="Content blokken" blocks="common/*"/>
+</template>

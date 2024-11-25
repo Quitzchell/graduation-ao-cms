@@ -1,0 +1,20 @@
+# Add files you don't want to copy to your docker image
+.idea
+.DS_Store
+bootstrap/cache/*.php
+.editorconfig
+.styleci.yml
+.phpunit.result.cache
+
+# Newer projects will use src/backend
+src/backend/bootstrap/cache/*.php
+src/backend/.env.example
+src/backend/.editorconfig
+src/backend/.styleci.yml
+src/backend/.phpunit.result.cache
+
+# We don't want to copy these folders, because they can be very large and will be mounted later on
+src/backend/public/uploads
+src/backend/public/thumbs
+
+src/frontend/node_modules

@@ -1,0 +1,50 @@
+<model>
+    <configuration>
+        <title>Books</title>
+        <titleOne>Book</titleOne>
+        <icon>fa fa-book</icon>
+    </configuration>
+
+    <fields>
+        <!-- General fields-->
+        <field type="text" name="title" title="Title"/>
+        <field type="date" name="published_year" title="Published date"/>
+        <field type="textarea" name="description" title="Description"/>
+
+        <field type="relation" name="author_id" title="Author" relation_on="Author" relation_name="fullName"/>
+        <field type="dynamic" name="author_name" title="Author"/>
+        <field type="dynamic" name="published_year_formatted" title="Published Year"/>
+    </fields>
+
+    <lists>
+        <list name="default">
+            <field name="title"/>
+            <field name="author_id"/>
+            <field name="published_year"/>
+            <field name="description"/>
+        </list>
+        <list name="overview">
+            <field name="title"/>
+            <field name="author_name"/>
+            <field name="published_year_formatted"/>
+        </list>
+        <list name="add">
+            <field name="title"/>
+            <field name="author_id"/>
+            <field name="published_year"/>
+            <field name="description"/>
+        </list>
+        <list name="edit">
+            <field name="title"/>
+            <field name="author_id"/>
+            <field name="published_year"/>
+            <field name="description"/>
+        </list>
+        <list name="info">
+            <field name="title"/>
+            <field name="author_name"/>
+            <field name="published_year_formatted"/>
+            <field name="description"/>
+        </list>
+    </lists>
+</model>

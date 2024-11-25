@@ -1,0 +1,46 @@
+<model>
+    <configuration>
+        <title>Actors</title>
+        <titleOne>Actor</titleOne>
+        <icon>fa fa-star</icon>
+    </configuration>
+
+    <fields>
+        <!-- General fields-->
+        <field type="text" name="name" title="Name"/>
+        <field type="text" name="middle_name" title="Middle name"/>
+        <field type="text" name="surname" title="Surname"/>
+        <field type="date" name="date_of_birth" title="Date of Birth" empty="true"/>
+
+        <!-- Relation fields -->
+        <field type="tags" name="movies" title="Movies Starred In" relation_on="Movie" relation_name="title"/>
+        <field type="dynamic" name="movie_names" title="Movies starred in"/>
+        <field type="dynamic" name="full_name" title="Name"/>
+    </fields>
+
+    <lists>
+        <list name="default">
+            <field name="full_name"/>
+            <field name="date_of_birth"/>
+        </list>
+        <list name="add">
+            <field name="name"/>
+            <field name="middle_name"/>
+            <field name="surname"/>
+            <field name="date_of_birth"/>
+            <field name="movies"/>
+        </list>
+        <list name="edit">
+            <field name="name"/>
+            <field name="middle_name"/>
+            <field name="surname"/>
+            <field name="date_of_birth"/>
+            <field name="movies"/>
+        </list>
+        <list name="info">
+            <field name="full_name"/>
+            <field name="date_of_birth"/>
+            <field name="movie_names"/>
+        </list>
+    </lists>
+</model>

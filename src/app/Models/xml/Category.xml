@@ -1,0 +1,21 @@
+<model>
+    <configuration>
+        <title>Categories</title>
+        <titleOne>Category</titleOne>
+        <icon>fa fa-folder-o</icon>
+    </configuration>
+
+    <fields>
+        <field type="text" name="name" title="Name"/>
+    </fields>
+
+    <lists>
+        <list name="default">
+            <field name="name"/>
+        </list>
+    </lists>
+
+    <relations>
+        <relation call="blogPosts" title="Blog posts" button="none" list="category_relation"/>
+    </relations>
+</model>

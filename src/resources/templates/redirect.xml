@@ -1,0 +1,3 @@
+<template name="Redirect pagina">
+    <field type="url" name="link" title="Link" relations="Page:name" free="true"/>
+</template>

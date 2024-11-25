@@ -1,0 +1,5 @@
+<template name="SEO">
+    <content type="text" name="title" title="Titel"/>
+    <content type="text" name="keywords" title="Keywords"/>
+    <content type="textarea" name="description" title="Omschrijving" maxlength="160"/>
+</template>

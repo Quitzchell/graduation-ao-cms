@@ -1,0 +1,3 @@
+<template name="Image">
+    <field type="media-item" name="image" title="Image"/>
+</template>
